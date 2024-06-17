@@ -26,8 +26,6 @@ import java.util.Random;
 import java.util.ResourceBundle;
 import Start.*;
 
-import static DatabaseConnection.UsersInformationDatabase.con;
-import static DatabaseConnection.UsersInformationDatabase.createConnection;
 
 public class LoginPage implements Initializable {
     @FXML
