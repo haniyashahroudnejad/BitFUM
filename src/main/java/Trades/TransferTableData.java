@@ -1,13 +1,17 @@
 package Trades;
 import javafx.beans.property.*;
+
+import java.sql.Date;
+import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class TransferTableData {
-    public TransferTableData(LocalDate Date, LocalTime Time, String DestinationWalletID, String CurrencyName, Double CurrencyAmount, int IssueTracking ){
+    public TransferTableData(Date Date, Time Time,String SourceWalletID, String DestinationWalletID, String CurrencyName, Double CurrencyAmount, int IssueTracking ){
         setDate();
         setTime();
         setDestinationWalletID(DestinationWalletID);
+        setSourceWalletID(SourceWalletID);
         setCurrencyName(CurrencyName);
         setCurrencyAmount(CurrencyAmount);
         setIssueTracking(IssueTracking);
@@ -21,18 +25,18 @@ public class TransferTableData {
     public void setCurrencyName(String currencyName) {this.CurrencyName.set(currencyName);}
 
     private LocalDate localDate;
-    public LocalDate getDate() {return localDate;}
     public void setDate() { localDate = LocalDate.now();}
+    public Date getDate() {return Date.valueOf(localDate);}
 
     private LocalTime localtime;
-    public LocalTime getTime() {return localtime;}
+    public Time getTime() {return Time.valueOf(localtime);}
     public void setTime() { localtime = LocalTime.now();}
 
     private DoubleProperty CurrencyAmount = new SimpleDoubleProperty(this, "CurrencyAmount", 0.0);
     public double getCurrencyAmount() {
         return CurrencyAmount.get();
     }
-    public DoubleProperty setCurrencyAmountProperty() {return CurrencyAmount;}
+    public DoubleProperty CurrencyAmountProperty() {return CurrencyAmount;}
     public void setCurrencyAmount(double CurrencyAmount) {this.CurrencyAmount.set(CurrencyAmount);}
 
     private IntegerProperty IssueTracking = new SimpleIntegerProperty(this, "IssueTracking",0);
@@ -48,6 +52,13 @@ public class TransferTableData {
     }
     public StringProperty DestinationWalletIDProperty() {return DestinationWalletID;}
     public void setDestinationWalletID(String DestinationWalletID) {this.DestinationWalletID.set(DestinationWalletID);}
+
+    private StringProperty SourceWalletID = new SimpleStringProperty(this, "SourceWalletID", "");
+    public String getSourceWalletID() {
+        return SourceWalletID.get();
+    }
+    public StringProperty SourceWalletIDProperty() {return SourceWalletID;}
+    public void setSourceWalletID(String SourceWalletID) {this.SourceWalletID.set(SourceWalletID);}
 
 
 }

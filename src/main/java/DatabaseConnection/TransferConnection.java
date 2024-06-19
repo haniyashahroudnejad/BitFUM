@@ -1,51 +1,54 @@
 package DatabaseConnection;
 
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class TransferConnection {
-    public static Connection con;
-    public static void createConnection(){
+    public static Connection databaseLink;
+    public Connection getDBConnection(){
         try {
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306", "root", "h9026666518");
-            System.out.print("DataBas connection success");
-            Statement query = con.createStatement();
+            databaseLink = DriverManager.getConnection("jdbc:mysql://localhost:3306", "root", "h9026666518");
+            Statement query = databaseLink.createStatement();
             query.executeUpdate("CREATE SCHEMA IF NOT EXISTS BitFUM");
-            System.out.println("Schema created successfully!");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/BitFUM", "root", "h9026666518");
-            createTable(con, query);
+            databaseLink = DriverManager.getConnection("jdbc:mysql://localhost:3306/BitFUM", "root", "h9026666518");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+        return databaseLink;
     }
-    public static void createTable(Connection con, Statement stmt) {
+    public void createTransferTable(Connection con, Statement stmt) {
         try {
             stmt = con.createStatement();
             String sql = "CREATE TABLE IF NOT EXISTS TransferInfo " +
-                    "(userName VARCHAR(20) not NULL primary key, " +
-                    "Date date not null,"+
-                    "Time time(6) not null,"+
+                    "(UserName VARCHAR(20) not NULL primary key, " +
+                    "RecordedDate date not null,"+
+                    "RecordedTime time(6) not null,"+
+                    "SourceWalletID VARCHAR(20) not null,"+
                     "DestinationWalletID VARCHAR(20) not null,"+
-                    "currencyName VARCHAR(10),"+
-                    "currencyAmount double DEFAULT 0,"+
-                    "IssueTracking INT DEFAULT 0,";
+                    "CurrencyName VARCHAR(10),"+
+                    "CurrencyAmount double not null,"+
+                    "IssueTracking INT DEFAULT 0)";
 
             stmt.executeUpdate(sql);
-            System.out.println("Table created successfully");
         } catch (SQLException e) {
             throw new RuntimeException("Error creating table", e);
         }
     }
 
-    public static void insertRowWithPreparedStatement(String userName, Date date, Time time, String DestinationWalletID, String currencyName, Double currencyAmount,int IssueTracking) {
-        String sql = "INSERT INTO UsersInfo (userName, date, time, DestinationWalletID, currencyName, currencyAmount,IssueTracking) VALUES (?, ?, ?, ?, ?, ?, ?)";
-        try (PreparedStatement pstmt = con.prepareStatement(sql)) {
-            pstmt.setString(1, userName);
-            pstmt.setDate(2, date);
-            pstmt.setTime(3, time);
-            pstmt.setString(4, DestinationWalletID);
-            pstmt.setString(5, currencyName);
-            pstmt.setDouble(6, currencyAmount);
-            pstmt.setInt(7, IssueTracking);
+    public static void insertRowWithPreparedStatement(String UserName, Date RecordedDate, Time RecordedTime,String SourceWalletID, String DestinationWalletID, String CurrencyName, Double CurrencyAmount, int IssueTracking) {
+        String sql = "INSERT INTO TransferInfo (UserName,RecordedDate,RecordedTime,SourceWalletID,DestinationWalletID,CurrencyName,CurrencyAmount,IssueTracking) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        try (PreparedStatement pstmt = databaseLink.prepareStatement(sql)) {
+            pstmt.setString(1, UserName);
+            pstmt.setDate(2, RecordedDate);
+            System.out.println(RecordedDate);
+            pstmt.setTime(3, RecordedTime);
+            pstmt.setString(4, SourceWalletID);
+            pstmt.setString(5, DestinationWalletID);
+            pstmt.setString(6, CurrencyName);
+            pstmt.setDouble(7, CurrencyAmount);
+            pstmt.setInt(8, IssueTracking);
+            pstmt.executeUpdate();
             System.out.println("Row inserted successfully using PreparedStatement");
         } catch (SQLException e) {
             throw new RuntimeException("Error inserting row", e);

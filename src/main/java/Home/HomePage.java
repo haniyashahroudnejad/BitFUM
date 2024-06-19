@@ -67,7 +67,7 @@ public class HomePage implements Initializable {
     @FXML
     private TableColumn<CurrencyTableData, Number> MinPriceColumn;
 
-    ObservableList<CurrencyTableData> ObservableCurrencyDataList = FXCollections.observableArrayList();
+    public static ObservableList<CurrencyTableData> ObservableCurrencyDataList = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
