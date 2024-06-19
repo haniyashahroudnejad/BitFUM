@@ -21,14 +21,14 @@ public class TransferConnection {
         try {
             stmt = con.createStatement();
             String sql = "CREATE TABLE IF NOT EXISTS TransferInfo " +
-                    "(UserName VARCHAR(20) not NULL primary key, " +
+                    "(UserName VARCHAR(20) not NULL , " +
                     "RecordedDate date not null,"+
                     "RecordedTime time(6) not null,"+
                     "SourceWalletID VARCHAR(20) not null,"+
                     "DestinationWalletID VARCHAR(20) not null,"+
-                    "CurrencyName VARCHAR(10),"+
+                    "CurrencyName VARCHAR(10) not null,"+
                     "CurrencyAmount double not null,"+
-                    "IssueTracking INT DEFAULT 0)";
+                    "IssueTracking INT DEFAULT 0 not null)";
 
             stmt.executeUpdate(sql);
         } catch (SQLException e) {
@@ -41,7 +41,6 @@ public class TransferConnection {
         try (PreparedStatement pstmt = databaseLink.prepareStatement(sql)) {
             pstmt.setString(1, UserName);
             pstmt.setDate(2, RecordedDate);
-            System.out.println(RecordedDate);
             pstmt.setTime(3, RecordedTime);
             pstmt.setString(4, SourceWalletID);
             pstmt.setString(5, DestinationWalletID);
@@ -49,7 +48,6 @@ public class TransferConnection {
             pstmt.setDouble(7, CurrencyAmount);
             pstmt.setInt(8, IssueTracking);
             pstmt.executeUpdate();
-            System.out.println("Row inserted successfully using PreparedStatement");
         } catch (SQLException e) {
             throw new RuntimeException("Error inserting row", e);
         }

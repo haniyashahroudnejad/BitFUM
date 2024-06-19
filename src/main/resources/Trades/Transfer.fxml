@@ -1,0 +1,520 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="1066.0" prefWidth="1005.0" style="-fx-background-color: F2F3E6;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Trades.Transfer">
+   <children>
+      <ScrollPane hbarPolicy="NEVER" layoutX="-1.0" prefHeight="1448.0" prefWidth="1020.0">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1800.0" prefWidth="1005.0" style="-fx-background-color: #005669;" stylesheets="@WalletStyle.css">
+               <children>
+                  <Label layoutX="21.0" layoutY="116.0" prefHeight="31.0" prefWidth="255.0" text="transfer" textFill="WHITE">
+                     <font>
+                        <Font name="Chalkboard SE Regular" size="48.0" />
+                     </font>
+                  </Label>
+                  <Pane layoutX="10.0" layoutY="209.0" prefHeight="100.0" prefWidth="602.0" style="-fx-background-color: #005669;">
+                     <children>
+                        <Pane layoutX="1.0" layoutY="10.0" prefHeight="77.0" prefWidth="587.0" style="-fx-background-color: #013b46; -fx-background-radius: 30;">
+                           <children>
+                              <Button fx:id="transferButton" layoutX="26.0" layoutY="17.0" mnemonicParsing="false" onAction="#onTransferButtonClicked" prefHeight="43.0" prefWidth="164.0" style="-fx-background-radius: 20; -fx-background-color: #53aad0;" text="transfer" textFill="#0a0606">
+                                 <font>
+                                    <Font name="Tamil MN" size="16.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow>
+                                       <color>
+                                          <Color red="1.0" green="1.0" blue="1.0" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button fx:id="BankWithdrawalButton" layoutX="212.0" layoutY="17.0" mnemonicParsing="false" onAction="#onBankWithdrawalButtonClicked" prefHeight="43.0" prefWidth="164.0" style="-fx-background-color: #b2e7ff; -fx-background-radius: 20;" text="Bank withdrawal">
+                                 <font>
+                                    <Font name="Tamil MN Bold" size="13.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow>
+                                       <color>
+                                          <Color red="0.9473684430122375" green="0.9473684430122375" blue="0.9473684430122375" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                              </Button>
+                              <Button fx:id="RegisterCardButton" layoutX="394.0" layoutY="17.0" mnemonicParsing="false" onAction="#onRegisterCardButtonClicked" prefHeight="43.0" prefWidth="164.0" style="-fx-background-radius: 20; -fx-background-color: #b2e7ff;" text="Register  card  number" textFill="#140606">
+                                 <font>
+                                    <Font name="Tamil MN Bold" size="12.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow>
+                                       <color>
+                                          <Color red="0.7824074029922485" green="0.8766975402832031" blue="1.0" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="10.0" layoutY="319.0" prefHeight="482.0" prefWidth="682.0" style="-fx-background-color: #013b46; -fx-background-radius: 30;">
+                     <children>
+                        <Pane fx:id="transferPane" layoutX="11.0" layoutY="10.0" prefHeight="462.0" prefWidth="661.0" style="-fx-background-color: #013b46;">
+                           <children>
+                              <TextField fx:id="CurrencyValueField" layoutX="20.0" layoutY="100.0" prefHeight="58.0" prefWidth="617.0" promptText="value                 A value between 0 and 500" style="-fx-background-radius: 20; -fx-background-color: #a48fae;">
+                                 <font>
+                                    <Font name="Sinhala MN" size="25.0" />
+                                 </font>
+                              </TextField>
+                              <Button fx:id="button50" layoutX="179.0" layoutY="184.0" mnemonicParsing="false" onAction="#onButton50Clicked" prefHeight="38.0" prefWidth="140.0" style="-fx-background-radius: 20; -fx-background-color: F2F3E6;" text="50%">
+                                 <font>
+                                    <Font name="Symbol" size="17.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="button75" layoutX="338.0" layoutY="184.0" mnemonicParsing="false" onAction="#onButton75Clicked" prefHeight="38.0" prefWidth="140.0" style="-fx-background-radius: 20; -fx-background-color: F2F3E6;" text="75%">
+                                 <font>
+                                    <Font name="Symbol" size="17.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="button100" layoutX="496.0" layoutY="183.0" mnemonicParsing="false" onAction="#onButton100Clicked" prefHeight="40.0" prefWidth="140.0" style="-fx-background-radius: 20; -fx-background-color: F2F3E6;" text="100%">
+                                 <font>
+                                    <Font name="Symbol" size="17.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="button25" layoutX="20.0" layoutY="183.0" mnemonicParsing="false" onAction="#onButton25Clicked" prefHeight="39.0" prefWidth="140.0" style="-fx-background-radius: 20; -fx-background-color: F2F3E6;" text="25%">
+                                 <font>
+                                    <Font name="Symbol" size="17.0" />
+                                 </font>
+                              </Button>
+                              <Label layoutX="22.0" layoutY="318.0" prefHeight="55.0" prefWidth="616.0" style="-fx-background-color: #a48fae; -fx-background-radius: 20;" />
+                              <Button fx:id="Confirmed" layoutX="234.0" layoutY="392.0" mnemonicParsing="false" onAction="#onConfirmedClicked" prefHeight="26.0" prefWidth="191.0" style="-fx-background-radius: 20; -fx-background-color: #b2e7ff;" text="Confirmed">
+                                 <font>
+                                    <Font name="PT Sans Narrow" size="19.0" />
+                                 </font>
+                                 <effect>
+                                    <InnerShadow>
+                                       <color>
+                                          <Color red="0.02284356765449047" green="0.19736842811107635" blue="0.0664747804403305" />
+                                       </color>
+                                    </InnerShadow>
+                                 </effect>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <ChoiceBox fx:id="ChoiceCurrency" layoutX="22.0" layoutY="36.0" prefHeight="42.0" prefWidth="616.0" style="-fx-background-radius: 20; -fx-background-color: #734b86;" />
+                              <Label layoutX="29.0" layoutY="41.0" prefHeight="32.0" prefWidth="192.0" style="-fx-background-color: #734b86;" text="Choice Currency" textFill="WHITE">
+                                 <font>
+                                    <Font name="Wingdings 2" size="21.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="36.0" layoutY="330.0" prefHeight="17.0" prefWidth="88.0" text="TOTAL :" textFill="#1b1212">
+                                 <font>
+                                    <Font name="Songti TC Regular" size="21.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="total" layoutX="124.0" layoutY="326.0" prefHeight="40.0" prefWidth="487.0">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="EnterDestinationAddress" layoutX="338.0" layoutY="247.0" prefHeight="45.0" prefWidth="296.0" promptText="Enter Destination address" style="-fx-background-color: #734b86; -fx-background-radius: 20;" />
+                              <Button fx:id="ok" layoutX="490.0" layoutY="257.0" mnemonicParsing="false" onAction="#onOK" prefHeight="26.0" prefWidth="139.0" style="-fx-background-radius: 30; -fx-background-color: #734b86;" />
+                              <ChoiceBox fx:id="DestinationAddress" layoutX="22.0" layoutY="247.0" prefHeight="45.0" prefWidth="296.0" style="-fx-background-color: #734b86; -fx-background-radius: 20;" />
+                              <Label layoutX="31.0" layoutY="251.0" prefHeight="37.0" prefWidth="227.0" style="-fx-background-color: #734b86;" text="Destination Address" textFill="WHITE">
+                                 <font>
+                                    <Font name="Wingdings 2" size="21.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <Pane fx:id="BankWithdrawaPane" layoutX="15.0" layoutY="16.0" prefHeight="437.0" prefWidth="648.0" visible="false">
+                           <children>
+                              <Label layoutX="72.0" layoutY="38.0" prefHeight="63.0" prefWidth="494.0" style="-fx-background-color: #734b86; -fx-background-radius: 10;" />
+                              <Label layoutX="96.0" layoutY="48.0" prefHeight="40.0" prefWidth="144.0" text="Your WalletID : " textFill="WHITE">
+                                 <font>
+                                    <Font name="Bodoni 72 Bold" size="21.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="walletIDBank" layoutX="255.0" layoutY="53.0" prefHeight="33.0" prefWidth="296.0">
+                                 <font>
+                                    <Font name="DIN Alternate Bold" size="27.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="76.0" layoutY="121.0" prefHeight="23.0" prefWidth="566.0" text="If you want to change your wallet ID, go to the regester card number" textFill="#ff2020">
+                                 <font>
+                                    <Font name="Galvji Oblique" size="15.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="CurrencyValueFieldBank" layoutX="69.0" layoutY="161.0" prefHeight="58.0" prefWidth="501.0" promptText="value                 A value between 0 and 500" style="-fx-background-radius: 20; -fx-background-color: #a48fae;">
+                                 <font>
+                                    <Font name="Sinhala MN" size="25.0" />
+                                 </font>
+                              </TextField>
+                              <Label layoutX="72.0" layoutY="237.0" prefHeight="17.0" prefWidth="290.0" text="The transfer fee is one percent" textFill="#71d9ff" />
+                              <Label layoutX="69.0" layoutY="267.0" prefHeight="55.0" prefWidth="501.0" style="-fx-background-color: #a48fae; -fx-background-radius: 20;" />
+                              <Label layoutX="88.0" layoutY="279.0" prefHeight="17.0" prefWidth="88.0" text="TOTAL :" textFill="#1b1212">
+                                 <font>
+                                    <Font name="Songti TC Regular" size="21.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="totalBank" layoutX="188.0" layoutY="276.0" prefHeight="38.0" prefWidth="349.0">
+                                 <font>
+                                    <Font name="Gujarati MT Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="ConfirmedBank" layoutX="229.0" layoutY="374.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="191.0" style="-fx-background-radius: 20; -fx-background-color: #b2e7ff;" text="Confirmed">
+                                 <font>
+                                    <Font name="PT Sans Narrow" size="19.0" />
+                                 </font>
+                                 <effect>
+                                    <InnerShadow>
+                                       <color>
+                                          <Color red="0.02284356765449047" green="0.19736842811107635" blue="0.0664747804403305" />
+                                       </color>
+                                    </InnerShadow>
+                                 </effect>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </Pane>
+                        <Pane fx:id="RegisterCardPane" layoutX="14.0" layoutY="23.0" prefHeight="431.0" prefWidth="647.0" visible="false">
+                           <children>
+                              <ImageView fitHeight="212.0" fitWidth="454.0" layoutX="159.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/creditCard.PNG" />
+                                 </image>
+                              </ImageView>
+                              <Button fx:id="newWalletIDButton" layoutX="99.0" layoutY="265.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="149.0" style="-fx-background-color: #9666EA; -fx-background-radius: 20;" text="Creating a new wallet ID" textFill="#fff3f3" />
+                              <Label layoutX="263.0" layoutY="265.0" prefHeight="46.0" prefWidth="251.0" style="-fx-background-color: white; -fx-background-radius: 20;" />
+                              <Button fx:id="ConfirmedID" layoutX="228.0" layoutY="348.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="191.0" style="-fx-background-radius: 20; -fx-background-color: #b2e7ff;" text="Confirmed">
+                                 <font>
+                                    <Font name="PT Sans Narrow" size="19.0" />
+                                 </font>
+                                 <effect>
+                                    <InnerShadow>
+                                       <color>
+                                          <Color red="0.02284356765449047" green="0.19736842811107635" blue="0.0664747804403305" />
+                                       </color>
+                                    </InnerShadow>
+                                 </effect>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Label fx:id="newID" layoutX="277.0" layoutY="275.0" prefHeight="25.0" prefWidth="228.0">
+                                 <font>
+                                    <Font name="Avenir Oblique" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="newIDOnCard" layoutX="191.0" layoutY="132.0" prefHeight="18.0" prefWidth="272.0" style="-fx-background-color: white;" text="XXXX XXXX XXXX XXXX">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="ReceiptPane" layoutX="702.0" layoutY="319.0" prefHeight="482.0" prefWidth="285.0" style="-fx-background-color: #013b46; -fx-background-radius: 30;">
+                     <children>
+                        <Pane layoutX="10.0" layoutY="10.0" prefHeight="463.0" prefWidth="267.0" style="-fx-background-color: #013b46;">
+                           <children>
+                              <Label layoutX="85.0" layoutY="6.0" prefHeight="69.0" prefWidth="98.0" text="Receipt" textFill="WHITE">
+                                 <font>
+                                    <Font name="Trattatello" size="36.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="14.0" layoutY="184.0" prefHeight="17.0" prefWidth="77.0" text="name :" textFill="WHITE">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lastName" layoutX="14.0" layoutY="235.0" prefHeight="27.0" prefWidth="105.0" text="lastname :" textFill="WHITE">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="14.0" layoutY="286.0" text="wallet ID :" textFill="WHITE">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="14.0" layoutY="337.0" prefHeight="27.0" prefWidth="148.0" text="currency name :" textFill="WHITE">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="14.0" layoutY="388.0" text="amount of currency :" textFill="WHITE">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="14.0" layoutY="83.0" prefHeight="17.0" prefWidth="64.0" text="today :" textFill="WHITE">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="14.0" layoutY="139.0" text="(TO)" textFill="#ee3f3f">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="today" layoutX="91.0" layoutY="81.0" prefHeight="32.0" prefWidth="153.0" textFill="#f8c8c8">
+                                 <font>
+                                    <Font name="Noteworthy Bold" size="21.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="name" layoutX="82.0" layoutY="180.0" prefHeight="33.0" prefWidth="170.0" textFill="#b5e5ff">
+                                 <font>
+                                    <Font name="Noteworthy Bold" size="21.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lastname" layoutX="115.0" layoutY="231.0" prefHeight="26.0" prefWidth="137.0" textFill="#e3b3ee">
+                                 <font>
+                                    <Font name="Noteworthy Bold" size="21.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="walletID" layoutX="106.0" layoutY="282.0" prefHeight="32.0" prefWidth="154.0" textFill="#aaffc1">
+                                 <font>
+                                    <Font name="Noteworthy Bold" size="21.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="currencyName" layoutX="168.0" layoutY="333.0" prefHeight="31.0" prefWidth="88.0" textFill="#f9ffbc">
+                                 <font>
+                                    <Font name="Noteworthy Bold" size="21.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="currencyAmount" layoutX="173.0" layoutY="387.0" prefHeight="24.0" prefWidth="85.0" textFill="#ffc977">
+                                 <font>
+                                    <Font name="Noteworthy Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+                  <VBox fx:id="slider" layoutY="99.0" prefHeight="717.0" prefWidth="270.0" style="-fx-background-color: #004957;">
+                     <children>
+                        <Label layoutX="3.0" prefHeight="20.0" prefWidth="227.0" style="-fx-background-color: #004957;" />
+                        <Label alignment="TOP_CENTER" prefHeight="671.0" prefWidth="246.0" style="-fx-background-color: white;">
+                           <graphic>
+                              <Label alignment="TOP_RIGHT" contentDisplay="TOP" prefHeight="150.0" prefWidth="246.0">
+                                 <graphic>
+                                    <BorderPane prefHeight="140.0" prefWidth="246.0" style="-fx-background-color: #005669;">
+                                       <right>
+                                          <ImageView fx:id="CloseMenu" fitHeight="47.0" fitWidth="71.0" onMouseClicked="#onCloseMenuClicked" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER_RIGHT">
+                                             <image>
+                                                <Image url="@../icons/MenuBack.png" />
+                                             </image>
+                                          </ImageView>
+                                       </right>
+                                       <bottom>
+                                          <VBox prefHeight="604.0" prefWidth="246.0" BorderPane.alignment="CENTER">
+                                             <children>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="45.0" prefWidth="246.0" style="-fx-background-color: F2F3E6;" text="Menu" textFill="#005669">
+                                                   <font>
+                                                      <Font name="Avenir Black Oblique" size="26.0" />
+                                                   </font>
+                                                </Label>
+                                                <Button fx:id="Home" mnemonicParsing="false" onAction="#onHomeClicked" prefHeight="70.0" prefWidth="246.0" style="-fx-background-color: #005669;" text="Home" textFill="WHITE">
+                                                   <graphic>
+                                                      <Label prefHeight="37.0" prefWidth="64.0">
+                                                         <graphic>
+                                                            <ImageView fitHeight="34.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                                                               <image>
+                                                                  <Image url="@../icons/home.png" />
+                                                               </image>
+                                                            </ImageView>
+                                                         </graphic>
+                                                      </Label>
+                                                   </graphic>
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                </Button>
+                                                <Button fx:id="Wallet" mnemonicParsing="false" onAction="#onWalletClicked" prefHeight="70.0" prefWidth="246.0" style="-fx-background-color: #005669;" text="Wallet" textFill="#fcfcfc">
+                                                   <graphic>
+                                                      <Label prefHeight="39.0" prefWidth="61.0">
+                                                         <graphic>
+                                                            <ImageView fitHeight="34.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+                                                               <image>
+                                                                  <Image url="@../icons/wallet.png" />
+                                                               </image>
+                                                            </ImageView>
+                                                         </graphic>
+                                                      </Label>
+                                                   </graphic>
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                </Button>
+                                                <Button fx:id="Transfer" mnemonicParsing="false" onAction="#onTransferClicked" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #005669;" text="Transfer" textFill="WHITE">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <Label prefHeight="52.0" prefWidth="58.0">
+                                                         <graphic>
+                                                            <ImageView fitHeight="46.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                                                               <image>
+                                                                  <Image url="@../icons/transfer.png" />
+                                                               </image>
+                                                            </ImageView>
+                                                         </graphic>
+                                                      </Label>
+                                                   </graphic>
+                                                </Button>
+                                                <Button fx:id="Exchange" mnemonicParsing="false" onAction="#onExchangeClicked" prefHeight="70.0" prefWidth="247.0" style="-fx-background-color: #005669;" text="Exchange" textFill="#fcfcfc">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <Label prefHeight="46.0" prefWidth="52.0">
+                                                         <graphic>
+                                                            <ImageView fitHeight="47.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+                                                               <image>
+                                                                  <Image url="@../icons/exchange.png" />
+                                                               </image>
+                                                            </ImageView>
+                                                         </graphic>
+                                                      </Label>
+                                                   </graphic>
+                                                </Button>
+                                                <Button fx:id="Swap" mnemonicParsing="false" onAction="#onSwapClicked" prefHeight="71.0" prefWidth="249.0" style="-fx-background-color: #005669;" text="Swap" textFill="WHITE">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <Label prefHeight="43.0" prefWidth="69.0">
+                                                         <graphic>
+                                                            <ImageView fitHeight="43.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+                                                               <image>
+                                                                  <Image url="@../icons/swap.png" />
+                                                               </image>
+                                                            </ImageView>
+                                                         </graphic>
+                                                      </Label>
+                                                   </graphic>
+                                                </Button>
+                                                <Button fx:id="History" mnemonicParsing="false" onAction="#onHistoryClicked" prefHeight="71.0" prefWidth="248.0" style="-fx-background-color: #005669;" text="History" textFill="WHITE">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <Label prefHeight="46.0" prefWidth="54.0">
+                                                         <graphic>
+                                                            <ImageView fitHeight="42.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
+                                                               <image>
+                                                                  <Image url="@../icons/icons8-history-100.png" />
+                                                               </image>
+                                                            </ImageView>
+                                                         </graphic>
+                                                      </Label>
+                                                   </graphic>
+                                                </Button>
+                                                <Button fx:id="Exit" mnemonicParsing="false" onAction="#onExitClicked" prefHeight="71.0" prefWidth="254.0" style="-fx-background-color: #005669;" text="Exit" textFill="#f8f8f8">
+                                                   <font>
+                                                      <Font size="25.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <Label prefHeight="56.0" prefWidth="81.0">
+                                                         <graphic>
+                                                            <ImageView fitHeight="43.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                                                               <image>
+                                                                  <Image url="@../icons/exit.png" />
+                                                               </image>
+                                                            </ImageView>
+                                                         </graphic>
+                                                      </Label>
+                                                   </graphic>
+                                                </Button>
+                                             </children>
+                                          </VBox>
+                                       </bottom>
+                                    </BorderPane>
+                                 </graphic>
+                              </Label>
+                           </graphic>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <Pane layoutX="10.0" layoutY="834.0" prefHeight="499.0" prefWidth="976.0" style="-fx-background-color: #013b46; -fx-background-radius: 30;">
+                     <children>
+                        <TableView fx:id="transferTableView" layoutX="31.0" layoutY="107.0" prefHeight="359.0" prefWidth="868.0">
+                          <columns>
+                            <TableColumn fx:id="DateColumn" prefWidth="83.0" text="Date" />
+                            <TableColumn fx:id="TimeColumn" prefWidth="75.0" text="Time" />
+                              <TableColumn fx:id="SourceColumn" prefWidth="136.0" text="Source Wallet ID" />
+                              <TableColumn fx:id="DestinationColumn" prefWidth="136.0" text="Destination Wallet ID" />
+                              <TableColumn fx:id="CurrencyNameColumn" prefWidth="125.0" text="Currency Name" />
+                              <TableColumn fx:id="CurrencyAmountColumn" minWidth="0.0" prefWidth="178.0" text="Currency Amount" />
+                              <TableColumn fx:id="IssueTracking" minWidth="0.0" prefWidth="134.0" text="IssueTracking" />
+                          </columns>
+                        </TableView>
+                        <TextField fx:id="SearchWalletIDField" layoutX="589.0" layoutY="32.0" prefHeight="34.0" prefWidth="310.0" promptText="Search WalletID..." />
+                        <Label layoutX="35.0" layoutY="32.0" text="History of recent transfers" textFill="WHITE">
+                           <font>
+                              <Font name="Comic Sans MS" size="23.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Label fx:id="warningField" layoutX="649.0" layoutY="233.0" prefHeight="39.0" prefWidth="335.0" textFill="#ff1c1c">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </Label>
+                  <Pane fx:id="bankPane1" layoutX="700.0" layoutY="319.0" prefHeight="230.0" prefWidth="289.0" style="-fx-background-color: #013b46; -fx-background-radius: 30;" visible="false" />
+                  <Pane fx:id="bankPane2" layoutX="700.0" layoutY="571.0" prefHeight="230.0" prefWidth="290.0" style="-fx-background-color: #013b46; -fx-background-radius: 30;" visible="false" />
+                  <Pane fx:id="IDPane" layoutX="707.0" layoutY="319.0" prefHeight="482.0" prefWidth="278.0" style="-fx-background-color: #013b46; -fx-background-radius: 30;" visible="false" />
+               </children>
+               <styleClass>
+                  <String fx:value="chart-series-line" />
+                  <String fx:value="chart-plot-background" />
+               </styleClass>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="1000.0" style="-fx-background-color: #013b46;">
+         <children>
+            <ImageView fx:id="Menu" fitHeight="77.0" fitWidth="77.0" layoutX="14.0" layoutY="12.0" onMouseClicked="#onMenuIconClicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/Menu.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="77.0" fitWidth="94.0" layoutX="829.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/message.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
