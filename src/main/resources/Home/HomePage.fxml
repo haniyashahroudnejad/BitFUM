@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="2100.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Home.HomePage">
+   <children>
+      <ScrollPane hbarPolicy="NEVER" hmax="0.0" layoutX="-1.0" layoutY="97.0" prefHeight="1503.0" prefWidth="1025.0" vmax="1000.0">
+         <content>
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="2301.0" prefWidth="1111.0" style="-fx-background-color: #005669;">
+               <children>
+                  <Pane layoutX="105.0" layoutY="517.0" prefHeight="31.0" prefWidth="788.0" style="-fx-background-color: #005669;" />
+                  <Pane layoutX="32.0" layoutY="639.0" prefHeight="351.0" prefWidth="937.0" style="-fx-background-color: #013b46; -fx-background-radius: 25;">
+                     <children>
+                        <Pane layoutX="10.0" layoutY="10.0" prefHeight="331.0" prefWidth="916.0" style="-fx-background-color: #013b46; -fx-background-radius: 20;">
+                           <children>
+                              <TextField fx:id="SearchField" layoutX="104.0" layoutY="28.0" prefHeight="37.0" prefWidth="724.0" promptText="Search...">
+                                 <font>
+                                    <Font size="19.0" />
+                                 </font>
+                              </TextField>
+                              <ImageView fitHeight="40.0" fitWidth="41.0" layoutX="57.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../Downloads/icons8-search-80.png" />
+                                 </image>
+                              </ImageView>
+                              <TableView fx:id="CurrenciesTableView" layoutX="10.0" layoutY="92.0" prefHeight="213.0" prefWidth="882.0" style="-fx-background-color: #005669; -fx-background-radius: 20;" stylesheets="@TableStyle.css" tableMenuButtonVisible="true">
+                                <columns>
+                                  <TableColumn fx:id="NameColumn" editable="false" minWidth="30.0" prefWidth="139.0" text="Name" />
+                                    <TableColumn fx:id="PriceColumn" editable="false" minWidth="8.0" prefWidth="168.0" text="Price" />
+                                    <TableColumn fx:id="ChangesColumn" editable="false" minWidth="0.0" prefWidth="181.0" text="Changes" />
+                                    <TableColumn fx:id="MaxPriceColumn" minWidth="0.0" prefWidth="192.0" text="The highest price" />
+                                    <TableColumn fx:id="MinPriceColumn" prefWidth="198.0" text="lowest price" />
+                                </columns>
+                                 <styleClass>
+                                    <String fx:value="root" />
+                                    <String fx:value="table-column" />
+                                    <String fx:value="table-row-cell" />
+                                 </styleClass>
+                              </TableView>
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="33.0" layoutY="34.0" prefHeight="373.0" prefWidth="933.0" style="-fx-background-color: #013b46; -fx-background-radius: 25;">
+                     <children>
+                        <Pane layoutX="10.0" layoutY="10.0" prefHeight="354.0" prefWidth="912.0" style="-fx-background-color: #013b46; -fx-background-radius: 20;">
+                           <children>
+                              <ImageView fx:id="leftImageView" fitHeight="260.0" fitWidth="389.0" layoutX="46.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/ForgotPassword.JPG" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="rightImageView" fitHeight="260.0" fitWidth="389.0" layoutX="484.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/sendDigits.JPG" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="centerImageView" fitHeight="327.0" fitWidth="505.0" layoutX="193.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/first.JPG" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="28.0" layoutY="460.0" prefHeight="128.0" prefWidth="939.0" style="-fx-background-color: #013b46; -fx-background-radius: 25;">
+                     <children>
+                        <Pane layoutX="11.0" layoutY="10.0" prefHeight="115.0" prefWidth="914.0" style="-fx-background-color: #013b46; -fx-background-radius: 20;">
+                           <children>
+                              <Pane prefHeight="94.0" prefWidth="26.0" style="-fx-background-color: #013b46;" />
+                              <ScrollPane hbarPolicy="ALWAYS" hmax="900.0" hvalue="900.0" layoutX="58.0" prefHeight="100.0" prefWidth="790.0" vbarPolicy="NEVER" vmax="0.0">
+                                 <content>
+                                    <AnchorPane prefHeight="122.0" prefWidth="1046.0" style="-fx-background-color: #013b46;">
+                                       <children>
+                                          <Button layoutX="859.0" layoutY="25.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="172.0" style="-fx-background-radius: 20; -fx-background-color: FFC0CB;" text="Button">
+                                             <effect>
+                                                <InnerShadow />
+                                             </effect>
+                                          </Button>
+                                          <Button layoutX="664.0" layoutY="25.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="172.0" style="-fx-background-radius: 20; -fx-background-color: #90EE90;" text="Button">
+                                             <effect>
+                                                <InnerShadow />
+                                             </effect>
+                                          </Button>
+                                          <Button layoutX="469.0" layoutY="25.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="172.0" style="-fx-background-radius: 20; -fx-background-color: #93EDFC;" text="Button">
+                                             <effect>
+                                                <InnerShadow />
+                                             </effect>
+                                          </Button>
+                                          <Button layoutX="274.0" layoutY="25.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="172.0" style="-fx-background-radius: 20; -fx-background-color: #FFFFAF;" text="Button">
+                                             <effect>
+                                                <InnerShadow />
+                                             </effect>
+                                          </Button>
+                                          <Button layoutX="79.0" layoutY="25.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="172.0" style="-fx-background-radius: 20; -fx-background-color: #AF75CE;" text="Button">
+                                             <effect>
+                                                <InnerShadow />
+                                             </effect>
+                                          </Button>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </ScrollPane>
+                              <Pane prefHeight="24.0" prefWidth="858.0" style="-fx-background-color: #013b46;" />
+                              <Pane layoutX="51.0" prefHeight="86.0" prefWidth="19.0" style="-fx-background-color: #013b46;" />
+                              <Pane layoutY="84.0" prefHeight="22.0" prefWidth="857.0" style="-fx-background-color: #013b46;" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+                  <VBox fx:id="slider" prefHeight="717.0" prefWidth="270.0" style="-fx-background-color: #004957;">
+                     <children>
+                        <Label layoutX="3.0" prefHeight="20.0" prefWidth="227.0" style="-fx-background-color: #004957;" />
+                        <Label alignment="TOP_CENTER" prefHeight="671.0" prefWidth="246.0" style="-fx-background-color: white;">
+                           <graphic>
+                              <Label alignment="TOP_RIGHT" contentDisplay="TOP" prefHeight="150.0" prefWidth="246.0">
+                                 <graphic>
+                                    <BorderPane prefHeight="140.0" prefWidth="246.0" style="-fx-background-color: #005669;">
+                                       <right>
+                                          <ImageView fx:id="CloseMenu" fitHeight="47.0" fitWidth="71.0" onMouseClicked="#onCloseMenuClicked" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER_RIGHT">
+                                             <image>
+                                                <Image url="@../icons/MenuBack.png" />
+                                             </image>
+                                          </ImageView>
+                                       </right>
+                                       <bottom>
+                                          <VBox prefHeight="604.0" prefWidth="246.0" BorderPane.alignment="CENTER">
+                                             <children>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="45.0" prefWidth="246.0" style="-fx-background-color: F2F3E6;" text="Menu" textFill="#005669">
+                                                   <font>
+                                                      <Font name="Avenir Black Oblique" size="26.0" />
+                                                   </font>
+                                                </Label>
+                                                <Button fx:id="Home" mnemonicParsing="false" onAction="#onHomeClicked" prefHeight="70.0" prefWidth="246.0" style="-fx-background-color: #005669;" text="Home" textFill="WHITE">
+                                                   <graphic>
+                                                      <Label prefHeight="37.0" prefWidth="64.0">
+                                                         <graphic>
+                                                            <ImageView fitHeight="34.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                                                               <image>
+                                                                  <Image url="@../icons/home.png" />
+                                                               </image>
+                                                            </ImageView>
+                                                         </graphic>
+                                                      </Label>
+                                                   </graphic>
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font></Button>
+                                                <Button fx:id="Wallet" mnemonicParsing="false" onAction="#onWalletClicked" prefHeight="70.0" prefWidth="246.0" style="-fx-background-color: #005669;" text="Wallet" textFill="#fcfcfc">
+                                                   <graphic>
+                                                      <Label prefHeight="39.0" prefWidth="61.0">
+                                                         <graphic>
+                                                            <ImageView fitHeight="34.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+                                                               <image>
+                                                                  <Image url="@../icons/wallet.png" />
+                                                               </image>
+                                                            </ImageView>
+                                                         </graphic>
+                                                      </Label>
+                                                   </graphic>
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font></Button>
+                                                <Button fx:id="Transfer" mnemonicParsing="false" onAction="#onTransferClicked" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #005669;" text="Transfer" textFill="WHITE">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <Label prefHeight="52.0" prefWidth="58.0">
+                                                         <graphic>
+                                                            <ImageView fitHeight="46.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                                                               <image>
+                                                                  <Image url="@../icons/transfer.png" />
+                                                               </image>
+                                                            </ImageView>
+                                                         </graphic>
+                                                      </Label>
+                                                   </graphic></Button>
+                                                <Button fx:id="Exchange" mnemonicParsing="false" onAction="#onExchangeClicked" prefHeight="70.0" prefWidth="247.0" style="-fx-background-color: #005669;" text="Exchange" textFill="#fcfcfc">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <Label prefHeight="46.0" prefWidth="52.0">
+                                                         <graphic>
+                                                            <ImageView fitHeight="47.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+                                                               <image>
+                                                                  <Image url="@../icons/exchange.png" />
+                                                               </image>
+                                                            </ImageView>
+                                                         </graphic>
+                                                      </Label>
+                                                   </graphic>
+                                                </Button>
+                                                <Button fx:id="Swap" mnemonicParsing="false" onAction="#onSwapClicked" prefHeight="71.0" prefWidth="249.0" style="-fx-background-color: #005669;" text="Swap" textFill="WHITE">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <Label prefHeight="43.0" prefWidth="69.0">
+                                                         <graphic>
+                                                            <ImageView fitHeight="43.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+                                                               <image>
+                                                                  <Image url="@../icons/swap.png" />
+                                                               </image>
+                                                            </ImageView>
+                                                         </graphic>
+                                                      </Label>
+                                                   </graphic>
+                                                </Button>
+                                                <Button fx:id="History" mnemonicParsing="false" onAction="#onHistoryClicked" prefHeight="71.0" prefWidth="248.0" style="-fx-background-color: #005669;" text="History" textFill="WHITE">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <Label prefHeight="46.0" prefWidth="54.0">
+                                                         <graphic>
+                                                            <ImageView fitHeight="42.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
+                                                               <image>
+                                                                  <Image url="@../icons/icons8-history-100.png" />
+                                                               </image>
+                                                            </ImageView>
+                                                         </graphic>
+                                                      </Label>
+                                                   </graphic>
+                                                </Button>
+                                                <Button fx:id="Exit" mnemonicParsing="false" onAction="#onExitClicked" prefHeight="71.0" prefWidth="254.0" style="-fx-background-color: #005669;" text="Exit" textFill="#f8f8f8">
+                                                   <font>
+                                                      <Font size="25.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <Label prefHeight="56.0" prefWidth="81.0">
+                                                         <graphic>
+                                                            <ImageView fitHeight="43.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                                                               <image>
+                                                                  <Image url="@../icons/exit.png" />
+                                                               </image>
+                                                            </ImageView>
+                                                         </graphic>
+                                                      </Label>
+                                                   </graphic>
+                                                </Button>
+                                             </children>
+                                          </VBox>
+                                       </bottom>
+                                    </BorderPane>
+                                 </graphic>
+                              </Label>
+                           </graphic>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <Pane layoutX="881.0" layoutY="462.0" prefHeight="124.0" prefWidth="48.0" style="-fx-background-color: #013b46;" />
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="1008.0" style="-fx-background-color: #013b46;">
+         <children>
+            <ImageView fx:id="Menu" fitHeight="77.0" fitWidth="77.0" layoutX="14.0" layoutY="12.0" onMouseClicked="#onMenuIconClicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/Menu.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="77.0" fitWidth="94.0" layoutX="829.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/message.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
