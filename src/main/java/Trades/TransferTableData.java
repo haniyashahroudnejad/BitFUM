@@ -1,36 +1,37 @@
 package Trades;
 import javafx.beans.property.*;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-public class TransferTableData {
+public class TransferTableData implements Serializable {
+
     public TransferTableData(Date Date, Time Time,String SourceWalletID, String DestinationWalletID, String CurrencyName, Double CurrencyAmount, int IssueTracking ){
-        setDate();
-        setTime();
+        setDate(Date);
+        setTime(Time);
         setDestinationWalletID(DestinationWalletID);
         setSourceWalletID(SourceWalletID);
         setCurrencyName(CurrencyName);
         setCurrencyAmount(CurrencyAmount);
         setIssueTracking(IssueTracking);
-
     }
-    private StringProperty CurrencyName = new SimpleStringProperty(this, "CurrencyName", "");
+    public StringProperty CurrencyName = new SimpleStringProperty(this, "CurrencyName", "");
     public String getCurrencyName() {
         return CurrencyName.get();
     }
     public StringProperty CurrencyNameProperty() {return CurrencyName;}
     public void setCurrencyName(String currencyName) {this.CurrencyName.set(currencyName);}
 
-    private LocalDate localDate;
-    public void setDate() { localDate = LocalDate.now();}
-    public Date getDate() {return Date.valueOf(localDate);}
+    private Date date;
+    public void setDate(Date date) { this.date = date;}
+    public Date getDate() {return date;}
 
-    private LocalTime localtime;
-    public Time getTime() {return Time.valueOf(localtime);}
-    public void setTime() { localtime = LocalTime.now();}
+    private Time time;
+    public Time getTime() {return time;}
+    public void setTime(Time time) { this.time = time;}
 
     private DoubleProperty CurrencyAmount = new SimpleDoubleProperty(this, "CurrencyAmount", 0.0);
     public double getCurrencyAmount() {
