@@ -1,0 +1,258 @@
+package Admin;
+
+import SerializableClasses.UsersList;
+import TableDataInformation.CurrencyTableData;
+import Person.Person;
+import Start.StartPage;
+
+import TableDataInformation.UsersTableData;
+import javafx.animation.TranslateTransition;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+
+import javafx.scene.control.*;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
+import javafx.stage.Stage;
+import javafx.util.Duration;
+import javafx.util.converter.NumberStringConverter;
+import org.apache.commons.math3.stat.regression.SimpleRegression;
+
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
+
+import static Person.User.*;
+
+
+
+public class AdminHome implements Initializable {
+    @FXML
+    private ImageView CloseMenu,MarketIcon,Menu,MessengerIcon,MyWalletIcon,close;
+    @FXML
+    private Button Exit,Home,Market,Messenger,Wallet,openMarket,CloseMarket;
+    @FXML
+    private TableColumn<UsersTableData,String> UserNameColumn;
+
+    @FXML
+    private TableView<UsersTableData> UsersInfoTableView;
+
+    @FXML
+    private TableColumn<UsersTableData,String> NameColumn;
+
+    @FXML
+    private TableColumn<UsersTableData,String>LastNameColumn;
+
+    @FXML
+    private TextField SearchField;
+
+    @FXML
+    private Label UserName,USDWallet,marketLabel;
+
+    @FXML
+    private Pane slider,market;
+    @FXML
+    private MediaView USDView;
+    private File file;
+    private Media media;
+    private MediaPlayer mediaPlayer;
+    public static Person UserHistory = null;
+    public static ObservableList<UsersTableData> ObservableUserDataList = FXCollections.observableArrayList();
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        UserName.setText("Admin");
+        ObservableUserDataList.clear();
+        slider.setTranslateX(-270);
+        //////////////////////////// home table
+        UserNameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        NameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        LastNameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        UserNameColumn.setCellValueFactory(cellData -> cellData.getValue().UserNameProperty());
+        NameColumn.setCellValueFactory(cellData -> cellData.getValue().NameProperty());
+        LastNameColumn.setCellValueFactory(cellData -> cellData.getValue().LastNameProperty());
+
+
+        UsersInfoTableView.setItems(ObservableUserDataList);
+        UsersInfoTableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        setUserTableData();
+
+        UsersInfoTableView.setOnMouseClicked(event -> {
+            UsersTableData selectedUser = UsersInfoTableView.getSelectionModel().getSelectedItem();
+            if(selectedUser != null){
+                UserHistory = sendPerson(selectedUser.getUserName(), 5);
+                try {
+                    EnterHistory ();
+                }catch (Exception e){
+                    System.out.println("cant enter user history");
+                }
+
+            }
+        });
+        //////////////////////////// search
+        SearchField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                filterUsersDataList((String) oldValue,(String) newValue);
+            }
+        });
+        //////////////////////////// media player
+        file = new File("src/rotateCoin.mp4");
+        media = new Media(file.toURI().toString());
+        mediaPlayer = new MediaPlayer(media);
+        USDView.setMediaPlayer(mediaPlayer);
+        mediaPlayer.setAutoPlay(true);
+        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        mediaPlayer.setOnEndOfMedia(() -> {
+            mediaPlayer.seek(Duration.ZERO);
+            mediaPlayer.play();
+        });
+        adminWallet();
+    }
+    private void adminWallet(){
+        USDWallet.setText(SendAdminUSD("Admin"));
+
+    }
+    public void filterUsersDataList(String oldValue,String newValue){
+        ObservableList<UsersTableData> filteredList = FXCollections.observableArrayList();
+        if(SearchField==null || newValue.length()<oldValue.length() || newValue==null){
+            UsersInfoTableView.setItems(ObservableUserDataList);
+        }else {
+            newValue = newValue.toUpperCase();
+            for (UsersTableData UserData : UsersInfoTableView.getItems()){
+                String filterUserName = UserData.getUserName();
+                String filterName = UserData.getUserName();
+                String filterLastName = UserData.getUserName();
+                if(filterUserName.toUpperCase().contains(newValue) || filterName.toUpperCase().contains(newValue) || filterLastName.toUpperCase().contains(newValue)){
+                    filteredList.add(UserData);
+                }
+            }
+            UsersInfoTableView.setItems(filteredList);
+        }
+    }
+    public void setUserTableData() {
+        ArrayList<UsersTableData> UsersDataList = new ArrayList<>();
+        for(UsersList usersList : SendUsersList()){
+            UsersDataList.add(new UsersTableData(usersList.UserName,usersList.Name,usersList.LastName));
+        }
+        for (UsersTableData user : UsersDataList) {
+                ObservableUserDataList.add(new UsersTableData(user.getUserName(),user.getName(),user.getLastName()));
+        }
+    }
+    public void EnterHistory () throws IOException{
+        StartPage.switchPages.ChangePageByClickingTable(UsersInfoTableView,"/Admin/UsersHistory.fxml");
+    }
+    @FXML
+    protected void onCloseMenuClicked(){
+        CloseMenu. setOnMouseClicked(event -> {
+            TranslateTransition slide = new TranslateTransition();
+            slide.setDuration(Duration.seconds(0.4));
+            slide.setNode(slider);
+            slide.setToX(-270);
+            slide.play();
+            slider.setTranslateX(0);
+            slide.setOnFinished((ActionEvent e) -> {
+            });
+        });
+    }
+
+    @FXML
+    void onExitClicked(ActionEvent event) {
+        logOut("Admin");
+        try {
+            exit();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
+    }
+    private void exit() throws IOException{
+        StartPage.switchPages.ChangePageByClickingButton(Exit, "/Login/LoginPage.fxml");
+    }
+
+    @FXML
+    void onHomeClicked(ActionEvent event) throws IOException {
+        StartPage.switchPages.ChangePageByClickingButton(Home, "/Admin/AdminHome.fxml");
+    }
+
+    @FXML
+    void onMarket() {
+        MarketIcon.setOnMouseClicked(event -> {
+            market.setVisible(true);
+        });
+
+    }
+
+    @FXML
+    protected void onMenuIconClicked(){
+        Menu.setOnMouseClicked(event -> {
+            TranslateTransition slide = new TranslateTransition();
+            slide.setDuration(Duration.seconds(0.4));
+            slide.setNode(slider);
+            slide.setToX(0);
+            slide.play();
+
+            slider.setTranslateX(-270);
+
+        });
+    }
+    @FXML
+    public void onCloseWindow(){
+        close.setOnMouseClicked(event -> {
+            market.setVisible(false);
+        });
+
+    }
+    @FXML
+    protected void openMarket(){
+        OpenCloseMarket("open");
+        marketLabel.setText("OPEN MARKET");
+        marketLabel.setStyle("-fx-text-fill: #13c300");
+    }
+    @FXML
+    protected void CloseMarket(){
+        OpenCloseMarket("close");
+        marketLabel.setText("CLOSE MARKET");
+        marketLabel.setStyle("-fx-text-fill: #e34040");
+    }
+
+    @FXML
+    void onMessenger() {
+        System.out.println("cant work");
+    }
+
+    public void ai(){
+
+                // Create a SimpleRegression instance
+                SimpleRegression regression = new SimpleRegression();
+
+                // Add observations
+                regression.addData(1.0, 2.0);
+                regression.addData(2.0, 3.0);
+                regression.addData(3.0, 4.0);
+
+                // Calculate regression parameters
+                double slope = regression.getSlope();
+                double intercept = regression.getIntercept();
+
+                // Predict the price for the 11th minute
+                double predictedPrice = slope * 11.0 + intercept;
+
+                System.out.println("Predicted price for 11th minute: $" + predictedPrice);
+    }
+
+}
