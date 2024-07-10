@@ -1,0 +1,12 @@
+package SerializableClasses;
+
+import java.io.Serializable;
+
+public class ExchangeList implements Serializable {
+    public Double amount;
+    public Double price;
+    public ExchangeList(double amount, double price){
+        this.amount = amount;
+        this.price = price;
+    }
+}
