@@ -1,15 +1,25 @@
 package Trades;
 
+import SerializableClasses.UsersList;
+import TableDataInformation.UsersTableData;
 import Home.HomePage;
+import SerializableClasses.SwapList;
+import SerializableClasses.TransferLists;
 import Start.StartPage;
+import TableDataInformation.SwapTableData;
 import javafx.animation.PauseTransition;
 import javafx.animation.TranslateTransition;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -18,12 +28,17 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.util.Duration;
+import javafx.util.converter.NumberStringConverter;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
+import java.sql.Time;
 import java.text.DecimalFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.TextStyle;
 import java.util.ArrayList;
@@ -69,6 +84,21 @@ public class Swap  implements Initializable {
     String selectedCurrency1,selectedCurrency2;
     double currencyAmount ;
     double amount1=1,amount2=1;
+    @FXML
+    private TableView<SwapTableData> SwapTableView;
+    @FXML
+    private TableColumn<SwapTableData, Date> DateColumn;
+    @FXML
+    private TableColumn<SwapTableData, Time> TimeColumn;
+    @FXML
+    private TableColumn<SwapTableData, String> SelectedCurrencyName;
+    @FXML
+    private TableColumn<SwapTableData, String> ConvertedCurrencyName;
+    @FXML
+    private TableColumn<SwapTableData, Number> CurrencyAmount;
+    @FXML
+    private TableColumn<SwapTableData, Number> EquivalentCurrencyAmount;
+    ObservableList<SwapTableData> ObservableSwapDataList = FXCollections.observableArrayList();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         slider.setTranslateX(-270);
@@ -107,6 +137,25 @@ public class Swap  implements Initializable {
             mediaPlayer1.seek(Duration.ZERO);
             mediaPlayer1.play();
         });
+        ////////////////////////////////////////////// table
+        SelectedCurrencyName.setCellFactory(TextFieldTableCell.forTableColumn());
+        ConvertedCurrencyName.setCellFactory(TextFieldTableCell.forTableColumn());
+        CurrencyAmount.setCellFactory(TextFieldTableCell.forTableColumn(new NumberStringConverter()));
+        EquivalentCurrencyAmount.setCellFactory(TextFieldTableCell.forTableColumn(new NumberStringConverter()));
+
+        DateColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getDate()));
+        TimeColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getTime()));
+        SelectedCurrencyName.setCellValueFactory(cellData -> cellData.getValue().SelectedCurrencyNameProperty());
+        ConvertedCurrencyName.setCellValueFactory(cellData -> cellData.getValue().ConvertedCurrencyNameProperty());
+        CurrencyAmount.setCellValueFactory(cellData -> cellData.getValue().CurrencyAmountProperty());
+        EquivalentCurrencyAmount.setCellValueFactory(cellData -> cellData.getValue().EquivalentCurrencyAmountProperty());
+
+        SwapTableView.setItems(ObservableSwapDataList);
+        SwapTableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        setSwapTableData();
+
+        //////////////////////////////////////////////
+
         //////////////////////// make list for date
         ObservableList<Node> gridPaneChildren = datePane.getChildren();
         labelList = new ArrayList<>();
@@ -140,6 +189,16 @@ public class Swap  implements Initializable {
             }
         }
     }
+    public void setSwapTableData() {
+        ObservableSwapDataList.clear();
+        ArrayList<SwapTableData> SwapDataList = new ArrayList<>();
+        for(SwapList swapList : SendSwapList(existPeron.UserName)){
+            SwapDataList.add(new SwapTableData(swapList.date,swapList.time,swapList.SelectedCurrencyName,swapList.ConvertedCurrencyName,swapList.CurrencyAmount,swapList.EquivalentCurrencyAmount));
+        }
+        for (SwapTableData swap : SwapDataList) {
+            ObservableSwapDataList.add(new SwapTableData(swap.getDate(),swap.getTime(),swap.getSelectedCurrencyName(),swap.getConvertedCurrencyName(),swap.getCurrencyAmount(),swap.getEquivalentCurrencyAmount()));
+        }
+    }
     private void swap(){
         double EURNow=0,TOMANow=0,YENNow=0,GBPNow=0,USDNow=0;
         for(int i = 0; i< HomePage.ObservableCurrencyDataList.size(); i++){
@@ -161,8 +220,6 @@ public class Swap  implements Initializable {
         if(selectedCurrency1.equals("GBP")) amount1 = GBPNow;
         else if(selectedCurrency2.equals("GBP")) amount2 = GBPNow;
 
-        System.out.println("amount1"+amount1);
-        System.out.println("amount2"+amount2);
 
         currencyName1.setText(selectedCurrency1);
         currencyName2.setText(selectedCurrency2);
@@ -199,7 +256,7 @@ public class Swap  implements Initializable {
     }
     @FXML
     protected void onCurrencyField(){
-        System.out.println("on amount field");
+        System.out.println("on amount field swap");
         double number=0;
         try {
             number=Double.parseDouble(CurrencyAmountField.getText());
@@ -217,14 +274,16 @@ public class Swap  implements Initializable {
         for (Currency currency : myCurrency) {
             if(currency.getCurrencyName().equals(selectedCurrency1)) {
                 if(currency.getCurrencyAmount()>=currencyAmount){
-                    System.out.println("amountttttt="+currency.getCurrencyAmount());
                     double toCurrency = amount2/amount1*currencyAmount;
                     SwapInWallet(existPeron.UserName,selectedCurrency1,selectedCurrency2,currencyAmount,toCurrency);
-                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                     alert.setTitle("Done !");
                     alert.setContentText(" Swap done ! cheek your wallet ");
                     alert.showAndWait();
+                    sendInsertSwap(new SwapList(Date.valueOf(LocalDate.now()), Time.valueOf(LocalTime.now()),selectedCurrency1,selectedCurrency2,currencyAmount,toCurrency,existPeron.UserName));
                     clear();
+                    setSwapTableData();
+                    fillWallet();
                 }else {
                     System.out.println("not enough");
                     warning.setText("you have not enough money !");
@@ -270,7 +329,7 @@ public class Swap  implements Initializable {
     }
     @FXML
     protected void onHistoryClicked() throws IOException {
-        StartPage.switchPages.ChangePageByClickingButton(History,"/Trades/Transfer.fxml");
+        StartPage.switchPages.ChangePageByClickingButton(History,"/Trades/HistoryGraphic.fxml");
     }
     @FXML
     protected void onSwapClicked() throws IOException {
