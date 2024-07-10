@@ -1,0 +1,31 @@
+package TableDataInformation;
+
+import java.io.Serializable;
+import java.sql.Date;
+import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
+
+public class BankTableData implements Serializable {
+    public  String userName;
+    public String firstName;
+    public String lastName;
+    public String cardID;
+    public int cvv2;
+    public Double amountUSD;
+    public Date expirationDate;
+    public String email;
+
+    public BankTableData(String userName,String firstName, String lastName,String cardID,int cvv2,Date expirationDate,String email, Double amountUSD){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.cardID = cardID;
+        this.cvv2 = cvv2;
+        this.email = email;
+        this.userName = userName;
+        this.expirationDate = expirationDate;
+        this.amountUSD = amountUSD;
+    }
+
+}
+
