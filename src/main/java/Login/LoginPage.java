@@ -1,7 +1,10 @@
 package Login;
 
 
+import Home.HomePage;
 import Person.Person;
+import TableDataInformation.BankTableData;
+import Trades.Currency;
 import javafx.event.ActionEvent;
 
 import javafx.fxml.FXML;
@@ -19,13 +22,22 @@ import javafx.util.Duration;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.text.DecimalFormat;
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.Period;
+import java.time.YearMonth;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalAdjusters;
 import java.util.Random;
 import java.util.ResourceBundle;
 import Start.*;
 
+import static DatabaseConnection.UsersInformationDatabase.con;
+import static DatabaseConnection.UsersInformationDatabase.createConnection;
+import static Person.User.*;
+import static Trades.Wallet.myCurrency;
 
 public class LoginPage implements Initializable {
     @FXML
@@ -45,6 +57,7 @@ public class LoginPage implements Initializable {
     private MediaPlayer mediaPlayer;
     private Random random = new Random();
     private String SecurityCode;
+    public static Person existPeron = null;
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
@@ -58,8 +71,8 @@ public class LoginPage implements Initializable {
             mediaPlayer.seek(Duration.ZERO);
             mediaPlayer.play();
         });
-
         setRandomLabels();
+
     }
     @FXML
     protected void setRandomLabels(){
@@ -78,35 +91,47 @@ public class LoginPage implements Initializable {
         SecurityCode+=Label6.getText();
     }
     @FXML
-    protected void onLoginButtonClicked() throws SQLException {
-//        boolean existUser = false;
-//        if(ChaptchaField.getText().equals(SecurityCode)) {
-//            Statement stmt = con.createStatement();
-//            ResultSet users = stmt.executeQuery("select * from BitFUM.UsersInfo");
-//            while (users.next()){
-//                if(UserNameField.getText().equals(users.getString("userName"))
-//                        && PasswordField.getText().equals(users.getString("password"))) existUser = true;
-//            }
-//            if(!existUser){
-//                Alert alert = new Alert(Alert.AlertType.WARNING);
-//                alert.setTitle("Warning");
-//                alert.setContentText("No such user found!");
-//                alert.showAndWait();
-//            }
-//            else{
+    protected void onLoginButtonClicked() throws SQLException, IOException {
+        boolean existUser = true;
+        boolean userFound = true;
+        if(ChaptchaField.getText().equals(SecurityCode)) {
+            existUser = sendString(UserNameField.getText()+""+PasswordField.getText(), 2);
+            if(existUser){
+                existPeron = sendPerson(UserNameField.getText(), 5);
+                if (existPeron==null)
+                    System.out.print(existPeron.name+"^^");
+                userFound = LoginUsers(UserNameField.getText());
+                if(!userFound){
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setTitle("Warning");
+                    alert.setContentText("You have previously logged in with this username!");
+                    alert.showAndWait();
+                }
+            }
+            if(!existUser){
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Warning");
+                alert.setContentText("No such user found!");
+                alert.showAndWait();
+            }
+            else{
                 try {
-                    EnterHomePage();
+                    if(existPeron.UserName.equals("Admin"))  EnterAdminHomePage();
+                    else  EnterHomePage();
+
                 } catch (IOException exception) {
                     System.out.println(exception);
-//                }
+                }
             }
-//        }else {
-//            Alert alert = new Alert(Alert.AlertType.WARNING);
-//            alert.setTitle("Warning");
-//            alert.setContentText("Security code is wrong");
-//            alert.showAndWait();
-//        }
+        }else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning");
+            alert.setContentText("Security code is wrong");
+            alert.showAndWait();
+        }
     }
+    ////////////////////////////////////////////////////////////////////////////////
+
     @FXML
     protected void onForgotPasswordButtonClicked(){
         try {
@@ -116,37 +141,35 @@ public class LoginPage implements Initializable {
         }
     }
 
-     public void EnterHomePage() throws IOException {
-        // StartPage.switchPages.ChangePageByClickingButton(LoginButton,"/Pages/HomePage.fxml");
-         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Home/HomePage.fxml"));
-         Parent backParent = fxmlLoader.load();
-         Stage stage = (Stage) LoginButton.getScene().getWindow();
-         stage.setScene(new Scene(backParent));
-         stage.show();
-        // Parent backParent = FXMLLoader.load(getClass().getResource("/Pages/HomePage.fxml"));
-//         Scene backScene = new Scene(backParent);
-//         Stage window = (Stage) LoginButton.getScene().getWindow();
-//         window.setScene(backScene);
-//         window.show();
-     }
-     public void EnterForgotPasswordPage() throws IOException{
-           StartPage.switchPages.ChangePageByClickingButton(LoginButton,"/Login/ForgotPasswordPage.fxml");
-     }
-     public String makeRandomNumberOrLetter(){
-         int randomNumber;
-         char randomChar=' ';
-         boolean isNumber = random.nextBoolean();
-         if(isNumber) {
-             randomNumber = random.nextInt(8) + 0;
-             return String.valueOf(randomNumber);
-         }else{
-             randomChar = (char) (random.nextInt(26)+'A');
-             return String.valueOf(randomChar);
-         }
-     }
-     @FXML
-     protected void onSignUpButton() throws IOException {
-         StartPage.switchPages.ChangePageByClickingButton(SignUpButton,"/SignUp/SignUpPage.fxml");
-     }
+    public void EnterHomePage() throws IOException {
+        StartPage.switchPages.ChangePageByClickingButton(LoginButton,"/Home/HomePage.fxml");
+    }
+    public void EnterAdminHomePage() throws IOException {
+        try {
+            StartPage.switchPages.ChangePageByClickingButton(LoginButton, "/Admin/AdminHome.fxml");
+        }catch (Exception e){
+            System.out.println("cant open admin page ");
+        }
+
+    }
+    public void EnterForgotPasswordPage() throws IOException{
+        StartPage.switchPages.ChangePageByClickingButton(LoginButton,"/Login/ForgotPasswordPage.fxml");
+    }
+    public String makeRandomNumberOrLetter(){
+        int randomNumber;
+        char randomChar=' ';
+        boolean isNumber = random.nextBoolean();
+        if(isNumber) {
+            randomNumber = random.nextInt(8) + 0;
+            return String.valueOf(randomNumber);
+        }else{
+            randomChar = (char) (random.nextInt(26)+'A');
+            return String.valueOf(randomChar);
+        }
+    }
+    @FXML
+    protected void onSignUpButton() throws IOException {
+        StartPage.switchPages.ChangePageByClickingButton(SignUpButton,"/SignUp/SignUpPage.fxml");
+    }
 
 }
