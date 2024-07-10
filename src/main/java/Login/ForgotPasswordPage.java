@@ -24,6 +24,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 import static DatabaseConnection.UsersInformationDatabase.con;
+import static Person.User.forgetPassword;
 
 
 public class ForgotPasswordPage {
@@ -41,16 +42,12 @@ public class ForgotPasswordPage {
     @FXML
     protected void onBackToLoginClicked() throws IOException {
         InvalidEmail.setVisible(false);
-       StartPage.switchPages.ChangePageByClickingLabel(BackToLogin,"/Login/LoginPage.fxml");
+        StartPage.switchPages.ChangePageByClickingLabel(BackToLogin,"/Login/LoginPage.fxml");
     }
     @FXML
     protected void onContinueClicked() throws IOException, SQLException {
         boolean email_Valid = false;
-        Statement xs = con.createStatement();
-        ResultSet x = xs.executeQuery("select * from UsersInfo");
-        while (x.next()){
-            if(Email.getText().equals(x.getString("email"))) email_Valid = true;
-        }
+        email_Valid = forgetPassword(Email.getText());
         if(email_Valid) {
             email = Email.getText();
             sendEmail(email);
@@ -65,15 +62,19 @@ public class ForgotPasswordPage {
     public void sendEmail(String emailAddress){
         // Sender's email address
         String senderEmail = "tshtrynftmh@gmail.com";
-        String senderPassword = "evce offf zdpw nlao"; // Your Gmail password
+        String senderPassword = "xqiz jaax rzke wtvw"; // Your Gmail password
+
+        // Receiver's email address
         String receiverEmail = emailAddress;
 
+        // SMTP server configuration
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");
         props.put("mail.smtp.host", "smtp.gmail.com");
         props.put("mail.smtp.port", "587");
 
+        // Create a session with authentication
         Session session = Session.getInstance(props, new Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(senderEmail, senderPassword);
@@ -83,8 +84,14 @@ public class ForgotPasswordPage {
         try {
             // Create a default MimeMessage object
             Message message = new MimeMessage(session);
+
+            // Set From: header field of the header
             message.setFrom(new InternetAddress(receiverEmail));
+
+            // Set To: header field of the header
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(receiverEmail));
+
+            // Set Subject: header field
             message.setSubject("JavaMail API Test");
             Random random = new Random();
             int randomNumber;
@@ -100,12 +107,15 @@ public class ForgotPasswordPage {
                     code += String.valueOf(randomChar);
                 }
             }
+            // Now set the actual message
             message.setText(code);
+
+            // Send message
             Transport.send(message);
 
             System.out.println("Email sent successfully.");
         } catch (MessagingException e) {
-            InvalidEmail.setVisible(true);
+            System.out.println("Failed to send email. Error: " + e.getMessage());
         }
     }
 }
