@@ -82,7 +82,7 @@ public class Wallet implements Initializable {
         });
         for(int i = 0; i<5; i++){
             labels[i].setText(myCurrency.get(i).getCurrencyName());
-            labels[i].setPrefWidth(45+(myCurrency.get(i).getCurrencyAmount()/1000000)*200);
+            labels[i].setPrefWidth(45+(myCurrency.get(i).getCurrencyAmount()/10000000)*200);
             if(myCurrency.get(i).getCurrencyName().equals("USD")) labels[i].setStyle("-fx-background-color:#ff923f");
             else if(myCurrency.get(i).getCurrencyName().equals("EUR")) labels[i].setStyle("-fx-background-color:  #fcf885");
             else if(myCurrency.get(i).getCurrencyName().equals("TOMAN")) labels[i].setStyle("-fx-background-color: #28a7eb");
@@ -179,12 +179,13 @@ public class Wallet implements Initializable {
         updateWallet();
     }
     public void updateWallet(){
+        DecimalFormat df =new DecimalFormat("#.##");
         for (Currency currency : myCurrency) {
-            if(currency.getCurrencyName().equals("USD")) {USDPrice.setText(String.valueOf(currency.getCurrencyAmount()));}
-            else if(currency.getCurrencyName().equals("EUR")) {EURPrice.setText(String.valueOf(currency.getCurrencyAmount()));}
-            else if(currency.getCurrencyName().equals("TOMAN")) {TOMANPrice.setText(String.valueOf(currency.getCurrencyAmount()));}
-            else if(currency.getCurrencyName().equals("YEN")) {YENPrice.setText(String.valueOf(currency.getCurrencyAmount()));}
-            else if(currency.getCurrencyName().equals("GBP")) {GBPPrice.setText(String.valueOf(currency.getCurrencyAmount()));}
+            if(currency.getCurrencyName().equals("USD")) {USDPrice.setText(String.valueOf(df.format(currency.getCurrencyAmount())));}
+            else if(currency.getCurrencyName().equals("EUR")) {EURPrice.setText(String.valueOf(df.format(currency.getCurrencyAmount())));}
+            else if(currency.getCurrencyName().equals("TOMAN")) {TOMANPrice.setText(String.valueOf(df.format(currency.getCurrencyAmount())));}
+            else if(currency.getCurrencyName().equals("YEN")) {YENPrice.setText(String.valueOf(df.format(currency.getCurrencyAmount())));}
+            else if(currency.getCurrencyName().equals("GBP")) {GBPPrice.setText(String.valueOf(df.format(currency.getCurrencyAmount())));}
         }
         ConvertCurrenciesToUSD();
 
@@ -270,15 +271,15 @@ public class Wallet implements Initializable {
     }
     @FXML
     protected void onExchangeClicked() throws IOException {
-        StartPage.switchPages.ChangePageByClickingButton(Exchange,"/Trades/Transfer.fxml");
+        StartPage.switchPages.ChangePageByClickingButton(Exchange,"/Trades/Exchange.fxml");
     }
     @FXML
     protected void onHistoryClicked() throws IOException {
-        StartPage.switchPages.ChangePageByClickingButton(History,"/Trades/Transfer.fxml");
+        StartPage.switchPages.ChangePageByClickingButton(History,"/Trades/HistoryGraphic.fxml");
     }
     @FXML
     protected void onSwapClicked() throws IOException {
-        StartPage.switchPages.ChangePageByClickingButton(Swap,"/Trades/Transfer.fxml");
+        StartPage.switchPages.ChangePageByClickingButton(Swap,"/Trades/Swap.fxml");
     }
     @FXML
     protected void onExitClicked() throws IOException{
