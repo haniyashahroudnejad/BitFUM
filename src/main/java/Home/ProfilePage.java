@@ -421,15 +421,15 @@ public class ProfilePage implements Initializable {
     }
     @FXML
     protected void onExchangeClicked() throws IOException {
-        StartPage.switchPages.ChangePageByClickingButton(Exchange,"/Trades/Transfer.fxml");
+        StartPage.switchPages.ChangePageByClickingButton(Exchange,"/Trades/Exchange.fxml");
     }
     @FXML
     protected void onHistoryClicked() throws IOException {
-        StartPage.switchPages.ChangePageByClickingButton(History,"/Trades/Transfer.fxml");
+        StartPage.switchPages.ChangePageByClickingButton(History,"/Trades/HistoryGraphic.fxml");
     }
     @FXML
     protected void onSwapClicked() throws IOException {
-        StartPage.switchPages.ChangePageByClickingButton(Swap,"/Trades/Transfer.fxml");
+        StartPage.switchPages.ChangePageByClickingButton(Swap,"/Trades/Swap.fxml");
     }
     @FXML
     protected void onExitClicked() throws IOException{
@@ -460,7 +460,4 @@ public class ProfilePage implements Initializable {
             }
         });
     }
-
-
-
 }
