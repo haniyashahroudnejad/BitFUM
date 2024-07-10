@@ -19,6 +19,8 @@ import javafx.scene.control.TextField;
 
 import static DatabaseConnection.UsersInformationDatabase.con;
 import static Login.ForgotPasswordPage.email;
+import static Person.User.ValidPassword;
+import static Person.User.resetPassword;
 
 public class ResetPassword {
     @FXML
@@ -40,11 +42,7 @@ public class ResetPassword {
         if(!password) passL.setVisible(true);
         if (!repeatedPass) repeatPassL.setVisible(true);
         if(repeatedPass && password){
-            String updateSQL = "UPDATE UsersInfo SET password = ? WHERE email = ?";
-            PreparedStatement pstmt = con.prepareStatement(updateSQL);
-            pstmt.setString(1, pass.getText());
-            pstmt.setString(2, email);
-            pstmt.executeUpdate();
+            resetPassword(pass.getText(), email);
             StartPage.switchPages.ChangePageByClickingButton(Submit,"/Login/LoginPage.fxml");
         }
     }
@@ -59,11 +57,7 @@ public class ResetPassword {
         if (matchFound) {
             truePass1=true;
         }
-        Statement xs = con.createStatement();
-        ResultSet x = xs.executeQuery("select * from BitFUM.UsersInfo");
-        while (x.next()){
-            if(pass.equals(x.getString("password"))) truePass2=false;
-        }
+        truePass2=ValidPassword(pass);
         if(truePass2 && truePass1)return true;
         else return false;
     }
