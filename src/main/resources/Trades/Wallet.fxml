@@ -7,6 +7,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.SepiaTone?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -17,358 +18,488 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="1066.0" prefWidth="1005.0" style="-fx-background-color: F2F3E6;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Trades.Wallet">
-   <children>
-      <ScrollPane prefHeight="1200.0" prefWidth="1014.0">
-         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1501.0" prefWidth="999.0" style="-fx-background-color: #005669;" stylesheets="@WalletStyle.css">
-               <children>
-                  <Pane layoutX="512.0" layoutY="167.0" prefHeight="547.0" prefWidth="478.0" style="-fx-background-color: #013b46; -fx-background-radius: 40;">
-                     <children>
-                        <Pane layoutX="10.0" layoutY="10.0" prefHeight="526.0" prefWidth="466.0" style="-fx-background-color: #013b46; -fx-background-radius: 40;">
-                           <children>
-                              <Circle fill="#ff923f" layoutX="31.0" layoutY="457.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
-                              <Label layoutX="53.0" layoutY="449.0" text="USD :" textFill="WHITE" />
-                              <Label fx:id="USDPercent" layoutX="85.0" layoutY="449.0" prefHeight="17.0" prefWidth="69.0" text="0" textFill="WHITE" />
-                              <Circle fill="#fffb00" layoutX="172.0" layoutY="457.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
-                              <Label layoutX="192.0" layoutY="450.0" text="EUR :" textFill="WHITE" />
-                              <Label fx:id="EURPercent" layoutX="230.0" layoutY="450.0" prefHeight="17.0" prefWidth="62.0" text="0" textFill="WHITE" />
-                              <Circle fill="#28a7eb" layoutX="303.0" layoutY="457.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
-                              <Label layoutX="320.0" layoutY="450.0" text="TOMAN :" textFill="WHITE" />
-                              <Label fx:id="TOMANPercent" layoutX="379.0" layoutY="450.0" prefHeight="17.0" prefWidth="77.0" text="0" textFill="WHITE" />
-                              <Circle fill="#6e08a4" layoutX="31.0" layoutY="490.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
-                              <Label layoutX="53.0" layoutY="482.0" text="YEN :" textFill="WHITE" />
-                              <Label fx:id="YENPercent" layoutX="85.0" layoutY="482.0" prefHeight="17.0" prefWidth="68.0" text="0" textFill="WHITE" />
-                              <Circle fill="#fca3f7" layoutX="172.0" layoutY="490.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
-                              <Label layoutX="192.0" layoutY="483.0" text="GBP: " textFill="WHITE" />
-                              <Label fx:id="GBPPercent" layoutX="230.0" layoutY="483.0" prefHeight="17.0" prefWidth="83.0" text="0" textFill="WHITE" />
-                              <PieChart fx:id="walletChart" legendVisible="false" prefHeight="404.0" prefWidth="466.0" style="-fx-background-color: #013b46; -fx-background-radius: 40;" styleClass="custom-pie-chart" stylesheets="@WalletStyle.css" />
-                           </children>
+<AnchorPane layoutX="-1.0" prefHeight="1200.0" prefWidth="1015.0" style="-fx-background-color: #005669;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Trades.Wallet">
+    <children>
+        <ScrollPane hbarPolicy="NEVER" prefHeight="1244.0" prefWidth="1014.0" AnchorPane.bottomAnchor="0.0">
+            <content>
+                <AnchorPane layoutY="99.0" minHeight="0.0" minWidth="0.0" prefHeight="1400.0" prefWidth="999.0" style="-fx-background-color: #005669;" stylesheets="@WalletStyle.css">
+                    <children>
+                        <Pane layoutX="512.0" layoutY="413.0" prefHeight="547.0" prefWidth="478.0" style="-fx-background-color: #013b46; -fx-background-radius: 40;">
+                            <children>
+                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="526.0" prefWidth="466.0" style="-fx-background-color: #013b46; -fx-background-radius: 40;">
+                                    <children>
+                                        <Circle fill="#ff923f" layoutX="31.0" layoutY="457.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
+                                        <Label layoutX="53.0" layoutY="449.0" text="USD :" textFill="WHITE" />
+                                        <Label fx:id="USDPercent" layoutX="85.0" layoutY="449.0" prefHeight="17.0" prefWidth="69.0" text="0" textFill="WHITE" />
+                                        <Circle fill="#fffb00" layoutX="172.0" layoutY="457.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
+                                        <Label layoutX="192.0" layoutY="450.0" text="EUR :" textFill="WHITE" />
+                                        <Label fx:id="EURPercent" layoutX="230.0" layoutY="450.0" prefHeight="17.0" prefWidth="62.0" text="0" textFill="WHITE" />
+                                        <Circle fill="#28a7eb" layoutX="303.0" layoutY="457.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
+                                        <Label layoutX="320.0" layoutY="450.0" text="TOMAN :" textFill="WHITE" />
+                                        <Label fx:id="TOMANPercent" layoutX="379.0" layoutY="450.0" prefHeight="17.0" prefWidth="77.0" text="0" textFill="WHITE" />
+                                        <Circle fill="#6e08a4" layoutX="31.0" layoutY="490.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
+                                        <Label layoutX="53.0" layoutY="482.0" text="YEN :" textFill="WHITE" />
+                                        <Label fx:id="YENPercent" layoutX="85.0" layoutY="482.0" prefHeight="17.0" prefWidth="68.0" text="0" textFill="WHITE" />
+                                        <Circle fill="#fca3f7" layoutX="172.0" layoutY="490.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
+                                        <Label layoutX="192.0" layoutY="483.0" text="GBP: " textFill="WHITE" />
+                                        <Label fx:id="GBPPercent" layoutX="230.0" layoutY="483.0" prefHeight="17.0" prefWidth="83.0" text="0" textFill="WHITE" />
+                                        <PieChart fx:id="walletChart" legendVisible="false" prefHeight="404.0" prefWidth="466.0" style="-fx-background-color: #013b46; -fx-background-radius: 40;" styleClass="custom-pie-chart" stylesheets="@WalletStyle.css" />
+                                    </children>
+                                </Pane>
+                            </children>
                         </Pane>
-                     </children>
-                  </Pane>
-                  <Pane layoutX="315.0" layoutY="734.0" prefHeight="396.0" prefWidth="675.0" style="-fx-background-color: #013b46; -fx-background-radius: 40;">
-                     <children>
-                        <Pane layoutX="15.0" layoutY="10.0" prefHeight="367.0" prefWidth="642.0" style="-fx-background-color: #013b46; -fx-background-radius: 40;">
-                           <children>
-                              <ScrollPane layoutX="12.0" layoutY="11.0" prefHeight="344.0" prefWidth="620.0" style="-fx-background-color: F2F3E6;" vbarPolicy="NEVER">
-                                <content>
-                                  <AnchorPane fx:id="balanceChartPanel" minHeight="0.0" minWidth="0.0" prefHeight="355.0" prefWidth="1000.0" style="-fx-background-color: #013b46; -fx-border-radius: 40;">
-                                       <children>
-                                          <LineChart fx:id="chart" alternativeRowFillVisible="false" horizontalGridLinesVisible="false" layoutX="14.0" layoutY="28.0" prefHeight="365.0" prefWidth="800.0" verticalGridLinesVisible="false" verticalZeroLineVisible="false">
-                                            <xAxis>
-                                              <NumberAxis minorTickCount="1" side="BOTTOM" tickLabelsVisible="false" tickLength="2.0" tickUnit="1.0" upperBound="1000.0" />
-                                            </xAxis>
-                                            <yAxis>
-                                              <NumberAxis side="LEFT" tickLabelFill="WHITE" />
-                                            </yAxis>
-                                          </LineChart>
-                                       </children>
-                                    </AnchorPane>
-                                </content>
-                              </ScrollPane>
-                           </children>
+                        <Pane layoutX="315.0" layoutY="981.0" prefHeight="409.0" prefWidth="675.0" style="-fx-background-color: #013b46; -fx-background-radius: 40;">
+                            <children>
+                                <Pane layoutX="15.0" layoutY="20.0" prefHeight="367.0" prefWidth="642.0" style="-fx-background-color: #013b46; -fx-background-radius: 40;">
+                                    <children>
+                                        <ScrollPane layoutX="12.0" layoutY="11.0" prefHeight="344.0" prefWidth="620.0" style="-fx-background-color: F2F3E6;" vbarPolicy="NEVER">
+                                            <content>
+                                                <AnchorPane fx:id="balanceChartPanel" minHeight="0.0" minWidth="0.0" prefHeight="355.0" prefWidth="1000.0" style="-fx-background-color: #013b46; -fx-border-radius: 40;">
+                                                    <children>
+                                                        <LineChart fx:id="chart" alternativeRowFillVisible="false" horizontalGridLinesVisible="false" layoutX="14.0" layoutY="28.0" prefHeight="365.0" prefWidth="800.0" verticalGridLinesVisible="false" verticalZeroLineVisible="false">
+                                                            <xAxis>
+                                                                <NumberAxis minorTickCount="1" side="BOTTOM" tickLabelsVisible="false" tickLength="2.0" tickUnit="1.0" upperBound="1000.0" />
+                                                            </xAxis>
+                                                            <yAxis>
+                                                                <NumberAxis side="LEFT" tickLabelFill="WHITE" />
+                                                            </yAxis>
+                                                        </LineChart>
+                                                    </children>
+                                                </AnchorPane>
+                                            </content>
+                                        </ScrollPane>
+                                    </children>
+                                </Pane>
+                                <Pane layoutX="28.0" layoutY="359.0" prefHeight="15.0" prefWidth="618.0" style="-fx-background-color: #013b46;" />
+                                <Pane layoutX="665.0" layoutY="35.0" prefHeight="318.0" prefWidth="9.0" style="-fx-background-color: #013b46;" />
+                        <Label alignment="CENTER" layoutX="228.0" layoutY="6.0" prefHeight="17.0" prefWidth="219.0" text="Chart of wallet changes in real time" textFill="#d7daff" />
+                            </children>
                         </Pane>
-                        <Pane layoutX="28.0" layoutY="348.0" prefHeight="15.0" prefWidth="618.0" style="-fx-background-color: #013b46;" />
-                        <Pane layoutX="665.0" layoutY="35.0" prefHeight="318.0" prefWidth="9.0" style="-fx-background-color: #013b46;" />
-                     </children>
-                  </Pane>
-                  <Pane layoutX="8.0" layoutY="166.0" prefHeight="548.0" prefWidth="480.0" style="-fx-background-color: #013b46; -fx-background-radius: 40;">
+                        <Pane layoutX="8.0" layoutY="412.0" prefHeight="548.0" prefWidth="480.0" style="-fx-background-color: #013b46; -fx-background-radius: 40;">
+                            <children>
+                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="526.0" prefWidth="466.0" style="-fx-background-color: #013b46; -fx-background-radius: 40;">
+                                    <children>
+                                        <Label layoutX="105.0" layoutY="22.0" prefHeight="26.0" prefWidth="287.0" text="Your currencies information" textFill="WHITE">
+                                            <font>
+                                                <Font name="Bradley Hand Bold" size="20.0" />
+                                            </font>
+                                        </Label>
+                                        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="10.0" layoutY="190.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../icons/USD.png" />
+                                            </image>
+                                        </ImageView>
+                                        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="10.0" layoutY="270.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../icons/YEN.png" />
+                                            </image>
+                                        </ImageView>
+                                        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="240.0" layoutY="190.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../icons/EUR.png" />
+                                            </image>
+                                        </ImageView>
+                                        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="240.0" layoutY="270.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../icons/GBP.png" />
+                                            </image>
+                                        </ImageView>
+                                        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="10.0" layoutY="350.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../icons/TOMAN.png" />
+                                            </image>
+                                        </ImageView>
+                                        <Label layoutX="105.0" layoutY="106.0" text="Total(USD):" textFill="WHITE">
+                                            <font>
+                                                <Font name="Chalkboard" size="21.0" />
+                                            </font>
+                                        </Label>
+                                        <Label fx:id="Total" layoutX="221.0" layoutY="108.0" text="0" textFill="WHITE">
+                                            <font>
+                                                <Font name="System Bold" size="20.0" />
+                                            </font>
+                                        </Label>
+                                        <Pane layoutX="79.0" layoutY="446.0" onMouseClicked="#onSwapClicked" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: #f5899d;">
+                                            <children>
+                                                <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                                    <image>
+                                                        <Image url="@../icons/xchange.png" />
+                                                    </image>
+                                                </ImageView>
+                                            </children>
+                                        </Pane>
+                                        <Pane layoutX="162.0" layoutY="446.0" onMouseClicked="#onHistoryClicked" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: #f5899d;">
+                                            <children>
+                                                <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                                                    <image>
+                                                        <Image url="@../icons/History.png" />
+                                                    </image>
+                                                </ImageView>
+                                            </children>
+                                        </Pane>
+                                        <Pane layoutX="245.0" layoutY="446.0" onMouseClicked="#onTransferClicked" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: #f5899d;">
+                                            <children>
+                                                <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                                    <image>
+                                                        <Image url="@../icons/Download.png" />
+                                                    </image>
+                                                </ImageView>
+                                            </children>
+                                        </Pane>
+                                        <Pane layoutX="328.0" layoutY="446.0" onMouseClicked="#onExchangeClicked" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: #f5899d;">
+                                            <children>
+                                                <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                                    <image>
+                                                        <Image url="@../icons/Upload.png" />
+                                                    </image>
+                                                </ImageView>
+                                            </children>
+                                        </Pane>
+                                        <MediaView fx:id="coinMedia" fitHeight="80.0" fitWidth="80.0" layoutX="8.0" layoutY="85.0" />
+                                        <Label layoutX="70.0" layoutY="204.0" prefHeight="32.0" prefWidth="158.0" style="-fx-background-color: #ffe8d8; -fx-background-radius: 10;" />
+                                        <Label fx:id="USDPrice" layoutX="74.0" layoutY="207.0" prefHeight="26.0" prefWidth="153.0" style="-fx-background-radius: 10;" text="0">
+                                            <font>
+                                                <Font size="20.0" />
+                                            </font>
+                                        </Label>
+                                        <Label layoutX="70.0" layoutY="284.0" prefHeight="32.0" prefWidth="158.0" style="-fx-background-color: #f1d8ff; -fx-background-radius: 10;" />
+                                        <Label fx:id="YENPrice" layoutX="74.0" layoutY="287.0" prefHeight="26.0" prefWidth="131.0" text="0">
+                                            <font>
+                                                <Font size="20.0" />
+                                            </font>
+                                        </Label>
+                                        <Label layoutX="70.0" layoutY="364.0" prefHeight="32.0" prefWidth="158.0" style="-fx-background-color: #bee7fc; -fx-background-radius: 10;" />
+                                        <Label fx:id="TOMANPrice" layoutX="74.0" layoutY="367.0" prefHeight="26.0" prefWidth="144.0" text="0">
+                                            <font>
+                                                <Font size="20.0" />
+                                            </font>
+                                        </Label>
+                                        <Label layoutX="313.0" layoutY="204.0" prefHeight="33.0" prefWidth="150.0" style="-fx-background-color: #fffec5; -fx-background-radius: 10;" />
+                                        <Label fx:id="EURPrice" layoutX="320.0" layoutY="210.0" prefHeight="26.0" prefWidth="144.0" text="0">
+                                            <font>
+                                                <Font size="20.0" />
+                                            </font>
+                                        </Label>
+                                        <Label layoutX="313.0" layoutY="284.0" prefHeight="32.0" prefWidth="149.0" style="-fx-background-color: #ffe6fe; -fx-background-radius: 10;" />
+                                        <Label fx:id="GBPPrice" layoutX="322.0" layoutY="287.0" prefHeight="26.0" prefWidth="144.0" text="0">
+                                            <font>
+                                                <Font size="20.0" />
+                                            </font>
+                                        </Label>
+                                        <Circle fill="#e8e412" layoutX="271.0" layoutY="221.0" radius="25.0" stroke="#fffb00" strokeType="INSIDE" />
+                                        <Label layoutX="254.0" layoutY="195.0" prefHeight="51.0" prefWidth="29.0" text="€" textFill="WHITE">
+                                            <font>
+                                                <Font name="System Bold" size="41.0" />
+                                            </font>
+                                        </Label>
+                                    </children></Pane>
+                            </children>
+                        </Pane>
+                        <Pane layoutX="8.0" layoutY="980.0" prefHeight="221.0" prefWidth="296.0" style="-fx-background-color: #013b46; -fx-background-radius: 40;">
                      <children>
-                        <Pane layoutX="10.0" layoutY="10.0" prefHeight="526.0" prefWidth="466.0" style="-fx-background-color: #013b46; -fx-background-radius: 40;">
-                           <children>
-                              <Label layoutX="105.0" layoutY="22.0" prefHeight="26.0" prefWidth="287.0" text="Your currencies information" textFill="WHITE">
-                                 <font>
-                                    <Font name="Bradley Hand Bold" size="20.0" />
-                                 </font>
-                              </Label>
-                              <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="10.0" layoutY="190.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../icons/USD.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="10.0" layoutY="270.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../icons/YEN.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="240.0" layoutY="190.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../icons/EUR.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="240.0" layoutY="270.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../icons/GBP.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="10.0" layoutY="350.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../icons/TOMAN.png" />
-                                 </image>
-                              </ImageView>
-                              <Label layoutX="105.0" layoutY="106.0" text="Total(USD):" textFill="WHITE">
-                                 <font>
-                                    <Font name="Chalkboard" size="21.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="Total" layoutX="221.0" layoutY="108.0" text="0" textFill="WHITE">
-                                 <font>
-                                    <Font name="System Bold" size="20.0" />
-                                 </font>
-                              </Label>
-                              <Pane layoutX="79.0" layoutY="446.0" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: #f5899d;">
-                                 <children>
-                                    <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../icons/xchange.png" />
-                                       </image>
-                                    </ImageView>
-                                 </children>
-                              </Pane>
-                              <Pane layoutX="162.0" layoutY="446.0" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: #f5899d;">
-                                 <children>
-                                    <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="12.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../icons/history.png" />
-                                       </image>
-                                    </ImageView>
-                                 </children>
-                              </Pane>
-                              <Pane layoutX="245.0" layoutY="446.0" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: #f5899d;">
-                                 <children>
-                                    <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../icons/Download.png" />
-                                       </image>
-                                    </ImageView>
-                                 </children>
-                              </Pane>
-                              <Pane layoutX="328.0" layoutY="446.0" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: #f5899d;">
-                                 <children>
-                                    <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../icons/Upload.png" />
-                                       </image>
-                                    </ImageView>
-                                 </children>
-                              </Pane>
-                              <MediaView fx:id="coinMedia" fitHeight="80.0" fitWidth="80.0" layoutX="8.0" layoutY="85.0" />
-                              <Label layoutX="70.0" layoutY="204.0" prefHeight="32.0" prefWidth="158.0" style="-fx-background-color: #ffe8d8; -fx-background-radius: 10;" />
-                              <Label fx:id="USDPrice" layoutX="74.0" layoutY="207.0" prefHeight="26.0" prefWidth="153.0" style="-fx-background-radius: 10;" text="0">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="70.0" layoutY="284.0" prefHeight="32.0" prefWidth="158.0" style="-fx-background-color: #f1d8ff; -fx-background-radius: 10;" />
-                              <Label fx:id="YENPrice" layoutX="74.0" layoutY="287.0" prefHeight="26.0" prefWidth="131.0" text="0">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="70.0" layoutY="364.0" prefHeight="32.0" prefWidth="158.0" style="-fx-background-color: #bee7fc; -fx-background-radius: 10;" />
-                              <Label fx:id="TOMANPrice" layoutX="74.0" layoutY="367.0" prefHeight="26.0" prefWidth="144.0" text="0">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="313.0" layoutY="204.0" prefHeight="33.0" prefWidth="150.0" style="-fx-background-color: #fffec5; -fx-background-radius: 10;" />
-                              <Label fx:id="EURPrice" layoutX="320.0" layoutY="210.0" prefHeight="26.0" prefWidth="144.0" text="0">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="313.0" layoutY="284.0" prefHeight="32.0" prefWidth="149.0" style="-fx-background-color: #ffe6fe; -fx-background-radius: 10;" />
-                              <Label fx:id="GBPPrice" layoutX="322.0" layoutY="287.0" prefHeight="26.0" prefWidth="144.0" text="0">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Label>
-                              <Circle fill="#e8e412" layoutX="271.0" layoutY="221.0" radius="25.0" stroke="#fffb00" strokeType="INSIDE" />
-                              <Label layoutX="254.0" layoutY="195.0" prefHeight="51.0" prefWidth="29.0" text="€" textFill="WHITE">
-                                 <font>
-                                    <Font name="System Bold" size="41.0" />
-                                 </font>
-                              </Label>
-                           </children></Pane>
-                     </children>
-                  </Pane>
-                  <Pane layoutX="8.0" layoutY="734.0" prefHeight="200.0" prefWidth="296.0" style="-fx-background-color: #013b46; -fx-background-radius: 40;">
-                     <children>
-                        <Pane layoutX="10.0" layoutY="10.0" prefHeight="180.0" prefWidth="275.0" style="-fx-background-color: #013b46;" />
-                     </children>
-                  </Pane>
-                  <Pane layoutX="8.0" layoutY="947.0" prefHeight="191.0" prefWidth="296.0" style="-fx-background-color: #013b46; -fx-background-radius: 40;">
-                     <children>
-                        <Pane layoutX="10.0" layoutY="10.0" prefHeight="171.0" prefWidth="275.0" style="-fx-background-color: #013b46; -fx-background-radius: 40;" />
-                     </children>
-                  </Pane>
-                  <VBox fx:id="slider" layoutY="99.0" prefHeight="717.0" prefWidth="270.0" style="-fx-background-color: #004957;" visible="false">
-                     <children>
-                        <Label layoutX="3.0" prefHeight="20.0" prefWidth="227.0" style="-fx-background-color: #004957;" />
-                        <Label alignment="TOP_CENTER" prefHeight="671.0" prefWidth="246.0" style="-fx-background-color: white;">
-                           <graphic>
-                              <Label alignment="TOP_RIGHT" contentDisplay="TOP" prefHeight="150.0" prefWidth="246.0">
-                                 <graphic>
-                                    <BorderPane prefHeight="140.0" prefWidth="246.0" style="-fx-background-color: #005669;">
-                                       <right>
-                                          <ImageView fx:id="CloseMenu" fitHeight="47.0" fitWidth="71.0" onMouseClicked="#onCloseMenuClicked" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER_RIGHT">
-                                             <image>
-                                                <Image url="@../icons/MenuBack.png" />
-                                             </image>
-                                          </ImageView>
-                                       </right>
-                                       <bottom>
-                                          <VBox prefHeight="604.0" prefWidth="246.0" BorderPane.alignment="CENTER">
-                                             <children>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="45.0" prefWidth="246.0" style="-fx-background-color: F2F3E6;" text="Menu" textFill="#005669">
-                                                   <font>
-                                                      <Font name="Avenir Black Oblique" size="26.0" />
-                                                   </font>
-                                                </Label>
-                                                <Button fx:id="Home" mnemonicParsing="false" onAction="#onHomeClicked" prefHeight="70.0" prefWidth="246.0" style="-fx-background-color: #005669;" text="Home" textFill="WHITE">
-                                                   <graphic>
-                                                      <Label prefHeight="37.0" prefWidth="64.0">
-                                                         <graphic>
-                                                            <ImageView fitHeight="34.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
-                                                               <image>
-                                                                  <Image url="@../icons/home.png" />
-                                                               </image>
-                                                            </ImageView>
-                                                         </graphic>
-                                                      </Label>
-                                                   </graphic>
-                                                   <font>
-                                                      <Font size="20.0" />
-                                                   </font>
-                                                </Button>
-                                                <Button fx:id="Wallet" mnemonicParsing="false" onAction="#onWalletClicked" prefHeight="70.0" prefWidth="246.0" style="-fx-background-color: #005669;" text="Wallet" textFill="#fcfcfc">
-                                                   <graphic>
-                                                      <Label prefHeight="39.0" prefWidth="61.0">
-                                                         <graphic>
-                                                            <ImageView fitHeight="34.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
-                                                               <image>
-                                                                  <Image url="@../icons/wallet.png" />
-                                                               </image>
-                                                            </ImageView>
-                                                         </graphic>
-                                                      </Label>
-                                                   </graphic>
-                                                   <font>
-                                                      <Font size="20.0" />
-                                                   </font>
-                                                </Button>
-                                                <Button fx:id="Transfer" mnemonicParsing="false" onAction="#onTransferClicked" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #005669;" text="Transfer" textFill="WHITE">
-                                                   <font>
-                                                      <Font size="20.0" />
-                                                   </font>
-                                                   <graphic>
-                                                      <Label prefHeight="52.0" prefWidth="58.0">
-                                                         <graphic>
-                                                            <ImageView fitHeight="46.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
-                                                               <image>
-                                                                  <Image url="@../icons/transfer.png" />
-                                                               </image>
-                                                            </ImageView>
-                                                         </graphic>
-                                                      </Label>
-                                                   </graphic>
-                                                </Button>
-                                                <Button fx:id="Exchange" mnemonicParsing="false" onAction="#onExchangeClicked" prefHeight="70.0" prefWidth="247.0" style="-fx-background-color: #005669;" text="Exchange" textFill="#fcfcfc">
-                                                   <font>
-                                                      <Font size="20.0" />
-                                                   </font>
-                                                   <graphic>
-                                                      <Label prefHeight="46.0" prefWidth="52.0">
-                                                         <graphic>
-                                                            <ImageView fitHeight="47.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
-                                                               <image>
-                                                                  <Image url="@../icons/exchange.png" />
-                                                               </image>
-                                                            </ImageView>
-                                                         </graphic>
-                                                      </Label>
-                                                   </graphic>
-                                                </Button>
-                                                <Button fx:id="Swap" mnemonicParsing="false" onAction="#onSwapClicked" prefHeight="71.0" prefWidth="249.0" style="-fx-background-color: #005669;" text="Swap" textFill="WHITE">
-                                                   <font>
-                                                      <Font size="20.0" />
-                                                   </font>
-                                                   <graphic>
-                                                      <Label prefHeight="43.0" prefWidth="69.0">
-                                                         <graphic>
-                                                            <ImageView fitHeight="43.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
-                                                               <image>
-                                                                  <Image url="@../icons/swap.png" />
-                                                               </image>
-                                                            </ImageView>
-                                                         </graphic>
-                                                      </Label>
-                                                   </graphic>
-                                                </Button>
-                                                <Button fx:id="History" mnemonicParsing="false" onAction="#onHistoryClicked" prefHeight="71.0" prefWidth="248.0" style="-fx-background-color: #005669;" text="History" textFill="WHITE">
-                                                   <font>
-                                                      <Font size="20.0" />
-                                                   </font>
-                                                   <graphic>
-                                                      <Label prefHeight="46.0" prefWidth="54.0">
-                                                         <graphic>
-                                                            <ImageView fitHeight="42.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
-                                                               <image>
-                                                                  <Image url="@../icons/icons8-history-100.png" />
-                                                               </image>
-                                                            </ImageView>
-                                                         </graphic>
-                                                      </Label>
-                                                   </graphic>
-                                                </Button>
-                                                <Button fx:id="Exit" mnemonicParsing="false" onAction="#onExitClicked" prefHeight="71.0" prefWidth="254.0" style="-fx-background-color: #005669;" text="Exit" textFill="#f8f8f8">
-                                                   <font>
-                                                      <Font size="25.0" />
-                                                   </font>
-                                                   <graphic>
-                                                      <Label prefHeight="56.0" prefWidth="81.0">
-                                                         <graphic>
-                                                            <ImageView fitHeight="43.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
-                                                               <image>
-                                                                  <Image url="@../icons/exit.png" />
-                                                               </image>
-                                                            </ImageView>
-                                                         </graphic>
-                                                      </Label>
-                                                   </graphic>
-                                                </Button>
-                                             </children>
-                                          </VBox>
-                                       </bottom>
-                                    </BorderPane>
-                                 </graphic>
-                              </Label>
-                           </graphic>
+                        <Label layoutX="26.0" layoutY="172.0" prefHeight="26.0" prefWidth="244.0" text="The largest amount of currency" textFill="WHITE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="LabelFive" layoutX="17.0" layoutY="134.0" prefHeight="26.0" prefWidth="215.0" style="-fx-background-color: #fca3f7;">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="LabelFour" layoutX="17.0" layoutY="108.0" prefHeight="26.0" prefWidth="185.0" style="-fx-background-color: #28a7eb;">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="LabelThree" layoutX="17.0" layoutY="82.0" prefHeight="26.0" prefWidth="154.0" style="-fx-background-color: #fcf885;">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="LTwo" layoutX="17.0" layoutY="56.0" prefHeight="26.0" prefWidth="121.0" style="-fx-background-color: #6e08a4;">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="Lone" layoutX="17.0" layoutY="30.0" prefHeight="26.0" prefWidth="85.0" style="-fx-background-color: #ff923f;">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
                         </Label>
                      </children>
-                  </VBox>
-               </children>
-               <styleClass>
-                  <String fx:value="chart-series-line" />
-                  <String fx:value="chart-plot-background" />
-               </styleClass>
-            </AnchorPane>
-         </content>
-      </ScrollPane>
-      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="1000.0" style="-fx-background-color: #013b46;">
+                        </Pane>
+                        <Pane layoutX="8.0" layoutY="1213.0" prefHeight="177.0" prefWidth="296.0" style="-fx-background-color: #013b46; -fx-background-radius: 40;">
+                     <children>
+                        <Label layoutX="20.0" layoutY="28.0" prefHeight="20.0" prefWidth="185.0" text="Average percentage of changes :" textFill="#f5cece" />
+                        <Label layoutX="20.0" layoutY="75.0" text="The highest amount so far :" textFill="#cafbff" />
+                        <Label layoutX="18.0" layoutY="122.0" prefHeight="17.0" prefWidth="150.0" text="The lowest amount so far :" textFill="#dcffe1" />
+                        <Label fx:id="AveragePercentage" layoutX="215.0" layoutY="30.0" prefHeight="17.0" prefWidth="62.0" textFill="WHITE" />
+                        <Label fx:id="highest" layoutX="175.0" layoutY="75.0" prefHeight="17.0" prefWidth="113.0" textFill="WHITE" />
+                        <Label fx:id="lowest" layoutX="168.0" layoutY="122.0" prefHeight="17.0" prefWidth="120.0" textFill="WHITE" />
+                     </children>
+                        </Pane>
+                    </children>
+                    <styleClass>
+                        <String fx:value="chart-series-line" />
+                        <String fx:value="chart-plot-background" />
+                    </styleClass>
+                </AnchorPane>
+            </content>
+        </ScrollPane>
+      <Pane fx:id="slider" layoutY="99.0" prefHeight="721.0" prefWidth="264.0" style="-fx-background-color: #004957;">
          <children>
-            <ImageView fx:id="Menu" fitHeight="77.0" fitWidth="77.0" layoutX="14.0" layoutY="12.0" onMouseClicked="#onMenuIconClicked" pickOnBounds="true" preserveRatio="true">
+            <Label alignment="TOP_CENTER" layoutY="20.0" prefHeight="671.0" prefWidth="246.0" style="-fx-background-color: white;">
+               <graphic>
+                  <Label alignment="TOP_RIGHT" contentDisplay="TOP" layoutY="20.0" prefHeight="150.0" prefWidth="246.0">
+                     <graphic>
+                        <BorderPane prefHeight="140.0" prefWidth="246.0" style="-fx-background-color: #005669;">
+                           <bottom>
+                              <VBox prefHeight="515.0" prefWidth="246.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <Button fx:id="Home" mnemonicParsing="false" onAction="#onHomeClicked" prefHeight="70.0" prefWidth="246.0" style="-fx-background-color: #005669;" text="Home" textFill="WHITE">
+                                       <graphic>
+                                          <Label prefHeight="37.0" prefWidth="64.0">
+                                             <graphic>
+                                                <ImageView fitHeight="34.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../icons/home.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Label>
+                                       </graphic>
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Button>
+                                    <Button fx:id="Wallet" mnemonicParsing="false" prefHeight="70.0" prefWidth="246.0" style="-fx-background-color: #005669;" text="Wallet" textFill="#fcfcfc">
+                                       <graphic>
+                                          <Label prefHeight="39.0" prefWidth="61.0">
+                                             <graphic>
+                                                <ImageView fitHeight="34.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../icons/wallet.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Label>
+                                       </graphic>
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Button>
+                                    <Button fx:id="Transfer" mnemonicParsing="false" onAction="#onTransferClicked" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #005669;" text="Transfer" textFill="WHITE">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                       <graphic>
+                                          <Label prefHeight="52.0" prefWidth="58.0">
+                                             <graphic>
+                                                <ImageView fitHeight="46.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../icons/transfer.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Label>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="Exchange" mnemonicParsing="false" onAction="#onExchangeClicked" prefHeight="70.0" prefWidth="247.0" style="-fx-background-color: #005669;" text="Exchange" textFill="#fcfcfc">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                       <graphic>
+                                          <Label prefHeight="46.0" prefWidth="52.0">
+                                             <graphic>
+                                                <ImageView fitHeight="47.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../icons/exchange.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Label>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="Swap" mnemonicParsing="false" onAction="#onSwapClicked" prefHeight="71.0" prefWidth="249.0" style="-fx-background-color: #005669;" text="Swap" textFill="WHITE">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                       <graphic>
+                                          <Label prefHeight="43.0" prefWidth="69.0">
+                                             <graphic>
+                                                <ImageView fitHeight="43.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../icons/swap.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Label>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="History" mnemonicParsing="false" onAction="#onHistoryClicked" prefHeight="71.0" prefWidth="248.0" style="-fx-background-color: #005669;" text="History" textFill="WHITE">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                       <graphic>
+                                          <Label prefHeight="46.0" prefWidth="63.0">
+                                             <graphic>
+                                                <ImageView fitHeight="43.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../icons/icons8-history-100.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Label>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="Exit" mnemonicParsing="false" onAction="#onExitClicked" prefHeight="71.0" prefWidth="254.0" style="-fx-background-color: #005669;" text="Exit" textFill="#f8f8f8">
+                                       <font>
+                                          <Font size="25.0" />
+                                       </font>
+                                       <graphic>
+                                          <Label prefHeight="56.0" prefWidth="76.0">
+                                             <graphic>
+                                                <ImageView fitHeight="43.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../icons/exit.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Label>
+                                       </graphic>
+                                    </Button>
+                                 </children>
+                              </VBox>
+                           </bottom>
+                           <top>
+                              <BorderPane prefHeight="129.0" prefWidth="246.0" BorderPane.alignment="CENTER">
+                                 <left>
+                                    <ImageView fitHeight="108.0" fitWidth="164.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                                       <image>
+                                          <Image url="@../icons/programIcon.png" />
+                                       </image>
+                                    </ImageView>
+                                 </left>
+                                 <center>
+                                    <Label prefHeight="12.0" prefWidth="121.0" text="Bit FUM" textFill="#ffffb0" BorderPane.alignment="CENTER">
+                                       <font>
+                                          <Font name="Baskerville Bold Italic" size="24.0" />
+                                       </font>
+                                       <effect>
+                                          <SepiaTone />
+                                       </effect>
+                                    </Label>
+                                 </center>
+                                 <bottom>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="246.0" style="-fx-background-color: F2F3E6;" text="Menu" textFill="#005669" BorderPane.alignment="CENTER">
+                                       <font>
+                                          <Font name="Avenir Black Oblique" size="26.0" />
+                                       </font>
+                                    </Label>
+                                 </bottom>
+                              </BorderPane>
+                           </top>
+                        </BorderPane>
+                     </graphic>
+                  </Label>
+               </graphic>
+            </Label>
+            <ImageView fx:id="CloseMenu" fitHeight="25.0" fitWidth="25.0" layoutX="243.0" layoutY="8.0" onMouseClicked="#onCloseMenuClicked" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../icons/Menu.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="77.0" fitWidth="94.0" layoutX="829.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icons/message.png" />
+                  <Image url="@../icons/MenuBack.png" />
                </image>
             </ImageView>
          </children>
       </Pane>
-   </children>
+      <Pane fx:id="headerSlider" layoutX="530.0" prefHeight="300.0" prefWidth="278.0" style="-fx-background-color: white;">
+         <children>
+            <Pane fx:id="datePane" prefHeight="300.0" prefWidth="278.0">
+               <children>
+                  <Label fx:id="currentDate" alignment="CENTER" layoutY="100.0" prefHeight="40.0" prefWidth="278.0" style="-fx-background-color: #fcd3ed;" text="ggg">
+                     <font>
+                        <Font name="Corsiva Hebrew Bold" size="19.0" />
+                     </font>
+                  </Label>
+                  <MediaView fx:id="calenderView" fitHeight="100.0" fitWidth="100.0" layoutY="171.0" />
+                  <Label fx:id="da10" alignment="CENTER" layoutX="221.0" layoutY="182.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="10" />
+                  <Label fx:id="da5" alignment="CENTER" layoutX="107.0" layoutY="182.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="5" />
+                  <Label fx:id="da6" alignment="CENTER" layoutX="129.0" layoutY="182.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="6" />
+                  <Label fx:id="da7" alignment="CENTER" layoutX="152.0" layoutY="182.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="7" />
+                  <Label fx:id="da8" alignment="CENTER" layoutX="175.0" layoutY="182.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="8" />
+                  <Label fx:id="da9" alignment="CENTER" layoutX="198.0" layoutY="182.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="9" />
+                  <Label fx:id="da13" alignment="CENTER" layoutX="129.0" layoutY="211.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="13" />
+                  <Label fx:id="da12" alignment="CENTER" layoutX="107.0" layoutY="211.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="12" />
+                  <Label fx:id="da17" alignment="CENTER" layoutX="221.0" layoutY="211.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="17" />
+                  <Label fx:id="da16" alignment="CENTER" layoutX="198.0" layoutY="211.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="16" />
+                  <Label fx:id="da15" alignment="CENTER" layoutX="175.0" layoutY="211.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="15" />
+                  <Label fx:id="da14" alignment="CENTER" layoutX="152.0" layoutY="211.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="14" />
+                  <Label fx:id="da31" alignment="CENTER" layoutX="221.0" layoutY="269.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="31" />
+                  <Label fx:id="da26" alignment="CENTER" layoutX="106.0" layoutY="269.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="26" />
+                  <Label fx:id="da27" alignment="CENTER" layoutX="129.0" layoutY="269.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="27" />
+                  <Label fx:id="da28" alignment="CENTER" layoutX="152.0" layoutY="269.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="28" />
+                  <Label fx:id="da29" alignment="CENTER" layoutX="175.0" layoutY="269.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="29" />
+                  <Label fx:id="da30" alignment="CENTER" layoutX="198.0" layoutY="269.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="30" />
+                  <Label fx:id="da20" alignment="CENTER" layoutX="129.0" layoutY="241.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="20" />
+                  <Label fx:id="da19" alignment="CENTER" layoutX="107.0" layoutY="241.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="19" />
+                  <Label fx:id="da24" alignment="CENTER" layoutX="221.0" layoutY="241.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="24" />
+                  <Label fx:id="da23" alignment="CENTER" layoutX="198.0" layoutY="241.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="23" />
+                  <Label fx:id="da22" alignment="CENTER" layoutX="175.0" layoutY="241.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="22" />
+                  <Label fx:id="da21" alignment="CENTER" layoutX="152.0" layoutY="241.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="21" />
+                  <Label fx:id="da3" alignment="CENTER" layoutX="221.0" layoutY="156.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="3" />
+                  <Label fx:id="da2" alignment="CENTER" layoutX="198.0" layoutY="156.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="2" />
+                  <Label fx:id="da1" alignment="CENTER" layoutX="175.0" layoutY="156.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="1" />
+                  <Label fx:id="da18" alignment="CENTER" layoutX="244.0" layoutY="211.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="18" />
+                  <Label fx:id="da11" alignment="CENTER" layoutX="244.0" layoutY="182.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="11" />
+                  <Label fx:id="da4" alignment="CENTER" layoutX="244.0" layoutY="156.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="4" />
+                  <Label fx:id="da25" alignment="CENTER" layoutX="244.0" layoutY="241.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="25" />
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+        <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="998.0" style="-fx-background-color: #013b46;">
+            <children>
+                <ImageView fx:id="Menu" fitHeight="77.0" fitWidth="77.0" layoutX="14.0" layoutY="12.0" onMouseClicked="#onMenuIconClicked" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../icons/homeMenu.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="50.0" fitWidth="53.0" layoutX="712.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../icons/messageIcon.png" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="ProfileIcon" fitHeight="62.0" fitWidth="63.0" layoutX="820.0" layoutY="19.0" onMouseClicked="#onProfile" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../icons/profile.png" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="calender" fitHeight="41.0" fitWidth="53.0" layoutX="647.0" layoutY="30.0" onMouseClicked="#onCalender" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../icons/date.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="574.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../icons/bell.png" />
+                    </image>
+                </ImageView>
+                <Label fx:id="PageName" layoutX="110.0" layoutY="31.0" prefHeight="34.0" prefWidth="185.0" text="Wallet Page" textFill="WHITE">
+                    <font>
+                        <Font name="Copperplate Bold" size="27.0" />
+                    </font>
+                </Label>
+                <Label fx:id="UserName" layoutX="892.0" layoutY="40.0" prefHeight="17.0" prefWidth="85.0" text="User" textFill="WHITE">
+                    <font>
+                        <Font name="Big Caslon Medium" size="16.0" />
+                    </font>
+                </Label>
+                <ImageView fitHeight="34.0" fitWidth="32.0" layoutX="961.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../icons/refresh.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </Pane>
+    </children>
 </AnchorPane>
