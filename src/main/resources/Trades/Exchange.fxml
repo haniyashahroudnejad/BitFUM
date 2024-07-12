@@ -8,12 +8,14 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.SepiaTone?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.media.MediaView?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.RadialGradient?>
@@ -21,11 +23,11 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1676.0" prefWidth="1057.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Trades.Exchange">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1277.0" prefWidth="1057.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Trades.Exchange">
     <children>
-        <ScrollPane hbarPolicy="NEVER" layoutY="5.0" prefHeight="1242.0" prefWidth="1093.0" style="-fx-background-color: #013b46;" vbarPolicy="ALWAYS">
+        <ScrollPane hbarPolicy="NEVER" layoutX="-1.0" prefHeight="1277.0" prefWidth="1094.0" style="-fx-background-color: #013b46;" vbarPolicy="ALWAYS">
             <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1703.0" prefWidth="1078.0" style="-fx-background-color: #005669;">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1550.0" prefWidth="1078.0" style="-fx-background-color: #005669;">
                     <children>
                         <AnchorPane layoutX="722.0" layoutY="109.0" prefHeight="700.0" prefWidth="334.0" style="-fx-background-color: #013b46; -fx-background-radius: 20;" AnchorPane.rightAnchor="27.0" AnchorPane.topAnchor="109.0">
                             <children>
@@ -35,13 +37,13 @@
                                         <Font name="Gabriola" size="22.0" />
                                     </font>
                                 </Label>
-                                <Line endX="43.5" layoutX="242.0" layoutY="34.0" startX="-37.5" stroke="#525252" />
+                                <Line endX="54.0" layoutX="242.0" layoutY="34.0" startX="-37.5" stroke="#525252" />
                                 <Label layoutX="228.0" layoutY="7.0" text="Price" textFill="#fffdfd">
                                     <font>
-                                        <Font name="Gabriola" size="22.0" />
+                                        <Font name="Kannada MN" size="22.0" />
                                     </font>
                                 </Label>
-                                <Line endX="43.5" layoutX="89.0" layoutY="34.0" startX="-37.5" stroke="#525252" />
+                                <Line endX="68.0" layoutX="89.0" layoutY="34.0" startX="-37.5" stroke="#525252" />
                                 <Label fx:id="sell2" layoutX="14.0" layoutY="82.0" prefHeight="30.0" prefWidth="308.0" style="-fx-background-color: #9fffb2;" visible="false" />
                                 <Label fx:id="sell3" layoutX="14.0" layoutY="112.0" prefHeight="30.0" prefWidth="308.0" style="-fx-background-color: #9fffb2;" visible="false" />
                                 <Label fx:id="sell4" layoutX="14.0" layoutY="142.0" prefHeight="30.0" prefWidth="308.0" style="-fx-background-color: #9fffb2;" visible="false" />
@@ -49,9 +51,9 @@
                                 <Label fx:id="sell6" layoutX="14.0" layoutY="202.0" prefHeight="30.0" prefWidth="308.0" style="-fx-background-color: #9fffb2;" visible="false" />
                                 <Label fx:id="sell7" layoutX="14.0" layoutY="172.0" prefHeight="30.0" prefWidth="308.0" style="-fx-background-color: #9fffb2;" visible="false" />
                                 <Label fx:id="sell8" layoutX="14.0" layoutY="262.0" prefHeight="30.0" prefWidth="308.0" style="-fx-background-color: #9fffb2;" visible="false" />
-                                <Label fx:id="price" layoutX="206.0" layoutY="339.0" text="Price" textFill="#ffe4e3">
+                                <Label fx:id="price" layoutX="205.0" layoutY="342.0" text="Price" textFill="#ffe4e3">
                                     <font>
-                                        <Font name="Gloucester MT Extra Condensed" size="30.0" />
+                                        <Font size="22.0" />
                                     </font>
                                 </Label>
                                 <Label fx:id="buy5" layoutX="14.0" layoutY="512.0" prefHeight="30.0" prefWidth="304.0" style="-fx-background-color: #ffa3a6;" visible="false" />
@@ -68,136 +70,136 @@
                                         <Font name="Georgia" size="13.0" />
                                     </font>
                                 </Label>
-                                <Label fx:id="NoBuying" layoutX="44.0" layoutY="490.0" text="No purchase requests have been registered" textFill="#ded9d9">
+                                <Label fx:id="NoBuying" layoutX="36.0" layoutY="490.0" prefHeight="15.0" prefWidth="254.0" text="No purchase requests have been registered" textFill="#ded9d9">
                                     <font>
                                         <Font name="Georgia" size="13.0" />
                                     </font>
                                 </Label>
-                        <Label fx:id="sell11" layoutX="219.0" layoutY="52.0" prefHeight="30.0" prefWidth="101.0" textFill="#f7f7f7">
-                           <font>
-                              <Font name="Bookman Old Style" size="18.0" />
-                           </font></Label>
-                        <Label fx:id="sell12" layoutX="219.0" layoutY="82.0" prefHeight="30.0" prefWidth="101.0" textFill="WHITE" AnchorPane.leftAnchor="219.0">
-                           <font>
-                              <Font name="Bookman Old Style" size="18.0" />
-                           </font></Label>
-                        <Label fx:id="sell13" layoutX="219.0" layoutY="112.0" prefHeight="30.0" prefWidth="101.0" textFill="#fdf9f9" AnchorPane.leftAnchor="219.0">
-                           <font>
-                              <Font name="Bookman Old Style" size="18.0" />
-                           </font></Label>
-                        <Label fx:id="sell14" layoutX="219.0" layoutY="142.0" prefHeight="30.0" prefWidth="101.0" textFill="WHITE" AnchorPane.leftAnchor="219.0">
-                           <font>
-                              <Font name="Bookman Old Style" size="18.0" />
-                           </font></Label>
-                        <Label fx:id="sell15" layoutX="219.0" layoutY="173.0" prefHeight="30.0" prefWidth="101.0" textFill="#f8f6f6">
-                           <font>
-                              <Font name="Bookman Old Style" size="18.0" />
-                           </font></Label>
-                        <Label fx:id="sell16" layoutX="219.0" layoutY="202.0" prefHeight="30.0" prefWidth="101.0" textFill="#f5f3f3">
-                           <font>
-                              <Font name="Bookman Old Style" size="18.0" />
-                           </font></Label>
-                        <Label fx:id="sell17" layoutX="219.0" layoutY="232.0" prefHeight="30.0" prefWidth="101.0" textFill="#f5f0f0">
-                           <font>
-                              <Font name="Bookman Old Style" size="18.0" />
-                           </font></Label>
-                        <Label fx:id="sell18" layoutX="219.0" layoutY="262.0" prefHeight="30.0" prefWidth="101.0" textFill="#fcf5f5">
-                           <font>
-                              <Font name="Bookman Old Style" size="18.0" />
-                           </font></Label>
-                        <Label fx:id="sell19" layoutX="219.0" layoutY="292.0" prefHeight="30.0" prefWidth="101.0" textFill="WHITE">
-                           <font>
-                              <Font name="Bookman Old Style" size="18.0" />
-                           </font></Label>
-                        <Label fx:id="buy11" layoutX="219.0" layoutY="392.0" prefHeight="30.0" prefWidth="101.0" textFill="#fffdfd">
-                           <font>
-                              <Font name="Bookman Old Style" size="18.0" />
-                           </font></Label>
-                        <Label fx:id="buy12" layoutX="219.0" layoutY="422.0" prefHeight="30.0" prefWidth="101.0" textFill="WHITE">
-                           <font>
-                              <Font name="Bookman Old Style" size="18.0" />
-                           </font></Label>
-                        <Label fx:id="buy14" layoutX="219.0" layoutY="483.0" prefHeight="30.0" prefWidth="101.0" textFill="WHITE">
-                           <font>
-                              <Font name="Bookman Old Style" size="18.0" />
-                           </font></Label>
-                        <Label fx:id="buy15" layoutX="219.0" layoutY="512.0" prefHeight="30.0" prefWidth="101.0" textFill="WHITE">
-                           <font>
-                              <Font name="Bookman Old Style" size="18.0" />
-                           </font></Label>
-                        <Label fx:id="buy16" layoutX="219.0" layoutY="542.0" prefHeight="30.0" prefWidth="101.0" textFill="WHITE">
-                           <font>
-                              <Font name="Bookman Old Style" size="18.0" />
-                           </font></Label>
-                        <Label fx:id="buy17" layoutX="219.0" layoutY="572.0" prefHeight="30.0" prefWidth="101.0" textFill="WHITE">
-                           <font>
-                              <Font name="Bookman Old Style" size="18.0" />
-                           </font></Label>
-                        <Label fx:id="buy18" layoutX="219.0" layoutY="602.0" prefHeight="30.0" prefWidth="101.0" textFill="#fffbfb">
-                           <font>
-                              <Font name="Bookman Old Style" size="18.0" />
-                           </font></Label>
-                        <Label fx:id="buy19" layoutX="219.0" layoutY="632.0" prefHeight="30.0" prefWidth="101.0" textFill="WHITE">
-                           <font>
-                              <Font name="Bookman Old Style" size="18.0" />
-                           </font></Label>
-                        <Label fx:id="price1" layoutX="64.0" layoutY="339.0" text="Real-time price: " textFill="#ffe4e3">
-                           <font>
-                              <Font name="Gloucester MT Extra Condensed" size="30.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="buy1" layoutX="14.0" layoutY="392.0" prefHeight="30.0" prefWidth="306.0" style="-fx-background-color: #ffa3a6;" visible="false" />
-                        <Label fx:id="buy13" layoutX="219.0" layoutY="452.0" prefHeight="30.0" prefWidth="101.0" textFill="WHITE">
-                           <font>
-                              <Font name="Bookman Old Style" size="18.0" />
-                           </font></Label>
+                                <Label fx:id="sell11" layoutX="219.0" layoutY="52.0" prefHeight="30.0" prefWidth="101.0" textFill="#f7f7f7">
+                                    <font>
+                                        <Font name="Bookman Old Style" size="18.0" />
+                                    </font></Label>
+                                <Label fx:id="sell12" layoutX="219.0" layoutY="82.0" prefHeight="30.0" prefWidth="101.0" textFill="WHITE" AnchorPane.leftAnchor="219.0">
+                                    <font>
+                                        <Font name="Bookman Old Style" size="18.0" />
+                                    </font></Label>
+                                <Label fx:id="sell13" layoutX="219.0" layoutY="112.0" prefHeight="30.0" prefWidth="101.0" textFill="#fdf9f9" AnchorPane.leftAnchor="219.0">
+                                    <font>
+                                        <Font name="Bookman Old Style" size="18.0" />
+                                    </font></Label>
+                                <Label fx:id="sell14" layoutX="219.0" layoutY="142.0" prefHeight="30.0" prefWidth="101.0" textFill="WHITE" AnchorPane.leftAnchor="219.0">
+                                    <font>
+                                        <Font name="Bookman Old Style" size="18.0" />
+                                    </font></Label>
+                                <Label fx:id="sell15" layoutX="219.0" layoutY="173.0" prefHeight="30.0" prefWidth="101.0" textFill="#f8f6f6">
+                                    <font>
+                                        <Font name="Bookman Old Style" size="18.0" />
+                                    </font></Label>
+                                <Label fx:id="sell16" layoutX="219.0" layoutY="202.0" prefHeight="30.0" prefWidth="101.0" textFill="#f5f3f3">
+                                    <font>
+                                        <Font name="Bookman Old Style" size="18.0" />
+                                    </font></Label>
+                                <Label fx:id="sell17" layoutX="219.0" layoutY="232.0" prefHeight="30.0" prefWidth="101.0" textFill="#f5f0f0">
+                                    <font>
+                                        <Font name="Bookman Old Style" size="18.0" />
+                                    </font></Label>
+                                <Label fx:id="sell18" layoutX="219.0" layoutY="262.0" prefHeight="30.0" prefWidth="101.0" textFill="#fcf5f5">
+                                    <font>
+                                        <Font name="Bookman Old Style" size="18.0" />
+                                    </font></Label>
+                                <Label fx:id="sell19" layoutX="219.0" layoutY="292.0" prefHeight="30.0" prefWidth="101.0" textFill="WHITE">
+                                    <font>
+                                        <Font name="Bookman Old Style" size="18.0" />
+                                    </font></Label>
+                                <Label fx:id="buy11" layoutX="219.0" layoutY="392.0" prefHeight="30.0" prefWidth="101.0" textFill="#fffdfd">
+                                    <font>
+                                        <Font name="Bookman Old Style" size="18.0" />
+                                    </font></Label>
+                                <Label fx:id="buy12" layoutX="219.0" layoutY="422.0" prefHeight="30.0" prefWidth="101.0" textFill="WHITE">
+                                    <font>
+                                        <Font name="Bookman Old Style" size="18.0" />
+                                    </font></Label>
+                                <Label fx:id="buy14" layoutX="219.0" layoutY="483.0" prefHeight="30.0" prefWidth="101.0" textFill="WHITE">
+                                    <font>
+                                        <Font name="Bookman Old Style" size="18.0" />
+                                    </font></Label>
+                                <Label fx:id="buy15" layoutX="219.0" layoutY="512.0" prefHeight="30.0" prefWidth="101.0" textFill="WHITE">
+                                    <font>
+                                        <Font name="Bookman Old Style" size="18.0" />
+                                    </font></Label>
+                                <Label fx:id="buy16" layoutX="219.0" layoutY="542.0" prefHeight="30.0" prefWidth="101.0" textFill="WHITE">
+                                    <font>
+                                        <Font name="Bookman Old Style" size="18.0" />
+                                    </font></Label>
+                                <Label fx:id="buy17" layoutX="219.0" layoutY="572.0" prefHeight="30.0" prefWidth="101.0" textFill="WHITE">
+                                    <font>
+                                        <Font name="Bookman Old Style" size="18.0" />
+                                    </font></Label>
+                                <Label fx:id="buy18" layoutX="219.0" layoutY="602.0" prefHeight="30.0" prefWidth="101.0" textFill="#fffbfb">
+                                    <font>
+                                        <Font name="Bookman Old Style" size="18.0" />
+                                    </font></Label>
+                                <Label fx:id="buy19" layoutX="219.0" layoutY="632.0" prefHeight="30.0" prefWidth="101.0" textFill="WHITE">
+                                    <font>
+                                        <Font name="Bookman Old Style" size="18.0" />
+                                    </font></Label>
+                                <Label fx:id="price1" layoutX="38.0" layoutY="340.0" text="Real-time price: " textFill="#ffe4e3">
+                                    <font>
+                                        <Font name="Arial Narrow Bold" size="26.0" />
+                                    </font>
+                                </Label>
+                                <Label fx:id="buy1" layoutX="14.0" layoutY="392.0" prefHeight="30.0" prefWidth="306.0" style="-fx-background-color: #ffa3a6;" visible="false" />
+                                <Label fx:id="buy13" layoutX="219.0" layoutY="452.0" prefHeight="30.0" prefWidth="101.0" textFill="WHITE">
+                                    <font>
+                                        <Font name="Bookman Old Style" size="18.0" />
+                                    </font></Label>
                             </children>
                         </AnchorPane>
                         <AnchorPane layoutX="5.0" layoutY="459.0" prefHeight="349.0" prefWidth="244.0" style="-fx-background-color: #013b46; -fx-background-radius: 20;">
                             <children>
-                                <Label layoutX="23.0" layoutY="14.0" prefHeight="31.0" prefWidth="199.0" style="-fx-background-color: C7FFF9;" text="Most Traded Currencies" textAlignment="CENTER">
+                                <Label alignment="CENTER" layoutX="3.0" layoutY="14.0" prefHeight="31.0" prefWidth="239.0" style="-fx-background-color: C7FFF9;" text="Most Traded Currencies" textAlignment="CENTER">
                                     <font>
-                                        <Font name="Centaur" size="22.0" />
+                                        <Font name="Corsiva Hebrew" size="22.0" />
                                     </font>
                                 </Label>
                                 <Label layoutX="59.0" layoutY="45.0" style="-fx-background-color: C7FFF9;" text=" in the Last 24 Hours">
                                     <font>
-                                        <Font name="Centaur" size="16.0" />
+                                        <Font name="Corsiva Hebrew" size="15.0" />
                                     </font>
                                 </Label>
                                 <ImageView fx:id="CurrencyPicture" fitHeight="101.0" fitWidth="112.0" layoutX="14.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true" />
-                                <Label layoutX="162.0" layoutY="94.0" text="Name" textFill="WHITE">
+                                <Label layoutX="148.0" layoutY="89.0" text="Name" textFill="WHITE">
                                     <font>
-                                        <Font name="Gloucester MT Extra Condensed" size="23.0" />
+                                        <Font name="Bangla MN" size="23.0" />
                                     </font>
                                 </Label>
-                                <Label layoutX="13.0" layoutY="234.0" text="The Highest price :" textFill="#fffdfd">
+                                <Label layoutX="10.0" layoutY="229.0" prefHeight="33.0" prefWidth="163.0" text="The Highest price :" textFill="#fffdfd">
                                     <font>
-                                        <Font name="Gloucester MT Extra Condensed" size="19.0" />
+                                        <Font name="Kailasa Bold" size="17.0" />
                                     </font>
                                 </Label>
                                 <Label layoutX="10.0" layoutY="279.0" text="The Lowest price :" textFill="#fffdfd">
                                     <font>
-                                        <Font name="Gloucester MT Extra Condensed" size="19.0" />
+                                        <Font name="Kailasa Bold" size="17.0" />
                                     </font>
                                 </Label>
-                                <Label fx:id="highestPrice" layoutX="163.0" layoutY="229.0" text="Label" textFill="#ffd9d9">
+                                <Label fx:id="highestPrice" layoutX="173.0" layoutY="229.0" prefHeight="33.0" prefWidth="71.0" textFill="#ffd9d9">
                                     <font>
-                                        <Font name="Gill Sans MT Condensed" size="27.0" />
+                                        <Font size="22.0" />
                                     </font>
                                 </Label>
-                                <Label fx:id="lowestPrice" layoutX="162.0" layoutY="273.0" text="Label" textFill="#ffd9d9">
+                                <Label fx:id="lowestPrice" layoutX="173.0" layoutY="280.0" prefHeight="28.0" prefWidth="77.0" textFill="#ffd9d9">
                                     <font>
-                                        <Font name="Gill Sans MT Condensed" size="28.0" />
+                                        <Font size="22.0" />
                                     </font>
                                 </Label>
-                        <Label fx:id="nameCurrency" layoutX="153.0" layoutY="139.0" text="Label" textFill="#dbffdc">
-                           <font>
-                              <Font name="Gill Sans MT Condensed" size="40.0" />
-                           </font>
-                        </Label>
+                                <Label fx:id="nameCurrency" layoutX="138.0" layoutY="134.0" textFill="#dbffdc">
+                                    <font>
+                                        <Font name="Chalkboard" size="38.0" />
+                                    </font>
+                                </Label>
                             </children></AnchorPane>
-                        <AnchorPane layoutX="8.0" layoutY="823.0" prefHeight="410.0" prefWidth="1045.0" style="-fx-background-color: #013b46; -fx-background-radius: 20;">
+                        <AnchorPane layoutX="8.0" layoutY="823.0" prefHeight="443.0" prefWidth="1045.0" style="-fx-background-color: #013b46; -fx-background-radius: 20;">
                             <children>
                                 <TableView fx:id="TradeTable" layoutX="70.0" layoutY="98.0" prefHeight="320.0" prefWidth="903.0" style="-fx-background-color: F2F3E6; -fx-border-color: White;" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="70.0">
                                     <columns>
@@ -208,9 +210,9 @@
                                         <TableColumn fx:id="percentageColumn" prefWidth="170.5" text="Percentage of completion" />
                                     </columns>
                                 </TableView>
-                                <Button fx:id="Open_Order" layoutX="392.0" layoutY="14.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="186.0" style="-fx-background-color: #013b46;" text="Open Orders">
+                                <Button fx:id="Open_Order" layoutX="454.0" layoutY="14.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="186.0" style="-fx-background-color: #013b46;" text="Open Orders">
                                     <font>
-                                        <Font name="Britannic Bold" size="18.0" />
+                                        <Font name="Avenir Black" size="24.0" />
                                     </font>
                                     <textFill>
                                         <LinearGradient endX="1.0" endY="1.0">
@@ -229,9 +231,9 @@
                                         </LinearGradient>
                                     </textFill>
                                 </Button>
-                                <Button fx:id="Completed_Order" layoutX="126.0" layoutY="14.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="186.0" style="-fx-background-color: #013b46;" text="Completed Orders">
+                                <Button fx:id="Completed_Order" layoutX="70.0" layoutY="14.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="264.0" style="-fx-background-color: #013b46;" text="Completed Orders">
                                     <font>
-                                        <Font name="Britannic Bold" size="18.0" />
+                                        <Font name="Avenir Black" size="24.0" />
                                     </font>
                                     <textFill>
                                         <LinearGradient endX="1.0" endY="1.0">
@@ -250,9 +252,9 @@
                                         </LinearGradient>
                                     </textFill>
                                 </Button>
-                                <Button fx:id="All_Order" layoutX="688.0" layoutY="14.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="186.0" style="-fx-background-color: #013b46;" text="All Orders">
+                                <Button fx:id="All_Order" layoutX="770.0" layoutY="14.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="186.0" style="-fx-background-color: #013b46;" text="All Orders">
                                     <font>
-                                        <Font name="Britannic Bold" size="18.0" />
+                                        <Font name="Avenir Black" size="24.0" />
                                     </font>
                                     <textFill>
                                         <LinearGradient endX="1.0" endY="1.0">
@@ -271,8 +273,8 @@
                                         </LinearGradient>
                                     </textFill>
                                 </Button>
-                                <Line fx:id="All_Orders" endX="75.0" layoutX="779.0" layoutY="46.0" startX="-72.0" stroke="#fdedec" />
-                                <Line fx:id="Completed_Orders" endX="78.5" layoutX="223.0" layoutY="47.0" startX="-86.5">
+                                <Line fx:id="All_Orders" endX="81.0" layoutX="861.0" layoutY="63.0" startX="-77.0" stroke="#fdedec" />
+                                <Line fx:id="Completed_Orders" endX="161.0" layoutX="167.0" layoutY="65.0" startX="-86.5">
                                     <stroke>
                                         <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
                                             <stops>
@@ -290,7 +292,7 @@
                                         </RadialGradient>
                                     </stroke>
                                 </Line>
-                                <Line fx:id="Open_Orders" endX="75.0" layoutX="483.0" layoutY="46.0" startX="-72.0">
+                                <Line fx:id="Open_Orders" endX="89.0" layoutX="545.0" layoutY="64.0" startX="-81.0">
                                     <stroke>
                                         <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
                                             <stops>
@@ -313,24 +315,24 @@
                         <AnchorPane layoutX="261.0" layoutY="108.0" prefHeight="702.0" prefWidth="445.0" style="-fx-background-color: #013b46; -fx-background-radius: 20;">
                             <children>
                                 <Button fx:id="buy" layoutX="100.0" layoutY="29.0" mnemonicParsing="false" onAction="#onBuyClicked" prefHeight="31.0" prefWidth="112.0" style="-fx-background-color: c991d8;" text="BUY" textFill="#001c9a">
-                           <font>
-                              <Font name="Britannic Bold" size="27.0" />
-                           </font>
-                        </Button>
+                                    <font>
+                                        <Font name="System Bold" size="27.0" />
+                                    </font>
+                                </Button>
                                 <Button fx:id="sell" layoutX="239.0" layoutY="29.0" mnemonicParsing="false" onAction="#onSellClicked" prefHeight="31.0" prefWidth="104.0" style="-fx-background-color: #FDEDEC;" text="SELL" textFill="#be008e" AnchorPane.rightAnchor="102.0">
-                           <font>
-                              <Font name="Britannic Bold" size="27.0" />
-                           </font>
-                        </Button>
+                                    <font>
+                                        <Font name="System Bold" size="27.0" />
+                                    </font>
+                                </Button>
                                 <Pane layoutX="35.0" layoutY="100.0" prefHeight="83.0" prefWidth="368.0" style="-fx-background-color: c991d8; -fx-background-radius: 10;" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0">
                                     <children>
                                         <TextField layoutX="9.0" layoutY="12.0" prefHeight="59.0" prefWidth="347.0" style="-fx-background-color: fff7fd;" />
-                                        <Label layoutX="24.0" layoutY="27.0" text="Select Currency :">
+                                        <Label layoutX="14.0" layoutY="26.0" prefHeight="32.0" prefWidth="197.0" text="Select Currency :">
                                             <font>
-                                                <Font name="Centaur" size="24.0" />
+                                                <Font name="Oriya MN" size="21.0" />
                                             </font>
                                         </Label>
-                              <ChoiceBox fx:id="SelectCurrency" layoutX="217.0" layoutY="29.0" prefHeight="25.0" prefWidth="122.0" />
+                                        <ChoiceBox fx:id="SelectCurrency" layoutX="217.0" layoutY="29.0" prefHeight="25.0" prefWidth="122.0" />
                                     </children>
                                 </Pane>
                                 <Pane layoutX="35.0" layoutY="196.0" prefHeight="85.0" prefWidth="320.0" style="-fx-background-color: c991d8; -fx-background-radius: 10;" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0">
@@ -344,7 +346,7 @@
                                                 </ImageView>
                                                 <Label fx:id="USD_amount" ellipsisString="scc" layoutX="60.0" layoutY="3.0" prefHeight="55.0" prefWidth="227.0" style="-fx-background-radius: 10;" text="                      USD" textOverrun="LEADING_ELLIPSIS">
                                                     <font>
-                                                        <Font name="Book Antiqua" size="18.0" />
+                                                        <Font name="Oriya MN" size="19.0" />
                                                     </font>
                                                 </Label>
                                                 <ImageView fx:id="minus" fitHeight="44.0" fitWidth="210.0" layoutX="288.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
@@ -367,10 +369,10 @@
                                                 </TextField>
                                                 <Label layoutX="14.0" layoutY="8.0" prefHeight="49.0" prefWidth="110.0" text="Amount :">
                                                     <font>
-                                                        <Font name="Centaur" size="24.0" />
+                                                        <Font name="Oriya MN" size="24.0" />
                                                     </font>
                                                 </Label>
-                                    <Label fx:id="validAmount" layoutX="14.0" layoutY="3.0" text="Please enter a valid amount." textFill="RED" visible="false" />
+                                                <Label fx:id="validAmount" layoutX="14.0" layoutY="3.0" text="Please enter a valid amount." textFill="RED" visible="false" />
                                             </children>
                                         </Pane>
                                     </children>
@@ -381,7 +383,7 @@
                                 <Label fx:id="percent50" layoutX="141.0" layoutY="398.0" onDragDetected="#onButton50Clicked" prefHeight="18.0" prefWidth="69.0" style="-fx-background-color: #FDEDEC;" textFill="#c1bbbb" />
                                 <Label fx:id="percent251" layoutX="71.0" layoutY="398.0" onDragDetected="#onButton25Clicked" text="25%" textFill="#6a5b5b">
                                     <font>
-                                        <Font name="Bauhaus 93" size="14.0" />
+                                        <Font name="Avenir Next Condensed Demi Bold" size="14.0" />
                                     </font>
                                 </Label>
                                 <Label fx:id="percent101" layoutX="337.0" layoutY="398.0" onDragDetected="#onButton100Clicked" text="100%" textFill="#6a5b5b">
@@ -403,14 +405,14 @@
                                     <children>
                                         <Pane layoutX="11.0" layoutY="9.0" prefHeight="64.0" prefWidth="344.0" style="-fx-background-color: fff7fd;">
                                             <children>
-                                                <Label layoutX="14.0" layoutY="8.0" prefHeight="49.0" prefWidth="107.0" text="Total Sum :">
+                                                <Label layoutX="14.0" layoutY="8.0" prefHeight="49.0" prefWidth="128.0" text="Total Sum :">
                                                     <font>
-                                                        <Font name="Centaur" size="24.0" />
+                                                        <Font name="Oriya MN" size="24.0" />
                                                     </font>
                                                 </Label>
                                                 <Label fx:id="TotalSum" layoutX="173.0" layoutY="8.0" prefHeight="47.0" prefWidth="157.0" style="-fx-background-color: f2eeee; -fx-background-radius: 5;" text="         USD" textAlignment="CENTER" textFill="#00000092">
                                                     <font>
-                                                        <Font name="B Nazanin" size="26.0" />
+                                                        <Font name="Avenir Roman" size="26.0" />
                                                     </font>
                                                 </Label>
                                             </children>
@@ -427,7 +429,7 @@
                                         <Font name="Baskerville Old Face" size="20.0" />
                                     </font>
                                 </Label>
-                                <Button fx:id="selLButton" layoutX="128.0" layoutY="602.0" mnemonicParsing="false" onAction="#onSellButton" opacity="0.65" prefHeight="66.0" prefWidth="199.0" text="Sell" visible="false" AnchorPane.leftAnchor="128.0" AnchorPane.rightAnchor="118.0" AnchorPane.topAnchor="602.0">
+                                <Button fx:id="selLButton" layoutX="128.0" layoutY="599.0" mnemonicParsing="false" onAction="#onSellButton" opacity="0.65" prefHeight="77.0" prefWidth="199.0" text="Sell" visible="false" AnchorPane.leftAnchor="128.0" AnchorPane.rightAnchor="118.0" AnchorPane.topAnchor="599.0">
                                     <font>
                                         <Font name="Gloucester MT Extra Condensed" size="36.0" />
                                     </font>
@@ -448,39 +450,40 @@
                                         </RadialGradient>
                                     </textFill>
                                 </Button>
-                        <Button fx:id="buyButton" layoutX="128.0" layoutY="602.0" mnemonicParsing="false" onAction="#onBuyButton" opacity="0.65" prefHeight="66.0" prefWidth="199.0" text="Buy">
-                           <font>
-                              <Font name="Gloucester MT Extra Condensed" size="36.0" />
-                           </font>
-                           <textFill>
-                              <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
-                                 <stops>
-                                    <Stop>
-                                       <color>
-                                          <Color red="0.659509003162384" green="0.23720760643482208" blue="0.7763158082962036" />
-                                       </color>
-                                    </Stop>
-                                    <Stop offset="1.0">
-                                       <color>
-                                          <Color red="0.9620370268821716" green="0.6203703880310059" blue="1.0" />
-                                       </color>
-                                    </Stop>
-                                 </stops>
-                              </RadialGradient>
-                           </textFill>
-                        </Button>
-                        <Label fx:id="balance" layoutX="153.0" layoutY="585.0" text="Your balance is insufficient." textFill="RED" visible="false">
-                           <font>
-                              <Font name="Bauhaus 93" size="12.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="50.0" layoutY="380.0" />
-                        <Label fx:id="percentBalance" layoutX="126.0" layoutY="380.0" text="Your balance of this currency is zero." textFill="RED" visible="false" />
-                        <Label fx:id="recordExchange" layoutX="64.0" layoutY="7.0" text="Your requested transaction has been recorded." textFill="#c1ffce" visible="false">
-                           <font>
-                              <Font name="Bookman Old Style Bold" size="13.0" />
-                           </font>
-                        </Label>
+                                <Button fx:id="buyButton" layoutX="128.0" layoutY="595.0" mnemonicParsing="false" onAction="#onBuyButton" opacity="0.65" prefHeight="50.0" prefWidth="199.0" style="-fx-background-radius: 30;" text="Buy">
+                                    <font>
+                                        <Font name="Luminari" size="36.0" />
+                                    </font>
+                                    <textFill>
+                                        <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                                            <stops>
+                                                <Stop>
+                                                    <color>
+                                                        <Color red="0.659509003162384" green="0.23720760643482208" blue="0.7763158082962036" />
+                                                    </color>
+                                                </Stop>
+                                                <Stop offset="1.0">
+                                                    <color>
+                                                        <Color red="0.9620370268821716" green="0.6203703880310059" blue="1.0" />
+                                                    </color>
+                                                </Stop>
+                                            </stops>
+                                        </RadialGradient>
+                                    </textFill>
+                                </Button>
+                                <Label fx:id="balance" layoutX="153.0" layoutY="585.0" text="Your balance is insufficient." textFill="RED" visible="false">
+                                    <font>
+                                        <Font name="Bauhaus 93" size="12.0" />
+                                    </font>
+                                </Label>
+                                <Label layoutX="50.0" layoutY="380.0" />
+                                <Label fx:id="percentBalance" layoutX="126.0" layoutY="380.0" text="Your balance of this currency is zero." textFill="RED" visible="false" />
+                                <Label fx:id="recordExchange" layoutX="64.0" layoutY="7.0" text="Your requested transaction has been recorded." textFill="#c1ffce" visible="false">
+                                    <font>
+                                        <Font name="Bookman Old Style Bold" size="13.0" />
+                                    </font>
+                                </Label>
+                                <Label fx:id="closeStore" layoutX="160.0" layoutY="584.0" text="Admin closed the Market." textFill="RED" visible="false" />
                             </children>
                         </AnchorPane>
                         <AnchorPane layoutX="5.0" layoutY="109.0" prefHeight="338.0" prefWidth="245.0" style="-fx-background-color: #013b46; -fx-background-radius: 20;">
@@ -502,43 +505,16 @@
                 </AnchorPane>
             </content>
         </ScrollPane>
-        <Pane layoutY="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="101.0" prefWidth="1063.0" style="-fx-background-color: #013b46; -fx-border-radius: 40;">
+        <Pane fx:id="slider" layoutY="99.0" prefHeight="721.0" prefWidth="264.0" style="-fx-background-color: #004957;">
             <children>
-                <ImageView fx:id="Menu" fitHeight="77.0" fitWidth="77.0" layoutX="14.0" layoutY="12.0" onMouseClicked="#onMenuIconClicked" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../icons/Menu.png" />
-                    </image>
-                </ImageView>
-                <ImageView fitHeight="77.0" fitWidth="94.0" layoutX="829.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../icons/message.png" />
-                    </image>
-                </ImageView>
-            </children>
-        </Pane>
-        <VBox fx:id="slider" layoutY="99.0" prefHeight="717.0" prefWidth="270.0" style="-fx-background-color: #004957;" visible="false">
-            <children>
-                <Label layoutX="3.0" prefHeight="20.0" prefWidth="227.0" style="-fx-background-color: #004957;" />
-                <Label alignment="TOP_CENTER" prefHeight="671.0" prefWidth="246.0" style="-fx-background-color: white;">
+                <Label alignment="TOP_CENTER" layoutY="20.0" prefHeight="671.0" prefWidth="246.0" style="-fx-background-color: white;">
                     <graphic>
-                        <Label alignment="TOP_RIGHT" contentDisplay="TOP" prefHeight="150.0" prefWidth="246.0">
+                        <Label alignment="TOP_RIGHT" contentDisplay="TOP" layoutY="20.0" prefHeight="150.0" prefWidth="246.0">
                             <graphic>
                                 <BorderPane prefHeight="140.0" prefWidth="246.0" style="-fx-background-color: #005669;">
-                                    <right>
-                                        <ImageView fx:id="CloseMenu" fitHeight="47.0" fitWidth="71.0" onMouseClicked="#onCloseMenuClicked" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER_RIGHT">
-                                            <image>
-                                                <Image url="@../icons/MenuBack.png" />
-                                            </image>
-                                        </ImageView>
-                                    </right>
                                     <bottom>
-                                        <VBox prefHeight="604.0" prefWidth="246.0" BorderPane.alignment="CENTER">
+                                        <VBox prefHeight="515.0" prefWidth="246.0" BorderPane.alignment="CENTER">
                                             <children>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="45.0" prefWidth="246.0" style="-fx-background-color: F2F3E6;" text="Menu" textFill="#005669">
-                                                    <font>
-                                                        <Font name="Avenir Black Oblique" size="26.0" />
-                                                    </font>
-                                                </Label>
                                                 <Button fx:id="Home" mnemonicParsing="false" onAction="#onHomeClicked" prefHeight="70.0" prefWidth="246.0" style="-fx-background-color: #005669;" text="Home" textFill="WHITE">
                                                     <graphic>
                                                         <Label prefHeight="37.0" prefWidth="64.0">
@@ -555,7 +531,7 @@
                                                         <Font size="20.0" />
                                                     </font>
                                                 </Button>
-                                                <Button fx:id="Wallet" mnemonicParsing="false" onAction="#onWalletClicked" prefHeight="70.0" prefWidth="246.0" style="-fx-background-color: #005669;" text="Wallet" textFill="#fcfcfc">
+                                                <Button fx:id="Wallet1" mnemonicParsing="false" onAction="#onWalletClicked" prefHeight="70.0" prefWidth="246.0" style="-fx-background-color: #005669;" text="Wallet" textFill="#fcfcfc">
                                                     <graphic>
                                                         <Label prefHeight="39.0" prefWidth="61.0">
                                                             <graphic>
@@ -624,9 +600,9 @@
                                                         <Font size="20.0" />
                                                     </font>
                                                     <graphic>
-                                                        <Label prefHeight="46.0" prefWidth="54.0">
+                                                        <Label prefHeight="46.0" prefWidth="63.0">
                                                             <graphic>
-                                                                <ImageView fitHeight="42.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
+                                                                <ImageView fitHeight="43.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
                                                                     <image>
                                                                         <Image url="@../icons/icons8-history-100.png" />
                                                                     </image>
@@ -640,9 +616,9 @@
                                                         <Font size="25.0" />
                                                     </font>
                                                     <graphic>
-                                                        <Label prefHeight="56.0" prefWidth="81.0">
+                                                        <Label prefHeight="56.0" prefWidth="76.0">
                                                             <graphic>
-                                                                <ImageView fitHeight="43.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                                                                <ImageView fitHeight="43.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true">
                                                                     <image>
                                                                         <Image url="@../icons/exit.png" />
                                                                     </image>
@@ -654,12 +630,139 @@
                                             </children>
                                         </VBox>
                                     </bottom>
+                                    <top>
+                                        <BorderPane prefHeight="129.0" prefWidth="246.0" BorderPane.alignment="CENTER">
+                                            <left>
+                                                <ImageView fitHeight="108.0" fitWidth="164.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                                                    <image>
+                                                        <Image url="@../icons/programIcon.png" />
+                                                    </image>
+                                                </ImageView>
+                                            </left>
+                                            <center>
+                                                <Label prefHeight="12.0" prefWidth="121.0" text="Bit FUM" textFill="#ffffb0" BorderPane.alignment="CENTER">
+                                                    <font>
+                                                        <Font name="Baskerville Bold Italic" size="24.0" />
+                                                    </font>
+                                                    <effect>
+                                                        <SepiaTone />
+                                                    </effect>
+                                                </Label>
+                                            </center>
+                                            <bottom>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="246.0" style="-fx-background-color: F2F3E6;" text="Menu" textFill="#005669" BorderPane.alignment="CENTER">
+                                                    <font>
+                                                        <Font name="Avenir Black Oblique" size="26.0" />
+                                                    </font>
+                                                </Label>
+                                            </bottom>
+                                        </BorderPane>
+                                    </top>
                                 </BorderPane>
                             </graphic>
                         </Label>
                     </graphic>
                 </Label>
+                <ImageView fx:id="CloseMenu" fitHeight="25.0" fitWidth="25.0" layoutX="243.0" layoutY="8.0" onMouseClicked="#onCloseMenuClicked" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../icons/MenuBack.png" />
+                    </image>
+                </ImageView>
             </children>
-        </VBox>
+        </Pane>
+        <Pane fx:id="headerSlider" layoutX="540.0" prefHeight="300.0" prefWidth="278.0" style="-fx-background-color: white;">
+            <children>
+                <Pane fx:id="datePane" prefHeight="300.0" prefWidth="278.0">
+                    <children>
+                        <Label fx:id="currentDate" alignment="CENTER" layoutY="100.0" prefHeight="40.0" prefWidth="278.0" style="-fx-background-color: #fcd3ed;" text="ggg">
+                            <font>
+                                <Font name="Corsiva Hebrew Bold" size="19.0" />
+                            </font>
+                        </Label>
+                        <MediaView fx:id="calenderView" fitHeight="100.0" fitWidth="100.0" layoutY="171.0" />
+                        <Label fx:id="da10" alignment="CENTER" layoutX="221.0" layoutY="182.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="10" />
+                        <Label fx:id="da5" alignment="CENTER" layoutX="107.0" layoutY="182.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="5" />
+                        <Label fx:id="da6" alignment="CENTER" layoutX="129.0" layoutY="182.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="6" />
+                        <Label fx:id="da7" alignment="CENTER" layoutX="152.0" layoutY="182.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="7" />
+                        <Label fx:id="da8" alignment="CENTER" layoutX="175.0" layoutY="182.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="8" />
+                        <Label fx:id="da9" alignment="CENTER" layoutX="198.0" layoutY="182.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="9" />
+                        <Label fx:id="da13" alignment="CENTER" layoutX="129.0" layoutY="211.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="13" />
+                        <Label fx:id="da12" alignment="CENTER" layoutX="107.0" layoutY="211.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="12" />
+                        <Label fx:id="da17" alignment="CENTER" layoutX="221.0" layoutY="211.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="17" />
+                        <Label fx:id="da16" alignment="CENTER" layoutX="198.0" layoutY="211.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="16" />
+                        <Label fx:id="da15" alignment="CENTER" layoutX="175.0" layoutY="211.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="15" />
+                        <Label fx:id="da14" alignment="CENTER" layoutX="152.0" layoutY="211.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="14" />
+                        <Label fx:id="da31" alignment="CENTER" layoutX="221.0" layoutY="269.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="31" />
+                        <Label fx:id="da26" alignment="CENTER" layoutX="106.0" layoutY="269.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="26" />
+                        <Label fx:id="da27" alignment="CENTER" layoutX="129.0" layoutY="269.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="27" />
+                        <Label fx:id="da28" alignment="CENTER" layoutX="152.0" layoutY="269.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="28" />
+                        <Label fx:id="da29" alignment="CENTER" layoutX="175.0" layoutY="269.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="29" />
+                        <Label fx:id="da30" alignment="CENTER" layoutX="198.0" layoutY="269.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="30" />
+                        <Label fx:id="da20" alignment="CENTER" layoutX="129.0" layoutY="241.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="20" />
+                        <Label fx:id="da19" alignment="CENTER" layoutX="107.0" layoutY="241.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="19" />
+                        <Label fx:id="da24" alignment="CENTER" layoutX="221.0" layoutY="241.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="24" />
+                        <Label fx:id="da23" alignment="CENTER" layoutX="198.0" layoutY="241.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="23" />
+                        <Label fx:id="da22" alignment="CENTER" layoutX="175.0" layoutY="241.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="22" />
+                        <Label fx:id="da21" alignment="CENTER" layoutX="152.0" layoutY="241.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="21" />
+                        <Label fx:id="da3" alignment="CENTER" layoutX="221.0" layoutY="156.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="3" />
+                        <Label fx:id="da2" alignment="CENTER" layoutX="198.0" layoutY="156.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="2" />
+                        <Label fx:id="da1" alignment="CENTER" layoutX="175.0" layoutY="156.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="1" />
+                        <Label fx:id="da18" alignment="CENTER" layoutX="244.0" layoutY="211.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="18" />
+                        <Label fx:id="da11" alignment="CENTER" layoutX="244.0" layoutY="182.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="11" />
+                        <Label fx:id="da4" alignment="CENTER" layoutX="244.0" layoutY="156.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="4" />
+                        <Label fx:id="da25" alignment="CENTER" layoutX="244.0" layoutY="241.0" prefHeight="20.0" prefWidth="25.0" style="-fx-background-radius: 60;" text="25" />
+                        <Label fx:id="selectedCurrency" layoutX="22.0" layoutY="243.0" text="Label" visible="false">
+                            <font>
+                                <Font size="13.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </Pane>
+            </children>
+        </Pane>
+        <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="102.0" prefWidth="1077.0" style="-fx-background-color: #013b46;">
+            <children>
+                <ImageView fx:id="Menu" fitHeight="77.0" fitWidth="77.0" layoutX="14.0" layoutY="12.0" onMouseClicked="#onMenuIconClicked" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../icons/homeMenu.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="50.0" fitWidth="53.0" layoutX="712.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../icons/messageIcon.png" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="ProfileIcon" fitHeight="62.0" fitWidth="63.0" layoutX="844.0" layoutY="19.0" onMouseClicked="#onProfile" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../icons/profile.png" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="calender" fitHeight="41.0" fitWidth="53.0" layoutX="647.0" layoutY="30.0" onMouseClicked="#onCalender" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../icons/date.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="574.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../icons/bell.png" />
+                    </image>
+                </ImageView>
+                <Label fx:id="PageName" layoutX="110.0" layoutY="31.0" prefHeight="34.0" prefWidth="246.0" text="Exchange Page" textFill="WHITE">
+                    <font>
+                        <Font name="Copperplate Bold" size="27.0" />
+                    </font>
+                </Label>
+                <Label fx:id="UserName" layoutX="918.0" layoutY="39.0" prefHeight="17.0" prefWidth="85.0" text="User" textFill="WHITE">
+                    <font>
+                        <Font name="Big Caslon Medium" size="16.0" />
+                    </font>
+                </Label>
+                <ImageView fitHeight="34.0" fitWidth="32.0" layoutX="1003.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../icons/refresh.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </Pane>
     </children>
 </AnchorPane>
