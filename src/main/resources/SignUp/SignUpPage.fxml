@@ -1,0 +1,669 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="1034.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SignUp.SignUpPage">
+    <children>
+        <AnchorPane layoutX="547.0" prefHeight="518.0" prefWidth="493.0" style="-fx-background-color: #662fc4;">
+            <children>
+                <ImageView fitHeight="351.0" fitWidth="375.0" layoutX="126.0" layoutY="131.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../icons/sign.jpg" />
+                    </image>
+                </ImageView>
+                <Label layoutX="226.0" layoutY="426.0" prefHeight="66.0" prefWidth="85.0" text="BitFUM" textFill="#b29807">
+                    <font>
+                        <Font name="Andalus" size="26.0" />
+                    </font>
+                </Label>
+                <Label layoutX="176.0" layoutY="37.0" prefHeight="82.0" prefWidth="185.0" text="Sign Up!" textFill="#c5c2ff">
+                    <font>
+                        <Font name="Andalus" size="51.0" />
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutX="-7.0" prefHeight="518.0" prefWidth="554.0" style="-fx-background-color: #f3edff;">
+            <children>
+                <Circle fx:id="oneCircle1" layoutX="496.0" layoutY="470.0" radius="19.0" stroke="WHITE" strokeType="INSIDE">
+                    <fill>
+                        <RadialGradient centerX="0.5" centerY="0.516548463356974" radius="0.5">
+                            <stops>
+                                <Stop>
+                                    <color>
+                                        <Color red="0.37061402201652527" blue="0.8552631735801697" />
+                                    </color>
+                                </Stop>
+                                <Stop offset="1.0">
+                                    <color>
+                                        <Color red="1.0" green="1.0" blue="1.0" />
+                                    </color>
+                                </Stop>
+                            </stops>
+                        </RadialGradient>
+                    </fill>
+                </Circle>
+                <Label layoutX="490.0" layoutY="456.0" prefHeight="29.0" prefWidth="14.0" text="1" textFill="WHITE">
+                    <font>
+                        <Font name="Algerian" size="23.0" />
+                    </font>
+                </Label>
+                <Circle fx:id="fourCircle1" layoutX="496.0" layoutY="142.0" radius="19.0" stroke="WHITE" strokeType="INSIDE">
+                    <fill>
+                        <RadialGradient centerX="0.5" centerY="0.516548463356974" radius="0.5">
+                            <stops>
+                                <Stop>
+                                    <color>
+                                        <Color red="0.37061402201652527" blue="0.8552631735801697" />
+                                    </color>
+                                </Stop>
+                                <Stop offset="1.0">
+                                    <color>
+                                        <Color red="1.0" green="1.0" blue="1.0" />
+                                    </color>
+                                </Stop>
+                            </stops>
+                        </RadialGradient>
+                    </fill>
+                </Circle>
+                <Circle fx:id="fiveCircle1" layoutX="495.0" layoutY="35.0" radius="19.0" stroke="WHITE" strokeType="INSIDE">
+                    <fill>
+                        <RadialGradient centerX="0.5" centerY="0.516548463356974" radius="0.5">
+                            <stops>
+                                <Stop>
+                                    <color>
+                                        <Color red="0.37061402201652527" blue="0.8552631735801697" />
+                                    </color>
+                                </Stop>
+                                <Stop offset="1.0">
+                                    <color>
+                                        <Color red="1.0" green="1.0" blue="1.0" />
+                                    </color>
+                                </Stop>
+                            </stops>
+                        </RadialGradient>
+                    </fill>
+                </Circle>
+                <Circle fx:id="threeCircle1" layoutX="494.0" layoutY="253.0" radius="19.0" stroke="WHITE" strokeType="INSIDE">
+                    <fill>
+                        <RadialGradient centerX="0.5" centerY="0.516548463356974" radius="0.5">
+                            <stops>
+                                <Stop>
+                                    <color>
+                                        <Color red="0.37061402201652527" blue="0.8552631735801697" />
+                                    </color>
+                                </Stop>
+                                <Stop offset="1.0">
+                                    <color>
+                                        <Color red="1.0" green="1.0" blue="1.0" />
+                                    </color>
+                                </Stop>
+                            </stops>
+                        </RadialGradient>
+                    </fill>
+                </Circle>
+                <Circle fx:id="twoCircle1" layoutX="496.0" layoutY="363.0" radius="19.0" stroke="WHITE" strokeType="INSIDE">
+                    <fill>
+                        <RadialGradient centerX="0.5" centerY="0.516548463356974" radius="0.5">
+                            <stops>
+                                <Stop>
+                                    <color>
+                                        <Color red="0.37061402201652527" blue="0.8552631735801697" />
+                                    </color>
+                                </Stop>
+                                <Stop offset="1.0">
+                                    <color>
+                                        <Color red="1.0" green="1.0" blue="1.0" />
+                                    </color>
+                                </Stop>
+                            </stops>
+                        </RadialGradient>
+                    </fill>
+                </Circle>
+                <Label layoutX="489.0" layoutY="349.0" prefHeight="29.0" prefWidth="14.0" text="2" textFill="WHITE">
+                    <font>
+                        <Font name="Algerian" size="23.0" />
+                    </font>
+                </Label>
+                <Label layoutX="488.0" layoutY="238.0" prefHeight="29.0" prefWidth="14.0" text="3" textFill="WHITE">
+                    <font>
+                        <Font name="Algerian" size="23.0" />
+                    </font>
+                </Label>
+                <Line endX="100.0" endY="11.0" layoutX="395.0" layoutY="111.0" startX="100.0" startY="-56.0">
+                    <stroke>
+                        <LinearGradient endX="1.0" endY="1.0" startX="0.8676122931442081">
+                            <stops>
+                                <Stop>
+                                    <color>
+                                        <Color red="0.37061402201652527" blue="0.8552631735801697" />
+                                    </color>
+                                </Stop>
+                                <Stop offset="1.0">
+                                    <color>
+                                        <Color red="1.0" green="1.0" blue="1.0" />
+                                    </color>
+                                </Stop>
+                            </stops>
+                        </LinearGradient>
+                    </stroke>
+                </Line>
+                <Line endX="101.0" endY="11.0" layoutX="393.0" layoutY="221.0" startX="101.0" startY="-59.0">
+                    <stroke>
+                        <LinearGradient endX="1.0" endY="1.0" startX="0.8676122931442081">
+                            <stops>
+                                <Stop>
+                                    <color>
+                                        <Color red="0.37061402201652527" blue="0.8552631735801697" />
+                                    </color>
+                                </Stop>
+                                <Stop offset="1.0">
+                                    <color>
+                                        <Color red="1.0" green="1.0" blue="1.0" />
+                                    </color>
+                                </Stop>
+                            </stops>
+                        </LinearGradient>
+                    </stroke>
+                </Line>
+                <Line endX="99.0" endY="12.0" layoutX="397.0" layoutY="331.0" startX="99.0" startY="-59.0">
+                    <stroke>
+                        <LinearGradient endX="1.0" endY="1.0" startX="0.8676122931442081">
+                            <stops>
+                                <Stop>
+                                    <color>
+                                        <Color red="0.37061402201652527" blue="0.8552631735801697" />
+                                    </color>
+                                </Stop>
+                                <Stop offset="1.0">
+                                    <color>
+                                        <Color red="1.0" green="1.0" blue="1.0" />
+                                    </color>
+                                </Stop>
+                            </stops>
+                        </LinearGradient>
+                    </stroke>
+                </Line>
+                <Line endX="100.0" endY="11.0" layoutX="396.0" layoutY="439.0" startX="100.0" startY="-56.0">
+                    <stroke>
+                        <LinearGradient endX="1.0" endY="1.0" startX="0.8676122931442081">
+                            <stops>
+                                <Stop>
+                                    <color>
+                                        <Color red="0.37061402201652527" blue="0.8552631735801697" />
+                                    </color>
+                                </Stop>
+                                <Stop offset="1.0">
+                                    <color>
+                                        <Color red="1.0" green="1.0" blue="1.0" />
+                                    </color>
+                                </Stop>
+                            </stops>
+                        </LinearGradient>
+                    </stroke>
+                </Line>
+                <Label layoutX="488.0" layoutY="128.0" prefHeight="29.0" prefWidth="14.0" text="4" textFill="WHITE">
+                    <font>
+                        <Font name="Algerian" size="23.0" />
+                    </font>
+                </Label>
+                <Label layoutX="488.0" layoutY="21.0" prefHeight="29.0" prefWidth="14.0" text="5" textFill="WHITE">
+                    <font>
+                        <Font name="Algerian" size="23.0" />
+                    </font>
+                </Label>
+                <Button fx:id="firstStep" alignment="BOTTOM_CENTER" blendMode="COLOR_BURN" contentDisplay="CENTER" graphicTextGap="10.0" layoutX="221.0" layoutY="391.0" lineSpacing="10.0" mnemonicParsing="false" onAction="#onFirstStep" style="-fx-background-radius: 30; -fx-background-color: #d7b0ff;" text="Next Step" textAlignment="CENTER">
+                    <font>
+                        <Font name="Baskerville Old Face" size="28.0" />
+                    </font>
+                    <effect>
+                        <InnerShadow />
+                    </effect>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                    <textFill>
+                        <RadialGradient centerX="0.5082644628099173" centerY="0.516548463356974" radius="0.5">
+                            <stops>
+                                <Stop>
+                                    <color>
+                                        <Color red="0.7077944874763489" blue="0.8500000238418579" />
+                                    </color>
+                                </Stop>
+                                <Stop offset="1.0">
+                                    <color>
+                                        <Color />
+                                    </color>
+                                </Stop>
+                            </stops>
+                        </RadialGradient>
+                    </textFill>
+                </Button>
+                <Circle fx:id="oneCircle2" layoutX="497.0" layoutY="470.0" radius="19.0" stroke="WHITE" strokeType="INSIDE">
+                    <fill>
+                        <RadialGradient centerX="0.5" centerY="0.516548463356974" radius="0.5">
+                            <stops>
+                                <Stop>
+                                    <color>
+                                        <Color red="0.37061402201652527" blue="0.8552631735801697" />
+                                    </color>
+                                </Stop>
+                                <Stop offset="1.0">
+                                    <color>
+                                        <Color red="0.06841699033975601" green="0.03520955145359039" blue="0.11184210330247879" opacity="0.41999998688697815" />
+                                    </color>
+                                </Stop>
+                            </stops>
+                        </RadialGradient>
+                    </fill>
+                </Circle>
+                <Circle fx:id="twoCircle2" layoutX="496.0" layoutY="363.0" radius="19.0" stroke="WHITE" strokeType="INSIDE" visible="false">
+                    <fill>
+                        <RadialGradient centerX="0.5" centerY="0.516548463356974" radius="0.5">
+                            <stops>
+                                <Stop>
+                                    <color>
+                                        <Color red="0.37061402201652527" blue="0.8552631735801697" />
+                                    </color>
+                                </Stop>
+                                <Stop offset="1.0">
+                                    <color>
+                                        <Color red="0.06841699033975601" green="0.03520955145359039" blue="0.11184210330247879" opacity="0.41999998688697815" />
+                                    </color>
+                                </Stop>
+                            </stops>
+                        </RadialGradient>
+                    </fill>
+                </Circle>
+                <Circle fx:id="threeCircle2" layoutX="495.0" layoutY="253.0" radius="19.0" stroke="WHITE" strokeType="INSIDE" visible="false">
+                    <fill>
+                        <RadialGradient centerX="0.5" centerY="0.516548463356974" radius="0.5">
+                            <stops>
+                                <Stop>
+                                    <color>
+                                        <Color red="0.37061402201652527" blue="0.8552631735801697" />
+                                    </color>
+                                </Stop>
+                                <Stop offset="1.0">
+                                    <color>
+                                        <Color red="0.06841699033975601" green="0.03520955145359039" blue="0.11184210330247879" opacity="0.41999998688697815" />
+                                    </color>
+                                </Stop>
+                            </stops>
+                        </RadialGradient>
+                    </fill>
+                </Circle>
+                <Circle fx:id="fourCircle2" layoutX="497.0" layoutY="143.0" radius="19.0" stroke="WHITE" strokeType="INSIDE" visible="false">
+                    <fill>
+                        <RadialGradient centerX="0.5" centerY="0.516548463356974" radius="0.5">
+                            <stops>
+                                <Stop>
+                                    <color>
+                                        <Color red="0.37061402201652527" blue="0.8552631735801697" />
+                                    </color>
+                                </Stop>
+                                <Stop offset="1.0">
+                                    <color>
+                                        <Color red="0.06841699033975601" green="0.03520955145359039" blue="0.11184210330247879" opacity="0.41999998688697815" />
+                                    </color>
+                                </Stop>
+                            </stops>
+                        </RadialGradient>
+                    </fill>
+                </Circle>
+                <Circle fx:id="fiveCircle2" layoutX="495.0" layoutY="36.0" radius="19.0" stroke="WHITE" strokeType="INSIDE" visible="false">
+                    <fill>
+                        <RadialGradient centerX="0.5" centerY="0.516548463356974" radius="0.5">
+                            <stops>
+                                <Stop>
+                                    <color>
+                                        <Color red="0.37061402201652527" blue="0.8552631735801697" />
+                                    </color>
+                                </Stop>
+                                <Stop offset="1.0">
+                                    <color>
+                                        <Color red="0.06841699033975601" green="0.03520955145359039" blue="0.11184210330247879" opacity="0.41999998688697815" />
+                                    </color>
+                                </Stop>
+                            </stops>
+                        </RadialGradient>
+                    </fill>
+                </Circle>
+                <ImageView fx:id="nameImage" fitHeight="169.0" fitWidth="161.0" layoutX="14.0" layoutY="162.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../icons/name.png" />
+                    </image>
+                </ImageView>
+                <TextField fx:id="firstName" layoutX="178.0" layoutY="181.0" prefHeight="52.0" prefWidth="232.0" promptText="First Name">
+                    <font>
+                        <Font name="Berlin Sans FB" size="22.0" />
+                    </font>
+                </TextField>
+                <TextField fx:id="lastName" layoutX="178.0" layoutY="272.0" prefHeight="52.0" prefWidth="232.0" promptText="Last Name">
+                    <font>
+                        <Font name="Berlin Sans FB" size="22.0" />
+                    </font>
+                </TextField>
+                <ImageView fx:id="usernameImage" fitHeight="150.0" fitWidth="147.0" layoutX="21.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                    <image>
+                        <Image url="@../icons/name.png" />
+                    </image>
+                </ImageView>
+                <Button fx:id="SecondStep" alignment="BOTTOM_CENTER" blendMode="COLOR_BURN" contentDisplay="CENTER" graphicTextGap="10.0" layoutX="230.0" layoutY="391.0" lineSpacing="10.0" mnemonicParsing="false" onAction="#onSecondStep" style="-fx-background-radius: 30; -fx-background-color: #d7b0ff;" text="Next Step" textAlignment="CENTER" visible="false">
+                    <font>
+                        <Font name="Baskerville Old Face" size="28.0" />
+                    </font>
+                    <effect>
+                        <InnerShadow />
+                    </effect>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                    <textFill>
+                        <RadialGradient centerX="0.5082644628099173" centerY="0.516548463356974" radius="0.5">
+                            <stops>
+                                <Stop>
+                                    <color>
+                                        <Color red="0.7077944874763489" blue="0.8500000238418579" />
+                                    </color>
+                                </Stop>
+                                <Stop offset="1.0">
+                                    <color>
+                                        <Color />
+                                    </color>
+                                </Stop>
+                            </stops>
+                        </RadialGradient>
+                    </textFill>
+                </Button>
+                <TextField fx:id="username" layoutX="199.0" layoutY="177.0" prefHeight="40.0" prefWidth="221.0" promptText="UserName" visible="false">
+                    <font>
+                        <Font name="Berlin Sans FB" size="22.0" />
+                    </font>
+                </TextField>
+                <PasswordField fx:id="password" layoutX="198.0" layoutY="237.0" prefHeight="40.0" prefWidth="221.0" promptText="Password" visible="false">
+                    <font>
+                        <Font name="Berlin Sans FB" size="22.0" />
+                    </font>
+                </PasswordField>
+                <PasswordField fx:id="repeatedPassword" layoutX="198.0" layoutY="297.0" prefHeight="38.0" prefWidth="221.0" promptText="repeate Password" visible="false">
+                    <font>
+                        <Font name="Berlin Sans FB" size="22.0" />
+                    </font>
+                </PasswordField>
+                <Button fx:id="thirdStep" alignment="BOTTOM_CENTER" blendMode="COLOR_BURN" contentDisplay="CENTER" graphicTextGap="10.0" layoutX="230.0" layoutY="391.0" lineSpacing="10.0" mnemonicParsing="false" onAction="#onThirdStep" style="-fx-background-radius: 30; -fx-background-color: #d7b0ff;" text="Next Step" textAlignment="CENTER" visible="false">
+                    <font>
+                        <Font name="Baskerville Old Face" size="28.0" />
+                    </font>
+                    <effect>
+                        <InnerShadow />
+                    </effect>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                    <textFill>
+                        <RadialGradient centerX="0.5082644628099173" centerY="0.516548463356974" radius="0.5">
+                            <stops>
+                                <Stop>
+                                    <color>
+                                        <Color red="0.7077944874763489" blue="0.8500000238418579" />
+                                    </color>
+                                </Stop>
+                                <Stop offset="1.0">
+                                    <color>
+                                        <Color />
+                                    </color>
+                                </Stop>
+                            </stops>
+                        </RadialGradient>
+                    </textFill>
+                </Button>
+                <ImageView fx:id="phoneImage" fitHeight="153.0" fitWidth="161.0" layoutX="18.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                    <image>
+                        <Image url="@../icons/passwordSign.png" />
+                    </image>
+                </ImageView>
+                <TextField fx:id="phoneNumber" layoutX="199.0" layoutY="207.0" prefHeight="40.0" prefWidth="232.0" promptText="Phone Number" visible="false">
+                    <font>
+                        <Font name="Berlin Sans FB" size="22.0" />
+                    </font>
+                </TextField>
+                <TextField fx:id="email" layoutX="199.0" layoutY="267.0" prefHeight="40.0" prefWidth="232.0" promptText=" Email Address" visible="false">
+                    <font>
+                        <Font name="Berlin Sans FB" size="22.0" />
+                    </font>
+                </TextField>
+                <Button fx:id="fourthStep" alignment="BOTTOM_CENTER" blendMode="COLOR_BURN" contentDisplay="CENTER" graphicTextGap="10.0" layoutX="230.0" layoutY="391.0" lineSpacing="10.0" mnemonicParsing="false" onAction="#onForthStep" style="-fx-background-radius: 30; -fx-background-color: #d7b0ff;" text="Next Step" textAlignment="CENTER" visible="false">
+                    <font>
+                        <Font name="Baskerville Old Face" size="28.0" />
+                    </font>
+                    <effect>
+                        <InnerShadow />
+                    </effect>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                    <textFill>
+                        <RadialGradient centerX="0.5082644628099173" centerY="0.516548463356974" radius="0.5">
+                            <stops>
+                                <Stop>
+                                    <color>
+                                        <Color red="0.7077944874763489" blue="0.8500000238418579" />
+                                    </color>
+                                </Stop>
+                                <Stop offset="1.0">
+                                    <color>
+                                        <Color />
+                                    </color>
+                                </Stop>
+                            </stops>
+                        </RadialGradient>
+                    </textFill>
+                </Button>
+                <TextField fx:id="VerificationCode" layoutX="205.0" layoutY="241.0" prefHeight="52.0" prefWidth="221.0" promptText="Verification Code" visible="false">
+                    <font>
+                        <Font name="Bell MT" size="22.0" />
+                    </font>
+                </TextField>
+                <ImageView fx:id="codeImage" fitHeight="153.0" fitWidth="161.0" layoutX="26.0" layoutY="195.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                    <image>
+                        <Image url="@../icons/Emailmessage.png" />
+                    </image>
+                </ImageView>
+                <Label fx:id="codeLabel" layoutX="41.0" layoutY="168.0" prefWidth="435.0" text="Please enter the code sent to your email to complete registration." visible="false">
+                    <font>
+                        <Font name="B Mitra" size="15.0" />
+                    </font>
+                </Label>
+                <Button fx:id="fifthStep" alignment="BOTTOM_CENTER" blendMode="COLOR_BURN" contentDisplay="CENTER" graphicTextGap="10.0" layoutX="230.0" layoutY="391.0" lineSpacing="10.0" mnemonicParsing="false" onAction="#onFifthStep" style="-fx-background-radius: 30; -fx-background-color: #d7b0ff;" text="Submit" textAlignment="CENTER" visible="false">
+                    <font>
+                        <Font name="Baskerville Old Face" size="28.0" />
+                    </font>
+                    <effect>
+                        <InnerShadow />
+                    </effect>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                    <textFill>
+                        <RadialGradient centerX="0.5082644628099173" centerY="0.516548463356974" radius="0.5">
+                            <stops>
+                                <Stop>
+                                    <color>
+                                        <Color red="0.7077944874763489" blue="0.8500000238418579" />
+                                    </color>
+                                </Stop>
+                                <Stop offset="1.0">
+                                    <color>
+                                        <Color />
+                                    </color>
+                                </Stop>
+                            </stops>
+                        </RadialGradient>
+                    </textFill>
+                </Button>
+                <ImageView fx:id="photoImage" fitHeight="150.0" fitWidth="200.0" layoutX="40.0" layoutY="178.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                    <image>
+                        <Image url="@../icons/image.png" />
+                    </image>
+                </ImageView>
+                <Label fx:id="title" layoutX="34.0" layoutY="35.0" prefHeight="41.0" prefWidth="426.0" text="Identity Details">
+                    <textFill>
+                        <RadialGradient centerX="0.5" centerY="0.516548463356974" radius="0.5">
+                            <stops>
+                                <Stop>
+                                    <color>
+                                        <Color red="0.3403843939304352" green="0.0277168620377779" blue="0.9210526347160339" />
+                                    </color>
+                                </Stop>
+                                <Stop offset="1.0">
+                                    <color>
+                                        <Color red="0.6112451553344727" green="0.05628655105829239" blue="0.8684210777282715" />
+                                    </color>
+                                </Stop>
+                            </stops>
+                        </RadialGradient>
+                    </textFill>
+                    <font>
+                        <Font name="Bodoni MT Black" size="33.0" />
+                    </font>
+                </Label>
+                <ImageView fx:id="image" fitHeight="129.0" fitWidth="138.0" layoutX="225.0" layoutY="188.0" pickOnBounds="true" preserveRatio="true" visible="false" />
+                <Rectangle fx:id="imageRect" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="140.0" layoutX="214.0" layoutY="183.0" stroke="WHITE" strokeType="INSIDE" visible="false" width="161.0">
+                    <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                    </cursor>
+                    <effect>
+                        <InnerShadow choke="0.14" height="161.25" radius="80.7625" width="163.8">
+                            <color>
+                                <Color red="0.33537402749061584" green="0.39591556787490845" blue="0.9407894611358643" />
+                            </color>
+                        </InnerShadow>
+                    </effect>
+                </Rectangle>
+                <Label fx:id="imageTitle" layoutX="266.0" layoutY="160.0" prefHeight="11.0" prefWidth="57.0" text="Your Image" textFill="#8b80ff" visible="false">
+                    <font>
+                        <Font name="Bookman Old Style" size="10.0" />
+                    </font>
+                </Label>
+                <Button fx:id="UploadImage" layoutX="241.0" layoutY="237.0" mnemonicParsing="false" onAction="#handleUploadButtonAction" prefHeight="32.0" prefWidth="107.0" style="-fx-background-radius: 10; -fx-background-color: #adb4ff;" text="Upload Image" textFill="#1e1781" visible="false">
+                    <font>
+                        <Font name="Centaur" size="16.0" />
+                    </font>
+                </Button>
+                <Button layoutX="18.0" layoutY="437.0" mnemonicParsing="false" onAction="#onPreviousButton" style="-fx-background-color: #5d38ff;" text="Previous">
+                    <font>
+                        <Font name="Baskerville Old Face" size="14.0" />
+                    </font>
+                    <textFill>
+                        <RadialGradient centerX="0.5358126721763086" centerY="0.516548463356974" radius="0.5628571428571428">
+                            <stops>
+                                <Stop>
+                                    <color>
+                                        <Color red="0.6600000262260437" green="1.0" blue="0.9886846542358398" />
+                                    </color>
+                                </Stop>
+                                <Stop offset="1.0">
+                                    <color>
+                                        <Color red="0.9643518328666687" green="0.9027777910232544" blue="1.0" />
+                                    </color>
+                                </Stop>
+                            </stops>
+                        </RadialGradient>
+                    </textFill>
+                    <effect>
+                        <InnerShadow>
+                            <color>
+                                <Color red="0.572549045085907" green="0.9411764740943909" blue="1.0" />
+                            </color>
+                        </InnerShadow>
+                    </effect>
+                </Button>
+                <Button fx:id="Back" layoutX="18.0" layoutY="472.0" mnemonicParsing="false" onAction="#ONBackButton" prefHeight="27.0" prefWidth="67.0" style="-fx-background-color: #5d38ff;" text="Back">
+                    <font>
+                        <Font name="Baskerville Old Face" size="14.0" />
+                    </font>
+                    <textFill>
+                        <RadialGradient centerX="0.5358126721763086" centerY="0.516548463356974" radius="0.5628571428571428">
+                            <stops>
+                                <Stop>
+                                    <color>
+                                        <Color red="0.6600000262260437" green="1.0" blue="0.9886846542358398" />
+                                    </color>
+                                </Stop>
+                                <Stop offset="1.0">
+                                    <color>
+                                        <Color red="0.9643518328666687" green="0.9027777910232544" blue="1.0" />
+                                    </color>
+                                </Stop>
+                            </stops>
+                        </RadialGradient>
+                    </textFill>
+                    <effect>
+                        <InnerShadow>
+                            <color>
+                                <Color red="0.572549045085907" green="0.9411764740943909" blue="1.0" />
+                            </color>
+                        </InnerShadow>
+                    </effect>
+                </Button>
+                <Label fx:id="userError" layoutX="176.0" layoutY="158.0" text="The UserNmae is invalid." textFill="RED" visible="false">
+                    <font>
+                        <Font name="B Nazanin" size="13.0" />
+                    </font>
+                </Label>
+                <Label fx:id="passError" layoutX="178.0" layoutY="218.0" text="The Password is invalid." textFill="RED" visible="false">
+                    <font>
+                        <Font name="B Nazanin" size="13.0" />
+                    </font>
+                </Label>
+                <Label fx:id="repeatePassError" layoutX="179.0" layoutY="279.0" text="The repeated password does not match your password." textFill="RED" visible="false">
+                    <font>
+                        <Font name="B Nazanin" size="13.0" />
+                    </font>
+                </Label>
+                <Label fx:id="firstNameError" layoutX="159.0" layoutY="160.0" text="The First Name is invalid." textFill="RED" visible="false">
+                    <font>
+                        <Font name="B Nazanin" size="13.0" />
+                    </font>
+                </Label>
+                <Label fx:id="LastNameError" layoutX="160.0" layoutY="249.0" text="The Last Name is invalid." textFill="RED" visible="false">
+                    <font>
+                        <Font name="B Nazanin" size="13.0" />
+                    </font>
+                </Label>
+                <Label fx:id="PhoneNumber" layoutX="185.0" layoutY="189.0" text="The Phone Number is invalid." textFill="RED" visible="false">
+                    <font>
+                        <Font name="B Nazanin" size="13.0" />
+                    </font>
+                </Label>
+                <Label fx:id="EmailAddress" layoutX="185.0" layoutY="250.0" text="The Email Address is invalid." textFill="RED" visible="false">
+                    <font>
+                        <Font name="B Nazanin" size="13.0" />
+                    </font>
+                </Label>
+                <Label fx:id="codeError" layoutX="187.0" layoutY="219.0" text="The entered code does not match the sent code." textFill="RED" visible="false">
+                    <font>
+                        <Font name="B Nazanin" size="13.0" />
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>
