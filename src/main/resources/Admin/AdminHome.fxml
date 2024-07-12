@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.SepiaTone?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.media.MediaView?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1200.0" prefWidth="910.0" style="-fx-background-color: #005669;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Admin.AdminHome">
+   <children>
+      <ScrollPane hbarPolicy="NEVER" hmax="0.0" layoutX="-1.0" layoutY="98.0" prefHeight="1000.0" prefWidth="931.0" style="-fx-background-color: #005669;" vbarPolicy="ALWAYS" vmax="1000.0">
+         <content>
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1500.0" prefWidth="913.0" style="-fx-background-color: #005669;">
+               <children>
+                  <Pane layoutX="33.0" layoutY="560.0" prefHeight="295.0" prefWidth="847.0" style="-fx-background-color: #013b46; -fx-background-radius: 25;">
+                     <children>
+                        <Pane layoutY="14.0" prefHeight="461.0" prefWidth="848.0" style="-fx-background-color: #013b46; -fx-background-radius: 20;">
+                           <children>
+                              <TextField fx:id="SearchField" layoutX="447.0" layoutY="28.0" prefHeight="37.0" prefWidth="241.0" promptText="Search...">
+                                 <font>
+                                    <Font size="19.0" />
+                                 </font>
+                              </TextField>
+                              <ImageView fitHeight="41.0" fitWidth="41.0" layoutX="395.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/search.png" />
+                                 </image>
+                              </ImageView>
+                              <TableView fx:id="UsersInfoTableView" layoutX="147.0" layoutY="92.0" prefHeight="282.0" prefWidth="537.0" style="-fx-background-color: #005669; -fx-background-radius: 20;" stylesheets="@../Home/TableStyle.css" tableMenuButtonVisible="true">
+                                 <columns>
+                                    <TableColumn fx:id="UserNameColumn" editable="false" minWidth="30.0" prefWidth="164.0" text="User Name" />
+                                    <TableColumn fx:id="NameColumn" editable="false" minWidth="8.0" prefWidth="190.0" text="Name" />
+                                    <TableColumn fx:id="LastNameColumn" editable="false" minWidth="0.0" prefWidth="177.0" text="LastName" />
+                                 </columns>
+                                 <styleClass>
+                                    <String fx:value="root" />
+                                    <String fx:value="table-column" />
+                                    <String fx:value="table-row-cell" />
+                                 </styleClass>
+                              </TableView>
+                              <Label layoutX="116.0" layoutY="82.0" prefHeight="20.0" prefWidth="577.0" style="-fx-background-color: #013b46;" />
+                              <Label layoutX="147.0" layoutY="29.0" prefHeight="35.0" prefWidth="210.0" text="Users information" textFill="WHITE">
+                                 <font>
+                                    <Font name="Avenir Black" size="23.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="35.0" layoutY="32.0" prefHeight="290.0" prefWidth="843.0" style="-fx-background-color: #013b46; -fx-background-radius: 25;">
+                     <children>
+                        <Pane layoutX="36.0" layoutY="45.0" prefHeight="191.0" prefWidth="229.0" style="-fx-background-color: #005669; -fx-background-radius: 20;">
+                           <children>
+                              <Label layoutX="63.0" layoutY="29.0" prefHeight="17.0" prefWidth="105.0" text="My Wallet" textFill="WHITE">
+                                 <font>
+                                    <Font size="23.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fx:id="MyWalletIcon" fitHeight="100.0" fitWidth="93.0" layoutX="63.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/wallet.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                        <Pane layoutX="307.0" layoutY="45.0" prefHeight="191.0" prefWidth="229.0" style="-fx-background-color: #005669; -fx-background-radius: 20;">
+                           <children>
+                              <Label layoutX="61.0" layoutY="29.0" text="Messenger" textFill="WHITE">
+                                 <font>
+                                    <Font size="23.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fx:id="MessengerIcon" fitHeight="100.0" fitWidth="93.0" layoutX="68.0" layoutY="70.0" onMouseClicked="#onMessenger" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/messageIcon.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                        <Pane layoutX="579.0" layoutY="45.0" prefHeight="191.0" prefWidth="229.0" style="-fx-background-color: #005669; -fx-background-radius: 20;">
+                           <children>
+                              <Label layoutX="42.0" layoutY="29.0" prefHeight="28.0" prefWidth="166.0" text="Opening Market" textFill="WHITE">
+                                 <font>
+                                    <Font size="23.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fx:id="MarketIcon" fitHeight="93.0" fitWidth="105.0" layoutX="68.0" layoutY="70.0" onMouseClicked="#onMarket" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/Market.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="35.0" layoutY="340.0" prefHeight="200.0" prefWidth="411.0" style="-fx-background-color: #013b46; -fx-background-radius: 20;">
+                     <children>
+                        <MediaView fx:id="USDView" fitHeight="80.0" fitWidth="80.0" layoutX="25.0" layoutY="67.0" />
+                        <Label layoutX="137.0" layoutY="20.0" prefHeight="23.0" prefWidth="192.0" text="Total USD in wallet" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="USDWallet" layoutX="137.0" layoutY="92.0" prefHeight="17.0" prefWidth="246.0" text="0" textFill="#dfe8a5">
+                           <font>
+                              <Font name="Avenir Heavy" size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="462.0" layoutY="340.0" prefHeight="200.0" prefWidth="413.0" style="-fx-background-color: #013b46; -fx-background-radius: 20;">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="347.0" layoutX="44.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/chart.jpg" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+      <Pane fx:id="slider" layoutY="99.0" prefHeight="593.0" prefWidth="264.0" style="-fx-background-color: #004957;">
+         <children>
+            <Label alignment="TOP_CENTER" layoutY="20.0" prefHeight="550.0" prefWidth="246.0" style="-fx-background-color: white;">
+               <graphic>
+                  <Label alignment="TOP_RIGHT" contentDisplay="TOP" layoutY="20.0" prefHeight="150.0" prefWidth="246.0">
+                     <graphic>
+                        <BorderPane prefHeight="140.0" prefWidth="246.0" style="-fx-background-color: #005669;">
+                           <bottom>
+                              <VBox prefHeight="389.0" prefWidth="246.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <Button fx:id="Home" mnemonicParsing="false" onAction="#onHomeClicked" prefHeight="70.0" prefWidth="246.0" style="-fx-background-color: #005669;" text="Home" textFill="WHITE">
+                                       <graphic>
+                                          <Label prefHeight="37.0" prefWidth="64.0">
+                                             <graphic>
+                                                <ImageView fitHeight="34.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../icons/home.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Label>
+                                       </graphic>
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Button>
+                                    <Button fx:id="Wallet" mnemonicParsing="false" prefHeight="70.0" prefWidth="246.0" style="-fx-background-color: #005669;" text="Wallet" textFill="#fcfcfc">
+                                       <graphic>
+                                          <Label prefHeight="39.0" prefWidth="71.0">
+                                             <graphic>
+                                                <ImageView fitHeight="34.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../icons/wallet.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Label>
+                                       </graphic>
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Button>
+                                    <Button fx:id="Messenger" mnemonicParsing="false" onAction="#onMessenger" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #005669;" text="Messenger" textFill="WHITE">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                       <graphic>
+                                          <Label prefHeight="51.0" prefWidth="63.0">
+                                             <graphic>
+                                                <ImageView fitHeight="41.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../icons/message.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Label>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="Market" mnemonicParsing="false" onAction="#onMarket" prefHeight="70.0" prefWidth="247.0" style="-fx-background-color: #005669;" text="Market" textFill="#fcfcfc">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                       <graphic>
+                                          <Label prefHeight="48.0" prefWidth="85.0">
+                                             <graphic>
+                                                <ImageView fitHeight="47.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../icons/Market.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Label>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="Exit" mnemonicParsing="false" onAction="#onExitClicked" prefHeight="71.0" prefWidth="254.0" style="-fx-background-color: #005669;" text="Exit" textFill="#f8f8f8">
+                                       <font>
+                                          <Font size="25.0" />
+                                       </font>
+                                       <graphic>
+                                          <Label prefHeight="56.0" prefWidth="87.0">
+                                             <graphic>
+                                                <ImageView fitHeight="43.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../icons/exit.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Label>
+                                       </graphic>
+                                    </Button>
+                                 </children>
+                              </VBox>
+                           </bottom>
+                           <top>
+                              <BorderPane prefHeight="129.0" prefWidth="246.0" BorderPane.alignment="CENTER">
+                                 <left>
+                                    <ImageView fitHeight="108.0" fitWidth="164.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                                       <image>
+                                          <Image url="@../icons/programIcon.png" />
+                                       </image>
+                                    </ImageView>
+                                 </left>
+                                 <center>
+                                    <Label prefHeight="12.0" prefWidth="121.0" text="Bit FUM" textFill="#ffffb0" BorderPane.alignment="CENTER">
+                                       <font>
+                                          <Font name="Baskerville Bold Italic" size="24.0" />
+                                       </font>
+                                       <effect>
+                                          <SepiaTone />
+                                       </effect>
+                                    </Label>
+                                 </center>
+                                 <bottom>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="246.0" style="-fx-background-color: F2F3E6;" text="Menu" textFill="#005669" BorderPane.alignment="CENTER">
+                                       <font>
+                                          <Font name="Avenir Black Oblique" size="26.0" />
+                                       </font>
+                                    </Label>
+                                 </bottom>
+                              </BorderPane>
+                           </top>
+                        </BorderPane>
+                     </graphic>
+                  </Label>
+               </graphic>
+            </Label>
+            <ImageView fx:id="CloseMenu" fitHeight="25.0" fitWidth="25.0" layoutX="243.0" layoutY="8.0" onMouseClicked="#onCloseMenuClicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/MenuBack.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane fx:id="market" layoutX="300.0" layoutY="491.0" prefHeight="208.0" prefWidth="311.0" style="-fx-background-color: white; -fx-background-radius: 10;" visible="false">
+         <children>
+            <Label alignment="CENTER" prefHeight="62.0" prefWidth="311.0" style="-fx-background-color: #53026f;" text="Open  Close  Market" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Button layoutX="8.0" layoutY="94.0" mnemonicParsing="false" onAction="#openMarket" prefHeight="77.0" prefWidth="145.0" style="-fx-background-color: #3ba40a; -fx-background-radius: 15;" text="Open" textFill="WHITE">
+               <font>
+                  <Font name="Avenir Heavy Oblique" size="19.0" />
+               </font>
+            </Button>
+            <Button layoutX="160.0" layoutY="94.0" mnemonicParsing="false" onAction="#CloseMarket" prefHeight="77.0" prefWidth="145.0" style="-fx-background-color: #f22626; -fx-background-radius: 15;" text="Close" textFill="#fff4f4">
+               <font>
+                  <Font name="Avenir Heavy" size="19.0" />
+               </font>
+            </Button>
+            <ImageView fx:id="close" fitHeight="34.0" fitWidth="25.0" onMouseClicked="#onCloseWindow" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/close.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutX="-3.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="916.0" style="-fx-background-color: #013b46;">
+         <children>
+            <ImageView fx:id="Menu" fitHeight="77.0" fitWidth="77.0" layoutX="14.0" layoutY="12.0" onMouseClicked="#onMenuIconClicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/homeMenu.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="62.0" fitWidth="63.0" layoutX="712.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/profile.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="PageName" layoutX="110.0" layoutY="31.0" prefHeight="34.0" prefWidth="185.0" text="Home Page" textFill="WHITE">
+               <font>
+                  <Font name="Copperplate Bold" size="27.0" />
+               </font>
+            </Label>
+            <Label fx:id="UserName" layoutX="800.0" layoutY="41.0" prefHeight="17.0" prefWidth="85.0" text="User" textFill="WHITE">
+               <font>
+                  <Font name="Big Caslon Medium" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="marketLabel" layoutX="363.0" layoutY="30.0" prefHeight="37.0" prefWidth="264.0" text="OPEN MARKET" textFill="#13c300">
+               <font>
+                  <Font name="AppleMyungjo Regular" size="26.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
