@@ -1,6 +1,7 @@
 package DatabaseConnection;
 
 
+import Home.HomePage;
 import kotlin.random.Random;
 
 import java.io.File;
@@ -144,17 +145,27 @@ public class UsersInformationDatabase {
                                             double buyerPrice, String CurrencyName, int Number, double totalAmountBuyer,
                                             double totalAmountSeller, int BuyerCode, int SellerCode) throws SQLException {
         String currencyName = null;
+        Double usd = 0.0;
+        double  DataList_index = 0;
+        double DataList_currency=0;
+        CurrencyDatabase connectNow = new CurrencyDatabase();
+        Connection connectDB = connectNow.getDBConnection();
+        String LastSql = "SELECT * FROM BitFUM.currency ORDER BY STR_TO_DATE(CONCAT(Date, ' ', Time), '%Y-%m-%d %H:%i:%s') DESC LIMIT 1";
+        Statement stLast = connectDB.createStatement();
+        ResultSet Last = stLast.executeQuery(LastSql);
+        while (Last.next()){
+            DataList_index = Last.getDouble("USD");
+            DataList_currency = Last.getDouble(CurrencyName);
+        }
         double price;
         LocalTime localTime = LocalTime.now().truncatedTo(ChronoUnit.MINUTES);
         LocalDate localDate = LocalDate.now();
         Date date = Date.valueOf(localDate);
-        String sellerCode;
-        String buyerCode;
         double totalAdminBalance = 0.0;
         if(buyerAmount>sellerAmount){
             if(Number==1) {//buying now
                 String UpdateTable = "UPDATE ExchangeInfo SET UserBuyer = ?, CurrencyPrice = ?, CurrencyAmount = ?, Date = ?, Time = ?, BuyerCode = ?, TotalAmountBuyer = ? " +
-                        "WHERE UserSeller = ? AND CurrencyName = ? AND CurrencyPrice = ?";
+                        "WHERE UserSeller = ? AND CurrencyName = ? AND CurrencyPrice = ? AND SellerCode = ?";
                 if(buyerPrice>sellerPrice) price=sellerPrice;
                 else price=buyerPrice;
                 System.out.print(userSeller+" is user seller."+userBuyer+" is user buyer in 1\n");
@@ -171,6 +182,7 @@ public class UsersInformationDatabase {
                     preparedStatement.setString(8, userSeller);
                     preparedStatement.setString(9, CurrencyName);
                     preparedStatement.setDouble(10, sellerPrice);
+                    preparedStatement.setInt(11, SellerCode);
                     int rowsAffected = preparedStatement.executeUpdate();
                     System.out.println("Rows affected(1): " + rowsAffected);
                 } catch (SQLException e) {
@@ -178,7 +190,7 @@ public class UsersInformationDatabase {
                 }
             } else{//selling now
                 String UpdateTable = "UPDATE ExchangeInfo SET UserSeller = ?, CurrencyPrice = ?, CurrencyAmount = ?, Date = ?, Time = ?, SellerCode = ?, TotalAmountSeller = ? " +
-                        "WHERE UserBuyer = ? AND CurrencyName = ? AND CurrencyPrice = ?";
+                        "WHERE UserBuyer = ? AND CurrencyName = ? AND CurrencyPrice = ? AND BuyerCode = ?";
                 if(buyerPrice>sellerPrice) price=sellerPrice;
                 else price=buyerPrice;
                 System.out.print(userSeller+" is user seller."+userBuyer+" is user buyer in 2\n");
@@ -195,6 +207,7 @@ public class UsersInformationDatabase {
                     preparedStatement.setString(8, userBuyer);
                     preparedStatement.setString(9, CurrencyName);
                     preparedStatement.setDouble(10, buyerPrice);
+                    preparedStatement.setInt(11, BuyerCode);
                     int rowsAffected = preparedStatement.executeUpdate();
                     System.out.println("Rows affected(2): " + rowsAffected);
                 } catch (SQLException e) {
@@ -204,27 +217,27 @@ public class UsersInformationDatabase {
             }
             String UpdateTable = null;
             if(CurrencyName.equals("USD")){
-                UpdateTable = "UPDATE BitFUM.UsersInfo SET USD = ?" +
+                UpdateTable = "UPDATE BitFUM.UsersInfo SET USD = ? , USD = ?" +
                         "WHERE userName = ?";
                 currencyName = "USD";
             }
             if(CurrencyName.equals("YEN")){
-                UpdateTable = "UPDATE BitFUM.UsersInfo SET YEN = ?" +
+                UpdateTable = "UPDATE BitFUM.UsersInfo SET YEN = ? , USD = ?" +
                         "WHERE userName = ?";
                 currencyName = "YEN";
             }
             if(CurrencyName.equals("TOMAN")){
-                UpdateTable = "UPDATE BitFUM.UsersInfo SET TOMAN = ? " +
+                UpdateTable = "UPDATE BitFUM.UsersInfo SET TOMAN = ? , USD = ?" +
                         "WHERE userName = ?";
                 currencyName = "TOMAN";
             }
             if(CurrencyName.equals("GBP")){
-                UpdateTable = "UPDATE BitFUM.UsersInfo SET GBP = ? " +
+                UpdateTable = "UPDATE BitFUM.UsersInfo SET GBP = ? , USD = ?" +
                         "WHERE userName = ?";
                 currencyName = "GBP";
             }
             if(CurrencyName.equals("EUR")){
-                UpdateTable = "UPDATE BitFUM.UsersInfo SET EUR = ?" +
+                UpdateTable = "UPDATE BitFUM.UsersInfo SET EUR = ? , USD = ?" +
                         "WHERE userName = ?";
                 currencyName = "EUR";
             }
@@ -234,13 +247,16 @@ public class UsersInformationDatabase {
             while (findAmount.next()){
                 if (userSeller.equals(findAmount.getString("userName"))){
                     amount = findAmount.getDouble(currencyName);
+                    usd = findAmount.getDouble("USD");
                 }
             }
             try (PreparedStatement preparedStatement = con.prepareStatement(UpdateTable)){
                 preparedStatement.setDouble(1, amount-sellerAmount);
-                preparedStatement.setString(2, userSeller);
+                preparedStatement.setDouble(2, usd + sellerAmount*(DataList_index/
+                        DataList_currency));
+                preparedStatement.setString(3, userSeller);
                 int rowsAffected = preparedStatement.executeUpdate();
-                System.out.println("Rows affected(1): " + rowsAffected);
+                System.out.println("Rows affected(1):** " + rowsAffected);
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
@@ -249,13 +265,16 @@ public class UsersInformationDatabase {
             while (findAmount1.next()){
                 if (userBuyer.equals(findAmount1.getString("userName"))){
                     amount = findAmount1.getDouble(currencyName);
+                    usd = findAmount1.getDouble("USD");
                 }
             }
             try (PreparedStatement preparedStatement = con.prepareStatement(UpdateTable)){
                 preparedStatement.setDouble(1, amount+sellerAmount);
-                preparedStatement.setString(2, userBuyer);
+                preparedStatement.setDouble(2, usd - sellerAmount*(DataList_index/
+                        DataList_currency));
+                preparedStatement.setString(3, userBuyer);
                 int rowsAffected = preparedStatement.executeUpdate();
-                System.out.println("Rows affected(2): " + rowsAffected);
+                System.out.println("Rows affected(2):** " + rowsAffected);
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
@@ -265,7 +284,7 @@ public class UsersInformationDatabase {
         } else if(buyerAmount<sellerAmount){
             if(Number==1) {//buying now
                 String UpdateTable = "UPDATE ExchangeInfo SET UserBuyer = ?, CurrencyPrice = ?, CurrencyAmount = ?, Date = ?, Time = ?, BuyerCode = ?, TotalAmountBuyer = ? " +
-                        "WHERE UserSeller = ? AND CurrencyName = ? AND CurrencyPrice = ?";
+                        "WHERE UserSeller = ? AND CurrencyName = ? AND CurrencyPrice = ? AND SellerCode = ?";
                 if(buyerPrice>sellerPrice) price=sellerPrice;
                 else price=buyerPrice;
                 System.out.print(userSeller+" is user seller."+userBuyer+" is user buyer in 3\n");
@@ -282,6 +301,7 @@ public class UsersInformationDatabase {
                     preparedStatement.setString(8, userSeller);
                     preparedStatement.setString(9, CurrencyName);
                     preparedStatement.setDouble(10, sellerPrice);
+                    preparedStatement.setDouble(11, SellerCode);
                     int rowsAffected = preparedStatement.executeUpdate();
                     System.out.println("Rows affected(3): " + rowsAffected);
                 } catch (SQLException e) {
@@ -289,7 +309,7 @@ public class UsersInformationDatabase {
                 }
             } else{//selling now
                 String UpdateTable = "UPDATE ExchangeInfo SET UserSeller = ?, CurrencyPrice = ?, CurrencyAmount = ?, Date = ?, Time = ?, SellerCode = ?, TotalAmountSeller = ? " +
-                        "WHERE UserBuyer = ? AND CurrencyName = ? AND CurrencyPrice = ?";
+                        "WHERE UserBuyer = ? AND CurrencyName = ? AND CurrencyPrice = ? AND BuyerCode = ?";
                 if(buyerPrice>sellerPrice) price=sellerPrice;
                 else price=buyerPrice;
                 System.out.print(userSeller+" is user seller."+userBuyer+" is user buyer in 4\n");
@@ -306,6 +326,7 @@ public class UsersInformationDatabase {
                     preparedStatement.setString(8, userBuyer);
                     preparedStatement.setString(9, CurrencyName);
                     preparedStatement.setDouble(10, buyerPrice);
+                    preparedStatement.setInt(11, BuyerCode);
                     int rowsAffected = preparedStatement.executeUpdate();
                     System.out.println("Rows affected(4): " + rowsAffected);
                 } catch (SQLException e) {
@@ -315,27 +336,27 @@ public class UsersInformationDatabase {
             }
             String UpdateTable=null;
             if(CurrencyName.equals("USD")){
-                UpdateTable = "UPDATE BitFUM.UsersInfo SET USD = ?" +
+                UpdateTable = "UPDATE BitFUM.UsersInfo SET USD = ? , USD = ?" +
                         "WHERE userName = ?";
                 currencyName = "USD";
             }
             if(CurrencyName.equals("YEN")){
-                UpdateTable = "UPDATE BitFUM.UsersInfo SET YEN = ?" +
+                UpdateTable = "UPDATE BitFUM.UsersInfo SET YEN = ? , USD = ?" +
                         "WHERE userName = ?";
                 currencyName = "YEN";
             }
             if(CurrencyName.equals("TOMAN")){
-                UpdateTable = "UPDATE BitFUM.UsersInfo SET TOMAN = ? " +
+                UpdateTable = "UPDATE BitFUM.UsersInfo SET TOMAN = ? , USD = ?" +
                         "WHERE userName = ?";
                 currencyName = "TOMAN";
             }
             if(CurrencyName.equals("GBP")){
-                UpdateTable = "UPDATE BitFUM.UsersInfo SET GBP = ? " +
+                UpdateTable = "UPDATE BitFUM.UsersInfo SET GBP = ? , USD = ?" +
                         "WHERE userName = ?";
                 currencyName = "GBP";
             }
             if(CurrencyName.equals("EUR")){
-                UpdateTable = "UPDATE BitFUM.UsersInfo SET EUR = ?" +
+                UpdateTable = "UPDATE BitFUM.UsersInfo SET EUR = ? , USD = ?" +
                         "WHERE userName = ?";
                 currencyName = "EUR";
             }
@@ -345,13 +366,16 @@ public class UsersInformationDatabase {
             while (findAmount.next()){
                 if (userSeller.equals(findAmount.getString("userName"))){
                     amount = findAmount.getDouble(currencyName);
+                    usd = findAmount.getDouble("USD");
                 }
             }
             try (PreparedStatement preparedStatement = con.prepareStatement(UpdateTable)){
                 preparedStatement.setDouble(1, amount-buyerAmount);
-                preparedStatement.setString(2, userSeller);
+                preparedStatement.setDouble(2, usd + buyerAmount*(DataList_index/
+                        DataList_currency));
+                preparedStatement.setString(3, userSeller);
                 int rowsAffected = preparedStatement.executeUpdate();
-                System.out.println("Rows affected(1): " + rowsAffected);
+                System.out.println("Rows affected(3):** " + rowsAffected);
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
@@ -360,13 +384,16 @@ public class UsersInformationDatabase {
             while (findAmount1.next()){
                 if (userBuyer.equals(findAmount1.getString("userName"))){
                     amount = findAmount1.getDouble(currencyName);
+                    usd = findAmount1.getDouble("USD");
                 }
             }
             try (PreparedStatement preparedStatement = con.prepareStatement(UpdateTable)){
                 preparedStatement.setDouble(1, amount+buyerAmount);
-                preparedStatement.setString(2, userBuyer);
+                preparedStatement.setDouble(2, usd - buyerAmount*(DataList_index/
+                        DataList_currency));
+                preparedStatement.setString(3, userBuyer);
                 int rowsAffected = preparedStatement.executeUpdate();
-                System.out.println("Rows affected(2): " + rowsAffected);
+                System.out.println("Rows affected(4):** " + rowsAffected);
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
@@ -375,8 +402,8 @@ public class UsersInformationDatabase {
                     null, null, 1, 0, totalAmountSeller, 0, SellerCode);
         } else if(buyerAmount==sellerAmount){
             if(Number==1) {//buying now
-                String UpdateTable = "UPDATE ExchangeInfo SET UserBuyer = ?, CurrencyPrice = ?, Date = ?, Time = ? " +
-                        "WHERE UserSeller = ? AND CurrencyName = ? AND CurrencyPrice = ? AND BuyerCode = ? AND TotalAmountBuyer = ?";
+                String UpdateTable = "UPDATE ExchangeInfo SET UserBuyer = ?, CurrencyPrice = ?, Date = ?, Time = ?, BuyerCode = ?, TotalAmountBuyer = ? " +
+                        "WHERE UserSeller = ? AND CurrencyName = ? AND CurrencyPrice = ? AND SellerCode = ? AND TotalAmountSeller = ?";
                 if(buyerPrice>sellerPrice) price=sellerPrice;
                 else price=buyerPrice;
                 totalAdminBalance+=price*buyerAmount/100;
@@ -387,38 +414,40 @@ public class UsersInformationDatabase {
                     preparedStatement.setDouble(2, price);
                     preparedStatement.setDate(3, date);
                     preparedStatement.setTime(4, Time.valueOf(localTime));
-                    preparedStatement.setString(5, userSeller);
-                    preparedStatement.setString(6, CurrencyName);
-                    preparedStatement.setDouble(7, sellerPrice);
-                    preparedStatement.setInt(8, BuyerCode);
-                    preparedStatement.setDouble(9, totalAmountBuyer);
+                    preparedStatement.setInt(5, BuyerCode);
+                    preparedStatement.setDouble(6, totalAmountBuyer);
+                    preparedStatement.setString(7, userSeller);
+                    preparedStatement.setString(8, CurrencyName);
+                    preparedStatement.setDouble(9, sellerPrice);
+                    preparedStatement.setInt(10, SellerCode);
+                    preparedStatement.setDouble(11, totalAmountSeller);
                     int rowsAffected = preparedStatement.executeUpdate();
                     System.out.println("Rows affected(5): " + rowsAffected);
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
                 if(CurrencyName.equals("USD")){
-                    UpdateTable = "UPDATE BitFUM.UsersInfo SET USD = ?" +
+                    UpdateTable = "UPDATE BitFUM.UsersInfo SET USD = ? , USD = ?" +
                             "WHERE userName = ?";
                     currencyName = "USD";
                 }
                 if(CurrencyName.equals("YEN")){
-                    UpdateTable = "UPDATE BitFUM.UsersInfo SET YEN = ?" +
+                    UpdateTable = "UPDATE BitFUM.UsersInfo SET YEN = ? , USD = ?" +
                             "WHERE userName = ?";
                     currencyName = "YEN";
                 }
                 if(CurrencyName.equals("TOMAN")){
-                    UpdateTable = "UPDATE BitFUM.UsersInfo SET TOMAN = ? " +
+                    UpdateTable = "UPDATE BitFUM.UsersInfo SET TOMAN = ? , USD = ?" +
                             "WHERE userName = ?";
                     currencyName = "TOMAN";
                 }
                 if(CurrencyName.equals("GBP")){
-                    UpdateTable = "UPDATE BitFUM.UsersInfo SET GBP = ? " +
+                    UpdateTable = "UPDATE BitFUM.UsersInfo SET GBP = ? , USD = ?" +
                             "WHERE userName = ?";
                     currencyName = "GBP";
                 }
                 if(CurrencyName.equals("EUR")){
-                    UpdateTable = "UPDATE BitFUM.UsersInfo SET EUR = ?" +
+                    UpdateTable = "UPDATE BitFUM.UsersInfo SET EUR = ?, USD = ?" +
                             "WHERE userName = ?";
                     currencyName = "EUR";
                 }
@@ -428,13 +457,16 @@ public class UsersInformationDatabase {
                 while (findAmount.next()){
                     if (userSeller.equals(findAmount.getString("userName"))){
                         amount = findAmount.getDouble(currencyName);
+                        usd = findAmount.getDouble("USD");
                     }
                 }
                 try (PreparedStatement preparedStatement = con.prepareStatement(UpdateTable)){
                     preparedStatement.setDouble(1, amount-sellerAmount);
-                    preparedStatement.setString(2, userSeller);
+                    preparedStatement.setDouble(2, usd + sellerAmount*(DataList_index/
+                            DataList_currency));
+                    preparedStatement.setString(3, userSeller);
                     int rowsAffected = preparedStatement.executeUpdate();
-                    System.out.println("Rows affected(1): " + rowsAffected);
+                    System.out.println("Rows affected(5):** " + rowsAffected);
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
@@ -443,18 +475,21 @@ public class UsersInformationDatabase {
                 while (findAmount1.next()){
                     if (userBuyer.equals(findAmount1.getString("userName"))){
                         amount = findAmount1.getDouble(currencyName);
+                        usd = findAmount1.getDouble("USD");
                     }
                 }
                 try (PreparedStatement preparedStatement = con.prepareStatement(UpdateTable)){
                     preparedStatement.setDouble(1, amount+buyerAmount);
-                    preparedStatement.setString(2, userBuyer);
+                    preparedStatement.setDouble(2, usd - buyerAmount*(DataList_index/
+                            DataList_currency));
+                    preparedStatement.setString(3, userBuyer);
                     int rowsAffected = preparedStatement.executeUpdate();
-                    System.out.println("Rows affected(2): " + rowsAffected);
+                    System.out.println("Rows affected(6):** " + rowsAffected);
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
             } else{//selling now
-                String UpdateTable = "UPDATE ExchangeInfo SET UserSeller = ?, CurrencyPrice = ?, Date = ?, Time = ? " +
+                String UpdateTable = "UPDATE ExchangeInfo SET UserSeller = ?, CurrencyPrice = ?, Date = ?, Time = ?, TotalAmountSeller = ?, SellerCode = ? " +
                         "WHERE UserBuyer = ? AND CurrencyName = ? AND CurrencyPrice = ? AND BuyerCode = ? AND TotalAmountBuyer = ?";
                 if(buyerPrice>sellerPrice) price=sellerPrice;
                 else price=buyerPrice;
@@ -465,38 +500,40 @@ public class UsersInformationDatabase {
                     preparedStatement.setDouble(2, price);
                     preparedStatement.setDate(3, date);
                     preparedStatement.setTime(4, Time.valueOf(localTime));
-                    preparedStatement.setString(5, userBuyer);
-                    preparedStatement.setString(6, CurrencyName);
-                    preparedStatement.setDouble(7, buyerPrice);
-                    preparedStatement.setInt(8, SellerCode);
-                    preparedStatement.setDouble(9, totalAmountSeller);
+                    preparedStatement.setDouble(5, sellerAmount);
+                    preparedStatement.setInt(6, SellerCode);
+                    preparedStatement.setString(7, userBuyer);
+                    preparedStatement.setString(8, CurrencyName);
+                    preparedStatement.setDouble(9, buyerPrice);
+                    preparedStatement.setInt(10, BuyerCode);
+                    preparedStatement.setDouble(11, totalAmountBuyer);
                     int rowsAffected = preparedStatement.executeUpdate();
                     System.out.println("Rows affected(6): " + rowsAffected);
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
                 if(CurrencyName.equals("USD")){
-                    UpdateTable = "UPDATE BitFUM.UsersInfo SET USD = ?" +
+                    UpdateTable = "UPDATE BitFUM.UsersInfo SET USD = ? , USD = ?" +
                             "WHERE userName = ?";
                     currencyName = "USD";
                 }
                 if(CurrencyName.equals("YEN")){
-                    UpdateTable = "UPDATE BitFUM.UsersInfo SET YEN = ?" +
+                    UpdateTable = "UPDATE BitFUM.UsersInfo SET YEN = ? , USD = ?" +
                             "WHERE userName = ?";
                     currencyName = "YEN";
                 }
                 if(CurrencyName.equals("TOMAN")){
-                    UpdateTable = "UPDATE BitFUM.UsersInfo SET TOMAN = ? " +
+                    UpdateTable = "UPDATE BitFUM.UsersInfo SET TOMAN = ? , USD = ?" +
                             "WHERE userName = ?";
                     currencyName = "TOMAN";
                 }
                 if(CurrencyName.equals("GBP")){
-                    UpdateTable = "UPDATE BitFUM.UsersInfo SET GBP = ? " +
+                    UpdateTable = "UPDATE BitFUM.UsersInfo SET GBP = ? , USD = ?" +
                             "WHERE userName = ?";
                     currencyName = "GBP";
                 }
                 if(CurrencyName.equals("EUR")){
-                    UpdateTable = "UPDATE BitFUM.UsersInfo SET EUR = ?" +
+                    UpdateTable = "UPDATE BitFUM.UsersInfo SET EUR = ? , USD = ?" +
                             "WHERE userName = ?";
                     currencyName = "EUR";
                 }
@@ -506,11 +543,14 @@ public class UsersInformationDatabase {
                 while (findAmount.next()){
                     if (userSeller.equals(findAmount.getString("userName"))){
                         amount = findAmount.getDouble(currencyName);
+                        usd = findAmount.getDouble("USD");
                     }
                 }
                 try (PreparedStatement preparedStatement = con.prepareStatement(UpdateTable)){
                     preparedStatement.setDouble(1, amount-sellerAmount);
-                    preparedStatement.setString(2, userSeller);
+                    preparedStatement.setDouble(2, usd + sellerAmount*(DataList_index/
+                            DataList_currency));
+                    preparedStatement.setString(3, userSeller);
                     int rowsAffected = preparedStatement.executeUpdate();
                     System.out.println("Rows affected(1): " + rowsAffected);
                 } catch (SQLException e) {
@@ -521,11 +561,14 @@ public class UsersInformationDatabase {
                 while (findAmount1.next()){
                     if (userBuyer.equals(findAmount1.getString("userName"))){
                         amount = findAmount1.getDouble(currencyName);
+                        usd = findAmount1.getDouble("USD");
                     }
                 }
                 try (PreparedStatement preparedStatement = con.prepareStatement(UpdateTable)){
                     preparedStatement.setDouble(1, amount+buyerAmount);
-                    preparedStatement.setString(2, userBuyer);
+                    preparedStatement.setDouble(2, usd - buyerAmount*(DataList_index/
+                            DataList_currency));
+                    preparedStatement.setString(3, userBuyer);
                     int rowsAffected = preparedStatement.executeUpdate();
                     System.out.println("Rows affected(2): " + rowsAffected);
                 } catch (SQLException e) {
