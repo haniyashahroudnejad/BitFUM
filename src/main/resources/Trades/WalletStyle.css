@@ -1,0 +1,16 @@
+.chart-series-line{
+    -fx-stroke-width: 2px;
+}
+.default-color0.chart-series-line{-fx-stroke: White;}
+.default-color0.chart-line-symbol{-fx-background-color: White,#ffffff}
+
+.chart-plot-background {
+    -fx-background-color:  #013b46;
+}
+.custom-pie-chart .chart-pie-label {
+    -fx-text-fill: white; /* Set label text color to white */
+}
+
+
+
+
